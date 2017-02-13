@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="生活 感悟," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="记得在大四毕业的前夕，我在知乎上提了一个问题“为什么每次想写东西的时候都无从下笔？”。总结知友的回答，再结合自己的感受，试图剖开内心的世界，认真的拷问自己最本质的想法，自问为什么写不出来，也许六耳的回答是自己的那个样子，之所以写不出来，不是真的写不出来，而是害怕写不出好的内容，害怕比较，害怕没人看，害怕写出来的东西被别人讥讽，被别人指指点点，再加上自己是一个好面的人，在那么多外在情绪的干扰下，写不">
+<meta name="description" content="数据类型检测ECMAScript有五种简单的数据类型，分别为Undefined、Null、String、Number、Boolean，还有一个复杂的数据类型Object。ECMAScript的语言的动态性意味着我们可以使用以上6种数据类型表示任何数据。
+因为数据类型是松散的，所以我们需要一些手段来准确的检测给定变量的数据类型。
+typeoftepeof是检测基本数据类型的好手，他有六种检测结果，分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我应该开始写博客了">
-<meta property="og:url" content="http://yoursite.com/2016/09/07/why/index.html">
+<meta property="og:title" content="javascript安全类型监测">
+<meta property="og:url" content="http://yoursite.com/2017/02/13/javascript安全类型监测/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="记得在大四毕业的前夕，我在知乎上提了一个问题“为什么每次想写东西的时候都无从下笔？”。总结知友的回答，再结合自己的感受，试图剖开内心的世界，认真的拷问自己最本质的想法，自问为什么写不出来，也许六耳的回答是自己的那个样子，之所以写不出来，不是真的写不出来，而是害怕写不出好的内容，害怕比较，害怕没人看，害怕写出来的东西被别人讥讽，被别人指指点点，再加上自己是一个好面的人，在那么多外在情绪的干扰下，写不">
-<meta property="og:updated_time" content="2017-02-05T07:24:26.000Z">
+<meta property="og:description" content="数据类型检测ECMAScript有五种简单的数据类型，分别为Undefined、Null、String、Number、Boolean，还有一个复杂的数据类型Object。ECMAScript的语言的动态性意味着我们可以使用以上6种数据类型表示任何数据。
+因为数据类型是松散的，所以我们需要一些手段来准确的检测给定变量的数据类型。
+typeoftepeof是检测基本数据类型的好手，他有六种检测结果，分">
+<meta property="og:updated_time" content="2017-02-13T08:42:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我应该开始写博客了">
-<meta name="twitter:description" content="记得在大四毕业的前夕，我在知乎上提了一个问题“为什么每次想写东西的时候都无从下笔？”。总结知友的回答，再结合自己的感受，试图剖开内心的世界，认真的拷问自己最本质的想法，自问为什么写不出来，也许六耳的回答是自己的那个样子，之所以写不出来，不是真的写不出来，而是害怕写不出好的内容，害怕比较，害怕没人看，害怕写出来的东西被别人讥讽，被别人指指点点，再加上自己是一个好面的人，在那么多外在情绪的干扰下，写不">
+<meta name="twitter:title" content="javascript安全类型监测">
+<meta name="twitter:description" content="数据类型检测ECMAScript有五种简单的数据类型，分别为Undefined、Null、String、Number、Boolean，还有一个复杂的数据类型Object。ECMAScript的语言的动态性意味着我们可以使用以上6种数据类型表示任何数据。
+因为数据类型是松散的，所以我们需要一些手段来准确的检测给定变量的数据类型。
+typeoftepeof是检测基本数据类型的好手，他有六种检测结果，分">
 
 
 
@@ -121,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/07/why/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/13/javascript安全类型监测/"/>
 
 
 
 
 
-  <title> 我应该开始写博客了 | 程是非sky </title>
+  <title> javascript安全类型监测 | 程是非sky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -240,7 +246,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/07/why/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/13/javascript安全类型监测/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="程康健">
@@ -264,7 +270,7 @@
             
             
               
-                我应该开始写博客了
+                javascript安全类型监测
               
             
           </h1>
@@ -279,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-07T00:02:26+08:00">
-                2016-09-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-13T16:41:27+08:00">
+                2017-02-13
               </time>
             
 
@@ -315,10 +321,22 @@
       
 
       
-        <p>记得在大四毕业的前夕，我在知乎上提了一个问题“<a href="https://www.zhihu.com/question/35572138" target="_blank" rel="external">为什么每次想写东西的时候都无从下笔？</a>”。<br>总结知友的回答，再结合自己的感受，试图剖开内心的世界，认真的拷问自己最本质的想法，自问为什么写不出来，也许六耳的回答是自己的那个样子，之所以写不出来，不是真的写不出来，而是害怕写不出好的内容，害怕比较，害怕没人看，害怕写出来的东西被别人讥讽，被别人指指点点，再加上自己是一个好面的人，在那么多外在情绪的干扰下，写不出来是很正常的了。</p>
-<p>大四毕业了，现在的我已经正式走上了谋生的道路，正式结束了十几年的学生身份，体会到了谋生的艰辛，生活的压力，身上的责任感。自己意外的成为了一个前端开发者，自然而然的就想为自己搭建一个博客用于记录自己的生活，记录自己的技术积淀，分享自己的生活感悟，分享自己的技术，分享自己的想法，因为互联网时代的本质就是分享，我也鼓励自己要克服害怕写东西，从这种消极情绪中积极的走出来，人生不也就是因为有了奋斗和与自己搏击的过程而显得刺激而有意义吗？</p>
-<p>我还希望通过在写博客的过程中，思考自己的生活，尽量站在客观的角度重新认识自己，进一步了解自己。我也搜索了相关为什么要写博客的文章，如“<a href="https://zhuanlan.zhihu.com/p/19743861" target="_blank" rel="external">为什么你要写博客？</a>”借鉴他们的想法之后愈加觉得自己开始做出这个选择的正确性，我要求自己要写下去，我想让尽量多的人知道，一个叫程康建小伙子曾经来过这个世界，这个世界有他的足迹。然后当我有朝一日老的时候，如果能够阅读自己年轻时候的心态，何尝不是一件幸福的事情。</p>
-<p>写吧！再次告诉自己！写到天荒地老海枯石烂…add oil！</p>
+        <h3 id="数据类型检测"><a href="#数据类型检测" class="headerlink" title="数据类型检测"></a>数据类型检测</h3><p>ECMAScript有五种简单的数据类型，分别为Undefined、Null、String、Number、Boolean，还有一个复杂的数据类型Object。ECMAScript的语言的动态性意味着我们可以使用以上6种数据类型表示任何数据。</p>
+<p>因为数据类型是松散的，所以我们需要一些手段来准确的检测给定变量的数据类型。</p>
+<h4 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h4><p>tepeof是检测基本数据类型的好手，他有六种检测结果，分别是Undefined、Object、Function、String、Number、Boolean,所以它是判断一个变量是：未定义值、对象、函数、字符串、数值、布尔值的最佳工具。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">typeof undefined  //&quot;undefined&quot;</div><div class="line">typeof &#123;&#125;  //&quot;object&quot;</div><div class="line">typeof function()&#123;&#125;  //&quot;function&quot;</div><div class="line">typeof &apos;&apos;  //&quot;string&quot;</div><div class="line">typeof 1  //&quot;number&quot;</div><div class="line">typeof true  //&quot;boolean&quot;</div><div class="line"></div><div class="line">typeof null  //&quot;object&quot;</div><div class="line">typeof [] //&quot;object&quot;</div></pre></td></tr></table></figure></p>
+<p>从上面可以看出typeof虽然是检测基本数据类型的好手，但是在检测引用类型的数据时就力不从心了，下面会提到如何检测引用数据类型。另外还有个问题值得思考：</p>
+<pre><code>为什么null的检测类型是Object？
+</code></pre><p>看书中对null的描述：</p>
+<blockquote>
+<p>The value null represents the intentional absence of any object<br>value</p>
+</blockquote>
+<p>首先，null是一个原始值。关于<figure class="highlight plain"><figcaption><span>null</span><a href="//" object""="">```的结果，从一开始出现JavaScript就是这样的。</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是0。由于 null 代表的是空指针(大多数平台下值为0x00)，因此，null的类型标签也成为了0，typeof null就错误的返回了&quot;object&quot;.(referenc)</div><div class="line"></div><div class="line">据说该问题在ECMAScript 6中提出``` typeof null === &apos;null&apos; ```的讨论 (该提议已被否决)。</div><div class="line"></div><div class="line"></div><div class="line">### 安全类型检测</div><div class="line">javascript内置的类型检测机制并非完全可靠。比如typeof操作符，由于一些无法预知的行为，会得到不靠谱的结果。</div><div class="line">instanceof存在于多个作用域的情况，通过下面的方式检测数组：</div><div class="line"></div><div class="line">``var isArray = value instanceof Array``</div><div class="line"></div><div class="line">以上代码若返回true，value必须是一个数组，而且必须与Array构造函数处于同一个作用域中。如果value是别的框架定义的数组，以上的代码又可能会返回false。</div><div class="line"></div><div class="line">### 如何解决上述问题</div><div class="line">上述解决的办法都一样，在任何值上调用Object原生的toString方法时，都会返回一个类似于［object NativeConstructorName］格式的字符串，比如：</div><div class="line"></div><div class="line">``Object.prototype.toString.call([&apos;&apos;])    //&quot;[object Array]&quot; ``</div><div class="line"></div><div class="line">由于原生数组的构造函数名和全局作用域无关，因此使用toString就能返回一致的值。利用这点可以创建以下函数：</div></pre></td></tr></table></figure></p>
+<p>function isArray(value) {<br>  return Object.prototype.toString.call(value) == “[object Array]”;<br>}</p>
+<p>function isFunction(value) {<br>  return Object.prototype.toString.call(value) == “[object Function]”;<br>}</p>
+<p>function isRegExp(value) {<br>  return Object.prototype.toString.call(value) == “[object RegExp]”;<br>}</p>
+<p>function isNativeJSON(value) {<br>  return window.JSON&amp;&amp;Object.prototype.toString.call(value) == “[object JSON]”;<br>}</p>
+<p>```</p>
+<p>⚠需要注意的一点是，Object.prototype.toString()本身也会被修改，本文讨论的仅仅是该方法未被修改的情况下。</p>
 
       
     </div>
@@ -342,7 +360,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/生活-感悟/" rel="tag"># 生活 感悟</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -351,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/04/start/" rel="next" title="新地盘 新生活 新开始.">
-                <i class="fa fa-chevron-left"></i> 新地盘 新生活 新开始.
+              <a href="/2016/10/19/git-not-repeat-put-password/" rel="next" title="解决 git bash 不重复输入账号密码">
+                <i class="fa fa-chevron-left"></i> 解决 git bash 不重复输入账号密码
               </a>
             
           </div>
@@ -360,10 +378,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/17/javascriptArray/" rel="prev" title="javascript高级编程-Array引用类型用法总结">
-                javascript高级编程-Array引用类型用法总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -410,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://o9h4emdrs.bkt.clouddn.com/ava.jpg"
@@ -507,6 +530,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型检测"><span class="nav-number">1.</span> <span class="nav-text">数据类型检测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#typeof"><span class="nav-number">1.1.</span> <span class="nav-text">typeof</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
