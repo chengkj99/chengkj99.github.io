@@ -3,23 +3,18 @@
 <head>
     <meta charset="utf-8">
     
-    <title>解决 git bash 不重复输入账号密码 | 程是非sky</title>
+    <title>标签：: 感悟 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="git" />
-    
-    <meta name="description" content="1 寻找并编辑 .git-credentials 文件在%HOME%目录中，一般为C:\users\Administrator，也可以是你自己创建的系统用户名目录，反正都在C:\users\中。文件名为.git-credentials,由于在Window中不允许直接创建以”.”开头的文件，所以需要借助git bash进行，打开git bash客户端，进行%HOME%目录，然后用touch创建文件">
-<meta property="og:type" content="article">
-<meta property="og:title" content="解决 git bash 不重复输入账号密码">
-<meta property="og:url" content="http://yoursite.com/2016/10/19/git-not-repeat-put-password/index.html">
+    <meta name="description" content="一边奔跑 一边思考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="程是非sky">
+<meta property="og:url" content="http://yoursite.com/tags/感悟/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="1 寻找并编辑 .git-credentials 文件在%HOME%目录中，一般为C:\users\Administrator，也可以是你自己创建的系统用户名目录，反正都在C:\users\中。文件名为.git-credentials,由于在Window中不允许直接创建以”.”开头的文件，所以需要借助git bash进行，打开git bash客户端，进行%HOME%目录，然后用touch创建文件">
-<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/git.png">
-<meta property="og:updated_time" content="2017-03-11T14:43:23.000Z">
+<meta property="og:description" content="一边奔跑 一边思考">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决 git bash 不重复输入账号密码">
-<meta name="twitter:description" content="1 寻找并编辑 .git-credentials 文件在%HOME%目录中，一般为C:\users\Administrator，也可以是你自己创建的系统用户名目录，反正都在C:\users\中。文件名为.git-credentials,由于在Window中不允许直接创建以”.”开头的文件，所以需要借助git bash进行，打开git bash客户端，进行%HOME%目录，然后用touch创建文件">
-<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/git.png">
+<meta name="twitter:title" content="程是非sky">
+<meta name="twitter:description" content="一边奔跑 一边思考">
     
 
     
@@ -141,148 +136,118 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    未分类
+    <i class="icon fa fa-tag"></i>标签：: <em>感悟</em>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-git-not-repeat-put-password" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/09/07/why/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/blogpeople.jpg)" alt="我应该开始写博客了" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="ds-thread-count" data-thread-key="2016/09/07/why/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            
+            </p>
+            <p class="date"><time datetime="2016-09-06T16:02:26.000Z" itemprop="datePublished">2016-09-07</time></p>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        解决 git bash 不重复输入账号密码
+        <a href="/2016/09/07/why/">我应该开始写博客了</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-subtitle">
-                <a href="/2016/10/19/git-not-repeat-put-password/" class="article-date">
-    <time datetime="2016-10-19T05:06:40.000Z" itemprop="datePublished">2016-10-19</time>
-</a>
-                
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <h4 id="1-寻找并编辑-git-credentials-文件"><a href="#1-寻找并编辑-git-credentials-文件" class="headerlink" title="1 寻找并编辑 .git-credentials 文件"></a>1 寻找并编辑 .git-credentials 文件</h4><p>在%HOME%目录中，一般为C:\users\Administrator，也可以是你自己创建的系统用户名目录，反正都在C:\users\中。文件名为.git-credentials,由于在Window中不允许直接创建以”.”开头的文件，所以需要借助git bash进行，打开git bash客户端，进行%HOME%目录，然后用touch创建文件 .git-credentials, 用vim编辑此文件，输入内容格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">touch .git-credentials</div><div class="line"></div><div class="line">vim .git-credentials</div><div class="line"></div><div class="line">https://&#123;username&#125;:&#123;password&#125;@github.com</div></pre></td></tr></table></figure>
-<h4 id="2-添加Git-Config-内容"><a href="#2-添加Git-Config-内容" class="headerlink" title="2 添加Git Config 内容"></a>2 添加Git Config 内容</h4><p>进入git bash终端， 输入如下命令：</p>
-<p>  <code>git config --global credential.helper store</code></p>
-<p>执行完后查看%HOME%目录下的.gitconfig文件，会多了一项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[credential]</div><div class="line">helper = store</div></pre></td></tr></table></figure>
-<p>重新开启git bash会发现git push时不用再输入用户名和密码</p>
-
-        </div>
-        <footer class="article-footer">
-            
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-
-        </footer>
+        <p class="article-excerpt">
+            记得在大四毕业的前夕，我在知乎上提了一个问题“为什么每次想写东西的时候都无从下笔？”。总结知友的回答，再结合自己的感受，试图剖开内心的世界，认真的拷问自己最本质的想法，自问为什么写不出来，也许六耳的回答是自己的那个样子，之所以写不出来，不是真的写不出来，而是害怕写不出好的内容，害怕比较，害怕没人看，害怕写出来的东西被别人讥讽，被别人指指点点，再加上自己是一个好面的人，在那么多外在情绪的干扰下，写不
+        </p>
     </div>
 </article>
+    
 
-    <section id="comments">
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/09/04/start/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/start.jpg)" alt="新地盘 新生活 新开始." class="thumbnail-image"></span>
+    
     
         
-    <div class="ds-thread" data-thread-key="2016/10/19/git-not-repeat-put-password/" data-title="解决 git bash 不重复输入账号密码" data-url="http://yoursite.com/2016/10/19/git-not-repeat-put-password/"></div>
-    <style>
-        #ds-thread #ds-reset .ds-textarea-wrapper {
-            background: none;
-        }
-        #ds-reset .ds-avatar img {
-            box-shadow: none;
-        }
-        #ds-reset .ds-gradient-bg {
-            background: #f7f7f7;
-        }
-        #ds-thread #ds-reset li.ds-tab a {
-            border-radius: 3px;
-        }
-        #ds-thread #ds-reset .ds-post-button {
-            color: white;
-            border: none;
-            box-shadow: none;
-            background: #d32;
-            text-shadow: none;
-            font-weight: normal;
-            font-family: 'Microsoft Yahei';
-        }
-        #ds-thread #ds-reset .ds-post-button:hover {
-            color: white;
-            background: #DE594C;
-        }
-        #ds-thread #ds-reset .ds-post-button:active {
-            background: #d32;
-        }
-        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
-            color: white;
-            background: #d32;
-            box-shadow: none;
-            text-shadow: none;
-            font-weight: normal;
-        }
-    </style>
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="ds-thread-count" data-thread-key="2016/09/04/start/">0</span>
+    
+</span>
 
     
-    </section>
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            
+            </p>
+            <p class="date"><time datetime="2016-09-03T16:19:47.000Z" itemprop="datePublished">2016-09-04</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/09/04/start/">新地盘 新生活 新开始.</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            通过hexo搭建的一个博客，虽然很简单，也是用了很长的时间，经过自己的双手敲出来的东西，可能简单了些，但是很有成就感。嗯，这是一个开始！add oil!
+
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+
+    </div></section>
+
 
 
                         </div>
@@ -327,29 +292,6 @@ ga('send', 'pageview');
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2017/02/13/javascript安全类型监测/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            javascript安全类型监测
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2016/09/26/internet-collect/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">互联网时代-值得思考的话</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
