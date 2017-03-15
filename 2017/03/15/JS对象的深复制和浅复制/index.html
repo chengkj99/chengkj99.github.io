@@ -3,18 +3,27 @@
 <head>
     <meta charset="utf-8">
     
-    <title>标签：: javascript | 程是非sky</title>
+    <title>JS对象的深复制和浅复制 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="一边奔跑 一边思考">
-<meta property="og:type" content="website">
-<meta property="og:title" content="程是非sky">
-<meta property="og:url" content="http://yoursite.com/tags/javascript/index.html">
+        <meta name="keywords" content="学习,成长,javascript,对象" />
+    
+    <meta name="description" content="在使用JavaScript对数组进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。
+浅复制JS的数据类型可以分为两种：基本数据类型和引用数据类型。我们在对数据进行复制的时候，如果这个数据是基本的数据类型，那么很好办，直接赋值就好。但是当遇到引用数据类型时，就需要三思而赋值。
+123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS对象的深复制和浅复制">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/JS对象的深复制和浅复制/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="一边奔跑 一边思考">
+<meta property="og:description" content="在使用JavaScript对数组进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。
+浅复制JS的数据类型可以分为两种：基本数据类型和引用数据类型。我们在对数据进行复制的时候，如果这个数据是基本的数据类型，那么很好办，直接赋值就好。但是当遇到引用数据类型时，就需要三思而赋值。
+123">
+<meta property="og:updated_time" content="2017-03-15T16:35:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程是非sky">
-<meta name="twitter:description" content="一边奔跑 一边思考">
+<meta name="twitter:title" content="JS对象的深复制和浅复制">
+<meta name="twitter:description" content="在使用JavaScript对数组进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。
+浅复制JS的数据类型可以分为两种：基本数据类型和引用数据类型。我们在对数据进行复制的时候，如果这个数据是基本的数据类型，那么很好办，直接赋值就好。但是当遇到引用数据类型时，就需要三思而赋值。
+123">
     
 
     
@@ -136,187 +145,158 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签：: <em>javascript</em>
+    未分类
     </h1>
 </div>
                         <div class="main-body-content">
-                            
+                            <article id="post-JS对象的深复制和浅复制" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        JS对象的深复制和浅复制
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
+            <div class="article-subtitle">
+                <a href="/2017/03/15/JS对象的深复制和浅复制/" class="article-date">
+    <time datetime="2017-03-15T10:35:42.000Z" itemprop="datePublished">2017-03-15</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/2017/03/15/JS对象的深复制和浅复制/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="ds-thread-count" data-thread-key="2017/03/15/JS对象的深复制和浅复制/">0</span>
-    
-</span>
+        <div class="article-entry" itemprop="articleBody">
+            <p>在使用JavaScript对数组进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。</p>
+<h3 id="浅复制"><a href="#浅复制" class="headerlink" title="浅复制"></a>浅复制</h3><p>JS的数据类型可以分为两种：基本数据类型和引用数据类型。<br>我们在对数据进行复制的时候，如果这个数据是基本的数据类型，那么很好办，直接赋值就好。但是当遇到引用数据类型时，就需要三思而赋值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let obj1 = &#123;</div><div class="line">  a: 1,</div><div class="line">  b: 2</div><div class="line">&#125;</div><div class="line"></div><div class="line">let obj2 = obj1</div><div class="line"></div><div class="line">obj2.b = 3</div><div class="line"></div><div class="line">console.log(obj1)  // &#123; a: 1, b: 3 &#125;</div><div class="line">console.log(obj1 === obj2) //true</div></pre></td></tr></table></figure>
+<p>在这里我只是想obj2复制obj1,当我对obj2进行操作时，obj1的值也发生了变化。<br>换句话说就是因为如果只是简单的赋值，它只是进行了地址的引用，所以改变一个另一个也会跟着变。上面这种直接赋值方式的复制称之为<strong>浅复制</strong>。</p>
+<h3 id="深复制"><a href="#深复制" class="headerlink" title="深复制"></a>深复制</h3><p>我在想如何让obj2复制obj1的对象内容，在我对obj2进行修改时，不影响obj1，下面总结两个方法，可以在不同情况下使用。</p>
+<h4 id="1-JSON-parse-JSON-stringify-obj"><a href="#1-JSON-parse-JSON-stringify-obj" class="headerlink" title="1. JSON.parse(JSON.stringify(obj))"></a>1. JSON.parse(JSON.stringify(obj))</h4><p>利用JSON的方式进行浅层次序列化对象进行深复制是一个很好的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let obj1 = &#123;</div><div class="line">  a: 1,</div><div class="line">  b: 2</div><div class="line">&#125;</div><div class="line"></div><div class="line">let obj3 = JSON.parse(JSON.stringify(obj1))</div><div class="line">obj3.b = 5</div><div class="line"></div><div class="line">console.log(obj1)  //&#123; a: 1, b: 2 &#125;</div><div class="line">console.log(obj1 === obj3)  //false</div></pre></td></tr></table></figure>
+<p>但是JSON的方式有局限性，就是对象必须遵从JSON的格式，当遇到层级较深，且序列化对象不完全符合JSON格式时，使用JSON的方式进行深复制就会出现问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">let obj1 = &#123;</div><div class="line">  a: &apos;1&apos;,</div><div class="line">  b: &apos;2&apos;,</div><div class="line">  c: function func() &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let obj4 = JSON.parse(JSON.stringify(obj1))</div><div class="line"></div><div class="line">console.log(obj4) //&#123; a: &apos;1&apos;, b: &apos;2&apos; &#125; 好像漏了些什么😄</div></pre></td></tr></table></figure>
+<h4 id="2-一段深复制的代码"><a href="#2-一段深复制的代码" class="headerlink" title="2. 一段深复制的代码"></a>2. 一段深复制的代码</h4><p>其实实现对象的深复制，只需要把父对象的属性，全部拷贝给子对象，就可以实现复制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function extendCopy(p) &#123;</div><div class="line">　　var c = &#123;&#125;;</div><div class="line">　　for (var i in p) &#123;</div><div class="line">　　　　c[i] = p[i];</div><div class="line">　　&#125;</div><div class="line">　　return c;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是，这样的拷贝有一个问题。那就是，如果父对象的属性等于数组或另一个对象，那么实际上，子对象获得的只是一个内存地址，而不是真正拷贝，因此存在父对象被篡改的可能。</p>
+<p>所谓”深拷贝”，就是能够实现真正意义上的数组和对象的拷贝。它的实现并不难，只要递归调用”浅拷贝”就行了。</p>
+<p>当对象层级较深，且序列化对象不完全符合JSON格式时，这个时候就需要通过递归调用”浅拷贝”来解决。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">let obj1 = &#123;</div><div class="line">  a: &apos;1&apos;,</div><div class="line">  b: &apos;2&apos;,</div><div class="line">  c: &#123;</div><div class="line">    d: &apos;3&apos;</div><div class="line">  &#125;,</div><div class="line">  d: function aa () &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function cloneObject(obj) &#123;</div><div class="line">   if(typeof obj === &quot;object&quot;) &#123;</div><div class="line">       if(obj.constructor === Array) &#123;</div><div class="line">           var newArr = []</div><div class="line">           for(var i = 0; i &lt; obj.length; i++) newArr.push(obj[i])</div><div class="line">           return newArr</div><div class="line">       &#125; else &#123;</div><div class="line">           var newObj = &#123;&#125;</div><div class="line">           for(var key in obj) &#123;</div><div class="line">               newObj[key] = this.cloneObject(obj[key])</div><div class="line">           &#125;</div><div class="line">           return newObj</div><div class="line">       &#125;</div><div class="line">   &#125; else &#123;</div><div class="line">       return obj</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(cloneObject(obj1)) //&#123; a: &apos;1&apos;, b: &apos;2&apos;, c: &#123; d: &apos;3&apos; &#125;, d: [Function: aa] &#125;</div></pre></td></tr></table></figure>
+<p>继续简化一下…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">let obj1 = &#123;</div><div class="line">  a: &apos;1&apos;,</div><div class="line">  b: &apos;2&apos;,</div><div class="line">  c: &#123;</div><div class="line">    d: &apos;3&apos;</div><div class="line">  &#125;,</div><div class="line">  d: function aa () &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function cloneObject (obj) &#123;</div><div class="line">  let temp = obj.constructor === Array ? [] : &#123;&#125;</div><div class="line">  for (let val in obj) &#123;</div><div class="line">    temp[val] = typeof obj[val] == &apos;object&apos; ? cloneObject(obj[val]) : obj[val]</div><div class="line">  &#125;</div><div class="line">  return temp</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(cloneObject(obj1)) //&#123; a: &apos;1&apos;, b: &apos;2&apos;, c: &#123; d: &apos;3&apos; &#125;, d: [Function: aa] &#125;</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在实际开发中，关于对象复制的问题是经常遇到的。最常见的是对对象的复制，重新定义，扩展等。掌握浅复制和深复制的区别以及如何进行深复制，以及选择哪个方式进行深复制，会节省许多debug时间，避免很多不必要的麻烦。</p>
 
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            
-            </p>
-            <p class="date"><time datetime="2017-03-15T10:35:42.000Z" itemprop="datePublished">2017-03-15</time></p>
         </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/15/JS对象的深复制和浅复制/">JS对象的深复制和浅复制</a>
-        </h1>
-    
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
 
-        <p class="article-excerpt">
-            在使用JavaScript对数组进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。
-浅复制JS的数据类型可以分为两种：基本数据类型和引用数据类型。我们在对数据进行复制的时候，如果这个数据是基本的数据类型，那么很好办，直接赋值就好。但是当遇到引用数据类型时，就需要三思而赋值。
-123
-        </p>
+
+
+
+        </footer>
     </div>
 </article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/02/13/javascript安全类型监测/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/javascript.png)" alt="javascript安全类型监测" class="thumbnail-image"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="ds-thread-count" data-thread-key="2017/02/13/javascript安全类型监测/">0</span>
-    
-</span>
+    <div class="ds-thread" data-thread-key="2017/03/15/JS对象的深复制和浅复制/" data-title="JS对象的深复制和浅复制" data-url="http://yoursite.com/2017/03/15/JS对象的深复制和浅复制/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
 
     
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            
-            </p>
-            <p class="date"><time datetime="2017-02-13T08:41:27.000Z" itemprop="datePublished">2017-02-13</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/02/13/javascript安全类型监测/">javascript安全类型监测</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            数据类型检测ECMAScript有五种简单的数据类型，分别为Undefined、Null、String、Number、Boolean，还有一个复杂的数据类型Object。ECMAScript的语言的动态性意味着我们可以使用以上6种数据类型表示任何数据。
-因为数据类型是松散的，所以我们需要一些手段来准确的检测给定变量的数据类型。
-typeoftepeof是检测基本数据类型的好手，他有六种检测结果，分
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-        
-            </div></section>
-        
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/09/17/javascriptArray/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/javascript.png)" alt="javascript高级编程-Array引用类型用法总结" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="ds-thread-count" data-thread-key="2016/09/17/javascriptArray/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            
-            </p>
-            <p class="date"><time datetime="2016-09-16T16:56:47.000Z" itemprop="datePublished">2016-09-17</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/09/17/javascriptArray/">javascript高级编程-Array引用类型用法总结</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            引用类型-Array类型引用类型是一种数据结构，用于将数据和功能联系起来。
-创建对象的方式：
-1.new操作符
-var array = new Array()
-2.字面量表示法创建
-var array = []
-Array1.检测数组:检测数组是基本类型还是引用类型  
-2.转换方法:将数组转换成字符串或数组对象    
-3.栈方法:后进先出的操作数组的方法    
-4.队列方法:先进先出的操作数
-        </p>
-    </div>
-</article>
-    
-
-
-    </div></section>
-
+    </section>
 
 
                         </div>
@@ -361,6 +341,19 @@ Array1.检测数组:检测数组是基本类型还是引用类型
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/03/11/敏捷开发Scrum培训及实践总结/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">记一次敏捷开发Scrum培训及实践的感受</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
