@@ -3,18 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档: 2017/4 | 程是非sky</title>
+    <title>从零开始学习webpack搭建vue工程 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="一边奔跑 一边思考">
-<meta property="og:type" content="website">
-<meta property="og:title" content="程是非sky">
-<meta property="og:url" content="http://yoursite.com/archives/2017/04/index.html">
+        <meta name="keywords" content="webpack" />
+    
+    <meta name="description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
+开始新建文件夹 vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始学习webpack搭建vue工程">
+<meta property="og:url" content="http://yoursite.com/2017/04/17/webpack-note-01/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="一边奔跑 一边思考">
+<meta property="og:description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
+开始新建文件夹 vue">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg">
+<meta property="og:updated_time" content="2017-04-16T17:06:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程是非sky">
-<meta name="twitter:description" content="一边奔跑 一边思考">
+<meta name="twitter:title" content="从零开始学习webpack搭建vue工程">
+<meta name="twitter:description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
+开始新建文件夹 vue">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg">
     
 
     
@@ -136,255 +144,140 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>归档: 2017/4
+    未分类
     </h1>
 </div>
                         <div class="main-body-content">
-                            
+                            <article id="post-webpack-note-01" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        从零开始学习webpack搭建vue工程
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
+            <div class="article-subtitle">
+                <a href="/2017/04/17/webpack-note-01/" class="article-date">
+    <time datetime="2017-04-16T16:59:17.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/2017/04/17/webpack-note-01/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg)" alt="从零开始学习webpack搭建vue工程" class="thumbnail-image"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="项目实践记录"><a href="#项目实践记录" class="headerlink" title="项目实践记录"></a>项目实践记录</h1><p>目的：练习render<br>背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>新建文件夹 vue-pro<br>在vue-pro下新建文件夹 build<br>在vue-pro下新建文件夹 src<br>在vue-pro目录下执行<code>npm init</code>,初始化package.json<br>在vue-pro目录下执行<code>npm install vue --save-dev</code>,安装vue</p>
+<p>在src下新建 index.html main.js App.vue 分别作为实例挂载点、实例挂载入口文件、和vue单页模版根文件<br>在build文件夹下创建dev-server.js 用于配置本地项目的启动文件</p>
+<h2 id="初始化这个项目"><a href="#初始化这个项目" class="headerlink" title="初始化这个项目"></a>初始化这个项目</h2><p>下一步： 安装webpack、并配置，跑起来这个项目<br>安装vue-loader<br>安装webpack，查看版本号为1.14，应升级2.33 npm install -g webpack@2.3.3<br>刚开始执行webpack build/webpack/config.js错误，是没找到webpack.config.js这个文件<br>后来cd build 后执行 webpack webpack.config.js 报错</p>
+<p>缺少<code>vue-template-compiler</code>，继续安装此模块<br>缺少<code>css-loader</code>，继续安装此模块</p>
+<p>执行<code>webpack webpack.config.js</code>成功 双击index.html</p>
+<p>报错<code>You are using the runtime-only build of Vue where the template compiler is not available.</code><br><a href="https://zhuanlan.zhihu.com/p/22115243" target="_blank" rel="external">找到了一篇文章</a><br><code>package.json 中的 main 属性决定了，当项目被引入时，输出的是哪个文件，而 vue 的 package.json 中的 main 指向的是 dist/vue.common.js。</code><br> 擦，并不太懂是什么鬼，就是把</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// import Vue from &apos;Vue&apos;</div><div class="line">import Vue from &apos;vue/dist/vue.js&apos;</div></pre></td></tr></table></figure>
+<p> 替换就好了。</p>
+<p> 但是渲染出来没有内容，我目前猜可能是需要服务器渲染的问题》》》</p>
+<p> 不是服务器渲染的问题</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">render: h =&gt; h(App)</div><div class="line">// component: &#123;</div><div class="line">//   App</div><div class="line">// &#125;</div></pre></td></tr></table></figure>
+<p> 这么替换，就完成了页面的渲染。</p>
+<p> 问题：</p>
+<ol>
+<li>为什么在build外执行<code>webpack build/webpack/config.js</code> 报错？<br>我发现，entry的入口路径参考的是你执行webpack的当前文件夹，　如果我我在webpack.config.js文件下执行webpack，那么这个时候，配置文件的入口地址，可以被找到，因为webpack的执行目录和配置文件所在目录是一致的，当我到上一层执行webpack构建时，就会出现问题，此时可以将entry的入口文件改为绝对地址就没有问题了。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// entry: &apos;../src/main.js&apos;,</div><div class="line">entry: path.resolve(__dirname, &apos;../src/main.js&apos;),</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>但是我执行<code>webpack build/webpack/config.js</code>时还是不行，报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">No configuration file found and no entry configured via CLI option.</div><div class="line">When using the CLI you need to provide at least two arguments: entry and output.</div><div class="line">A configuration file could be named &apos;webpack.config.js&apos; in the current directory.</div><div class="line">Use --help to display the CLI options.</div></pre></td></tr></table></figure></p>
+<p>当我执行<code>webpack --config build/webpack.config.js --progress</code>就可以成功。</p>
+<p>这两者有什么区别呢？</p>
+<p>原来，这和progress没关系，Webpack 在执行的时候，除了在命令行传入参数，还可以通过指定的配置文件来执行。默认情况下，会搜索当前目录的 webpack.config.js 文件，这个文件是一个 node.js 模块，返回一个 json 格式的配置信息对象，或者通过 –config 选项来指定配置文件。</p>
+<p>soga！！</p>
+<ol>
+<li><p>// import Vue from ‘Vue’ 和 import Vue from ‘vue/dist/vue.js’ 什么区别？</p>
+<p>这个问题还需要从vue的构建方式来看，vue的构建方式有两种<code>独立构建</code> 和<code>运行时构建</code>，其中<code>独立构建= 编译 + 运行时构建</code>，<br>Vue.js 的运行过程实际上包含两步。第一步，编译器将字符串模板（template）编译为渲染函数（render），称之为编译过程；第二步，运行时实际调用编译的渲染函数，称之为运行过程。</p>
+<p>vue默认的是运行时构建，如果想使用独立构建需要在webpack配置中加入下面这段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">  alias: &#123;</div><div class="line">    &apos;vue$&apos;: vue/dist/vue.esm.js  // &apos;vue/dist/vue.common.js&apos; for webpack 1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是如何区分运行时构建和独立构建？以及怎么分别实现运行时构建和独立构建？</p>
+<p>至此，如果想使用template写模版，需要使用独立构建，如果使用render函数渲染模版使用运行时构建。</p>
+</li>
+</ol>
+<p>独立构建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import Vue from &apos;vue/dist/vue.js&apos; //独立构建</div><div class="line">// import Vue from &apos;vue/dist/vue.esm.js&apos; //独立构建</div><div class="line">import App from &apos;./App.vue&apos;</div><div class="line">new Vue(&#123;</div><div class="line">  el: &apos;#app&apos;,</div><div class="line">  template: &apos;&lt;App/&gt;&apos;,</div><div class="line">  components: &#123; App &#125;</div><div class="line">&#125;).$mount(&apos;#app&apos;)</div></pre></td></tr></table></figure>
+<p>运行时构建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import Vue from &apos;Vue&apos; //运行时构建</div><div class="line">import App from &apos;./App.vue&apos;</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">  el: &apos;#app&apos;,</div><div class="line">  render: h =&gt; h(App)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            
-            </p>
-            <p class="date"><time datetime="2017-04-16T16:59:17.000Z" itemprop="datePublished">2017-04-17</time></p>
         </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/04/17/webpack-note-01/">从零开始学习webpack搭建vue工程</a>
-        </h1>
-    
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
 
-        <p class="article-excerpt">
-            项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
-开始新建文件夹 vue
-        </p>
+
+
+
+        </footer>
     </div>
 </article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/04/12/My-girlfriend/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
+    <div id="uyan_frame"></div>
 
     
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            
-            </p>
-            <p class="date"><time datetime="2017-04-12T15:14:07.000Z" itemprop="datePublished">2017-04-12</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/04/12/My-girlfriend/">My-girlfriend</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            这其实是关乎隐私的文章，但是我想记录下来，一来我的博客没什么量，也没人看到，而来看到的人大都是没见过我，也没啥害羞的，最主要的，我希望写下来我的感受，永远的记住它。
-说实话，在遇到女朋友之前，我一直都是一个花心的人，但是当我遇到我的女朋友，我变得专一了。这印证了一句话：“抓不住男人的心，就不要说男人花心”。女朋友在我心里是全世界最好的女朋友，因为她的存在，我变得更加积极向上、阳光、健康，生活变得更
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/04/12/我的女朋友/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            
-            </p>
-            <p class="date"><time datetime="2017-04-12T15:13:07.000Z" itemprop="datePublished">2017-04-12</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/04/12/我的女朋友/">我的女朋友</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/04/07/一段代码-递归调用的返回值问题/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/flower.jpg)" alt="一段代码-递归调用的返回值问题" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            
-            </p>
-            <p class="date"><time datetime="2017-04-07T04:35:35.000Z" itemprop="datePublished">2017-04-07</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/04/07/一段代码-递归调用的返回值问题/">一段代码-递归调用的返回值问题</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            今天写一个递归函数，获取的返回值不是自己想要的结果，而是undefined，困扰了我很久。
-1234567891011function recuFunc(val) &#123;  if (val &gt; 10) &#123;    return val  &#125; else &#123;    recuFunc(val + 1)  &#125;&#125;let res = recuFunc
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/04/01/isEmptyValue/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/javascript.png)" alt="一段代码-检测JS对象值是否为空" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            
-            </p>
-            <p class="date"><time datetime="2017-04-01T12:03:46.000Z" itemprop="datePublished">2017-04-01</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/04/01/isEmptyValue/">一段代码-检测JS对象值是否为空</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            前端在开发过程中，经常会遇到后端传过来的数据为空的情况，如果我知道确定的数据类型还比较容易判断，但有时候类型是不确定的，比如数组类型，在数组为空的时候，不知道返回的是[] 还是 null，这个时候如果冒然的使用Array.length()进行判断，当返回的空数组的值不是[]而是null时就会出现问题。
-于是我就想写段代码，去检测数据是否为空，以后直接调用它便是。
-我将如下的数据值定义为空值，其他值
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
+    </section>
 
 
                         </div>
@@ -429,6 +322,19 @@ ga('send', 'pageview');
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/04/12/My-girlfriend/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">My-girlfriend</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
