@@ -6,7 +6,7 @@
     <title>从零开始学习webpack搭建vue工程-01 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="webpack,vue" />
+        <meta name="keywords" content="vue,webpack" />
     
     <meta name="description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
 开始新建文件夹 vue">
@@ -17,7 +17,7 @@
 <meta property="og:description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
 开始新建文件夹 vue">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg">
-<meta property="og:updated_time" content="2017-04-16T17:12:29.000Z">
+<meta property="og:updated_time" content="2017-04-17T01:49:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始学习webpack搭建vue工程-01">
 <meta name="twitter:description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
@@ -326,6 +326,16 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
+        <a href="/2017/04/25/control-myself/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            第一次控制自我
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/2017/04/12/My-girlfriend/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
@@ -344,6 +354,26 @@ ga('send', 'pageview');
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/04/25/control-myself/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/me.jpg)" alt="第一次控制自我" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/04/25/control-myself/" class="title">第一次控制自我</a></p>
+                            <p class="item-date"><time datetime="2017-04-25T09:09:40.000Z" itemprop="datePublished">2017-04-25</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -425,26 +455,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/03/23/do-not-need-jquery/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/code.jpg)" alt="YOU MIGHT NOT NEED JQUERY" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/03/23/do-not-need-jquery/" class="title">YOU MIGHT NOT NEED JQUERY</a></p>
-                            <p class="item-date"><time datetime="2017-03-23T15:18:45.000Z" itemprop="datePublished">2017-03-23</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -457,7 +467,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -467,7 +477,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思考/">思考</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷开发/">敏捷开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思考/">思考</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我/">我</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷开发/">敏捷开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -477,7 +487,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/vue/" style="font-size: 12.5px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/互联网/" style="font-size: 12.5px;">互联网</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/思考/" style="font-size: 15px;">思考</a> <a href="/tags/感悟/" style="font-size: 12.5px;">感悟</a> <a href="/tags/成长/" style="font-size: 17.5px;">成长</a> <a href="/tags/敏捷开发/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+            <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/vue/" style="font-size: 12.5px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/互联网/" style="font-size: 12.5px;">互联网</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/思考/" style="font-size: 17.5px;">思考</a> <a href="/tags/感悟/" style="font-size: 12.5px;">感悟</a> <a href="/tags/成长/" style="font-size: 17.5px;">成长</a> <a href="/tags/我/" style="font-size: 10px;">我</a> <a href="/tags/敏捷开发/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
         </div>
     </div>
 
