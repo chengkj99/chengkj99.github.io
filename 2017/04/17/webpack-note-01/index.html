@@ -17,7 +17,7 @@
 <meta property="og:description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
 开始新建文件夹 vue">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg">
-<meta property="og:updated_time" content="2017-04-25T09:29:20.000Z">
+<meta property="og:updated_time" content="2017-04-25T09:32:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始学习webpack搭建vue工程-01">
 <meta name="twitter:description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
@@ -187,24 +187,17 @@ ga('send', 'pageview');
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">render: h =&gt; h(App)</div><div class="line">// component: &#123;</div><div class="line">//   App</div><div class="line">// &#125;</div></pre></td></tr></table></figure>
 <p> 这么替换，就完成了页面的渲染。</p>
 <p> 问题：</p>
-<ol>
-<li>为什么在build外执行<code>webpack build/webpack/config.js</code> 报错？<br>我发现，entry的入口路径参考的是你执行webpack的当前文件夹，　如果我我在webpack.config.js文件下执行webpack，那么这个时候，配置文件的入口地址，可以被找到，因为webpack的执行目录和配置文件所在目录是一致的，当我到上一层执行webpack构建时，就会出现问题，此时可以将entry的入口文件改为绝对地址就没有问题了。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// entry: &apos;../src/main.js&apos;,</div><div class="line">entry: path.resolve(__dirname, &apos;../src/main.js&apos;),</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p> 1.为什么在build外执行<code>webpack build/webpack/config.js</code> 报错？<br>  我发现，entry的入口路径参考的是你执行webpack的当前文件夹，　如果我我在webpack.config.js文件下执行webpack，那么这个时候，配置文件的入口地址，可以被找到，因为webpack的执行目录和配置文件所在目录是一致的，当我到上一层执行webpack构建时，就会出现问题，此时可以将entry的入口文件改为绝对地址就没有问题了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// entry: &apos;../src/main.js&apos;,</div><div class="line">entry: path.resolve(__dirname, &apos;../src/main.js&apos;),</div></pre></td></tr></table></figure></p>
 <p>但是我执行<code>webpack build/webpack/config.js</code>时还是不行，报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">No configuration file found and no entry configured via CLI option.</div><div class="line">When using the CLI you need to provide at least two arguments: entry and output.</div><div class="line">A configuration file could be named &apos;webpack.config.js&apos; in the current directory.</div><div class="line">Use --help to display the CLI options.</div></pre></td></tr></table></figure></p>
 <p>当我执行<code>webpack --config build/webpack.config.js --progress</code>就可以成功。</p>
 <p>这两者有什么区别呢？</p>
 <p>原来，这和progress没关系，Webpack 在执行的时候，除了在命令行传入参数，还可以通过指定的配置文件来执行。默认情况下，会搜索当前目录的 webpack.config.js 文件，这个文件是一个 node.js 模块，返回一个 json 格式的配置信息对象，或者通过 –config 选项来指定配置文件。</p>
 <p>soga！！</p>
-<ol>
-<li><p>import Vue from ‘Vue’ 和 import Vue from ‘vue/dist/vue.js’ 什么区别？</p>
-<p>这个问题还需要从vue的构建方式来看，vue的构建方式有两种<code>独立构建</code> 和<code>运行时构建</code>，其中<code>独立构建= 编译 + 运行时构建</code>，<br>Vue.js 的运行过程实际上包含两步。第一步，编译器将字符串模板（template）编译为渲染函数（render），称之为编译过程；第二步，运行时实际调用编译的渲染函数，称之为运行过程。</p>
-<p>vue默认的是运行时构建，如果想使用独立构建需要在webpack配置中加入下面这段：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">  alias: &#123;</div><div class="line">    &apos;vue$&apos;: vue/dist/vue.esm.js  // &apos;vue/dist/vue.common.js&apos; for webpack 1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>但是如何区分运行时构建和独立构建？以及怎么分别实现运行时构建和独立构建？</p>
-<p>至此，如果想使用template写模版，需要使用独立构建，如果使用render函数渲染模版使用运行时构建。</p>
-</li>
-</ol>
+<p>2.<code>import Vue from &#39;Vue&#39;</code> 和 <code>import Vue from &#39;vue/dist/vue.js&#39;</code> 什么区别？</p>
+<p> 这个问题还需要从vue的构建方式来看，vue的构建方式有两种<code>独立构建</code> 和<code>运行时构建</code>，其中<code>独立构建= 编译 + 运行时构建</code>，<br> Vue.js 的运行过程实际上包含两步。第一步，编译器将字符串模板（template）编译为渲染函数（render），称之为编译过程；第二步，运行时实际调用编译的渲染函数，称之为运行过程。</p>
+<p> vue默认的是运行时构建，如果想使用独立构建需要在webpack配置中加入下面这段：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">  alias: &#123;</div><div class="line">    &apos;vue$&apos;: vue/dist/vue.esm.js  // &apos;vue/dist/vue.common.js&apos; for webpack 1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 但是如何区分运行时构建和独立构建？以及怎么分别实现运行时构建和独立构建？</p>
+<p> 至此，如果想使用template写模版，需要使用独立构建，如果使用render函数渲染模版使用运行时构建。</p>
 <p>独立构建</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import Vue from &apos;vue/dist/vue.js&apos; //独立构建</div><div class="line">// import Vue from &apos;vue/dist/vue.esm.js&apos; //独立构建</div><div class="line">import App from &apos;./App.vue&apos;</div><div class="line">new Vue(&#123;</div><div class="line">  el: &apos;#app&apos;,</div><div class="line">  template: &apos;&lt;App/&gt;&apos;,</div><div class="line">  components: &#123; App &#125;</div><div class="line">&#125;).$mount(&apos;#app&apos;)</div></pre></td></tr></table></figure>
 <p>运行时构建</p>
