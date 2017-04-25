@@ -17,7 +17,7 @@
 <meta property="og:description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
 开始新建文件夹 vue">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg">
-<meta property="og:updated_time" content="2017-04-17T01:49:03.000Z">
+<meta property="og:updated_time" content="2017-04-25T09:29:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始学习webpack搭建vue工程-01">
 <meta name="twitter:description" content="项目实践记录目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。
@@ -197,7 +197,7 @@ ga('send', 'pageview');
 <p>原来，这和progress没关系，Webpack 在执行的时候，除了在命令行传入参数，还可以通过指定的配置文件来执行。默认情况下，会搜索当前目录的 webpack.config.js 文件，这个文件是一个 node.js 模块，返回一个 json 格式的配置信息对象，或者通过 –config 选项来指定配置文件。</p>
 <p>soga！！</p>
 <ol>
-<li><p>// import Vue from ‘Vue’ 和 import Vue from ‘vue/dist/vue.js’ 什么区别？</p>
+<li><p>import Vue from ‘Vue’ 和 import Vue from ‘vue/dist/vue.js’ 什么区别？</p>
 <p>这个问题还需要从vue的构建方式来看，vue的构建方式有两种<code>独立构建</code> 和<code>运行时构建</code>，其中<code>独立构建= 编译 + 运行时构建</code>，<br>Vue.js 的运行过程实际上包含两步。第一步，编译器将字符串模板（template）编译为渲染函数（render），称之为编译过程；第二步，运行时实际调用编译的渲染函数，称之为运行过程。</p>
 <p>vue默认的是运行时构建，如果想使用独立构建需要在webpack配置中加入下面这段：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">  alias: &#123;</div><div class="line">    &apos;vue$&apos;: vue/dist/vue.esm.js  // &apos;vue/dist/vue.common.js&apos; for webpack 1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
