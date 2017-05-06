@@ -3,26 +3,38 @@
 <head>
     <meta charset="utf-8">
     
-    <title>vue开发者必装的Atom插件 | 程是非sky</title>
+    <title>从零开始学习webpack搭建vue工程-02 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="vue" />
+        <meta name="keywords" content="vue,webpack" />
     
-    <meta name="description" content="之前一直用webstrom，在没有遇到Atom之前，总觉得JetBrains系列的IDE工具是世界最好的，也觉得JetBrains是世界上最懂开发者的公司，直到我遇到了Atom，于是顿时对Atom产生了好感，用了几下，便爱上了它无法自拔，后来有同事陆续推荐了VScode等其他工具，也没有改变我对Atom的坚持。
-工作中，我是一名主要使用vue的前端开发者，也发现了几款不错的插件，我觉得这几款是屌丝">
+    <meta name="description" content="webpack+vue项目实践记录02配置webpack.config.js文件
+支持http dev
+支持热替换
+支持es6
+支持sass
+打包的js文件自动插入到index.html模版中安装dev-server12345# 安装$ npm install webpack-dev-server -g# 运行$ webpack-dev-server --progress --colors">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue开发者必装的Atom插件">
-<meta property="og:url" content="http://yoursite.com/2017/03/07/vue开发者必装的atom插件/index.html">
+<meta property="og:title" content="从零开始学习webpack搭建vue工程-02">
+<meta property="og:url" content="http://yoursite.com/2017/04/17/webpack-note-02/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="之前一直用webstrom，在没有遇到Atom之前，总觉得JetBrains系列的IDE工具是世界最好的，也觉得JetBrains是世界上最懂开发者的公司，直到我遇到了Atom，于是顿时对Atom产生了好感，用了几下，便爱上了它无法自拔，后来有同事陆续推荐了VScode等其他工具，也没有改变我对Atom的坚持。
-工作中，我是一名主要使用vue的前端开发者，也发现了几款不错的插件，我觉得这几款是屌丝">
-<meta property="og:image" content="http://www.pcexpert-blog.com/wp-content/uploads/2014/08/file-icons-1.png">
-<meta property="og:updated_time" content="2017-03-09T05:36:25.000Z">
+<meta property="og:description" content="webpack+vue项目实践记录02配置webpack.config.js文件
+支持http dev
+支持热替换
+支持es6
+支持sass
+打包的js文件自动插入到index.html模版中安装dev-server12345# 安装$ npm install webpack-dev-server -g# 运行$ webpack-dev-server --progress --colors">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg">
+<meta property="og:updated_time" content="2017-05-06T11:16:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue开发者必装的Atom插件">
-<meta name="twitter:description" content="之前一直用webstrom，在没有遇到Atom之前，总觉得JetBrains系列的IDE工具是世界最好的，也觉得JetBrains是世界上最懂开发者的公司，直到我遇到了Atom，于是顿时对Atom产生了好感，用了几下，便爱上了它无法自拔，后来有同事陆续推荐了VScode等其他工具，也没有改变我对Atom的坚持。
-工作中，我是一名主要使用vue的前端开发者，也发现了几款不错的插件，我觉得这几款是屌丝">
-<meta name="twitter:image" content="http://www.pcexpert-blog.com/wp-content/uploads/2014/08/file-icons-1.png">
+<meta name="twitter:title" content="从零开始学习webpack搭建vue工程-02">
+<meta name="twitter:description" content="webpack+vue项目实践记录02配置webpack.config.js文件
+支持http dev
+支持热替换
+支持es6
+支持sass
+打包的js文件自动插入到index.html模版中安装dev-server12345# 安装$ npm install webpack-dev-server -g# 运行$ webpack-dev-server --progress --colors">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg">
     
 
     
@@ -148,14 +160,14 @@ ga('send', 'pageview');
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-vue开发者必装的atom插件" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-webpack-note-02" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        vue开发者必装的Atom插件
+        从零开始学习webpack搭建vue工程-02
         </h1>
     
 
@@ -163,28 +175,48 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/2017/03/07/vue开发者必装的atom插件/" class="article-date">
-    <time datetime="2017-03-07T07:05:10.000Z" itemprop="datePublished">2017-03-07</time>
+                <a href="/2017/04/17/webpack-note-02/" class="article-date">
+    <time datetime="2017-04-16T16:59:17.000Z" itemprop="datePublished">2017-04-17</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>之前一直用webstrom，在没有遇到Atom之前，总觉得JetBrains系列的IDE工具是世界最好的，也觉得JetBrains是世界上最懂开发者的公司<br>，直到我遇到了Atom，于是顿时对Atom产生了好感，用了几下，便爱上了它无法自拔，后来有同事陆续推荐了VScode等其他工具，也没有<br>改变我对Atom的坚持。</p>
-<p>工作中，我是一名主要使用vue的前端开发者，也发现了几款不错的插件，我觉得这几款是屌丝程序员必备的了！</p>
-<h2 id="File-icons：给你的文件图标润色一下"><a href="#File-icons：给你的文件图标润色一下" class="headerlink" title="File-icons：给你的文件图标润色一下"></a><a href="https://github.com/file-icons/atom" target="_blank" rel="external">File-icons：给你的文件图标润色一下</a></h2><p>  这个插件，是必须要装的，没有它，看代码是煎熬，有了它，就好多啦！<br>  <img src="http://www.pcexpert-blog.com/wp-content/uploads/2014/08/file-icons-1.png" alt=""></p>
-<h2 id="atom-clock-给状态栏添加时钟等状态信息"><a href="#atom-clock-给状态栏添加时钟等状态信息" class="headerlink" title="atom-clock:给状态栏添加时钟等状态信息"></a><a href="https://atom.io/packages/atom-clock" target="_blank" rel="external">atom-clock:给状态栏添加时钟等状态信息</a></h2><p>装上它，在Atom的右下角会出现一些你当前操作的状态信息，比如时间，git分支等等，有用。<br><img src="http://o9h4emdrs.bkt.clouddn.com/atomatom-clock.png" alt=""></p>
-<h2 id="pigments-文件内色值高亮"><a href="#pigments-文件内色值高亮" class="headerlink" title="pigments:文件内色值高亮"></a><a href="https://atom.io/packages/pigments" target="_blank" rel="external">pigments:文件内色值高亮</a></h2><p>  👇下面这个web开发者必备有没有…<br><img src="http://o9h4emdrs.bkt.clouddn.com/atomatom-pigments.gif" alt=""></p>
-<h2 id="vue相关"><a href="#vue相关" class="headerlink" title="vue相关"></a>vue相关</h2><p> <a href="https://atom.io/packages/language-vue" target="_blank" rel="external">language-vue:支持vue语法高亮</a></p>
-<p> <a href="https://atom.io/packages/vue-autocomplete" target="_blank" rel="external">vue-autocomplete:vue语法自动补全</a></p>
-<p> <a href="https://atom.io/packages/vue-element-ui-snippets" target="_blank" rel="external">vue-element-ui-snippets：基于vue样式框架element的插件</a></p>
-<p>vue相关的三个插件，配合着File-icons,开发已经很爽了，但是总觉得好像还是少点什么？？？</p>
-<h2 id="activate-power-mode：boom-这个厉害了"><a href="#activate-power-mode：boom-这个厉害了" class="headerlink" title="activate-power-mode：boom 这个厉害了"></a><a href="https://atom.io/packages/activate-power-mode" target="_blank" rel="external">activate-power-mode：boom 这个厉害了</a></h2><p>下面这个是纯屌丝必备… 以后码代码不但是享受，还带着节奏…</p>
-<p><img src="http://o9h4emdrs.bkt.clouddn.com/atomatom-boom.gif" alt=""></p>
-<p> 终于找到你，再来一波boom………..<br><img src="http://o9h4emdrs.bkt.clouddn.com/atomatom-boom2.gif" alt=""></p>
+            <h1 id="webpack-vue项目实践记录02"><a href="#webpack-vue项目实践记录02" class="headerlink" title="webpack+vue项目实践记录02"></a>webpack+vue项目实践记录02</h1><h2 id="配置webpack-config-js文件"><a href="#配置webpack-config-js文件" class="headerlink" title="配置webpack.config.js文件"></a>配置webpack.config.js文件</h2><ul>
+<li>支持http dev</li>
+<li>支持热替换</li>
+<li>支持es6</li>
+<li>支持sass</li>
+<li>打包的js文件自动插入到index.html模版中<h3 id="安装dev-server"><a href="#安装dev-server" class="headerlink" title="安装dev-server"></a>安装dev-server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">$ npm install webpack-dev-server -g</div><div class="line"></div><div class="line"># 运行</div><div class="line">$ webpack-dev-server --progress --colors</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><code>webpack  --config build/webpack.config.js  --progress</code>这条命令可以启动watch mode模式。</p>
+</blockquote>
+<p>以上的安装方式除了要安装全局，还要本地安装。执行那条命令，没有找到配置文件，但是需要制定配置文件。<br>使用<code>webpack-dev-server --config build/webpack.config.js  --inline --hot</code>完成服务的启动，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">  contentBase: path.join(__dirname, &quot;dist&quot;),</div><div class="line">  compress: true,</div><div class="line">  port: 9000</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>服务启动的文件如上所示，但是问题又来了，当我访问浏览器localhost:9000时，没有找到资源文件，说明还是有配置没有搞好。</p>
+<h3 id="搞好配置文件，实现可以正常访问项目"><a href="#搞好配置文件，实现可以正常访问项目" class="headerlink" title="搞好配置文件，实现可以正常访问项目"></a>搞好配置文件，实现可以正常访问项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line"></div><div class="line">  entry: path.resolve(__dirname, &apos;../src/main.js&apos;),</div><div class="line">  output: &#123;</div><div class="line">    path: path.resolve(__dirname, &apos;../dist&apos;),</div><div class="line">    filename: &apos;bundle.js&apos;,</div><div class="line">    publicPath: &quot;/dist&quot; //打包文件的输出地址</div><div class="line">  &#125;,</div><div class="line">  module: &#123;</div><div class="line">    rules: [</div><div class="line">      &#123;</div><div class="line">        test: /\.vue$/,</div><div class="line">        loader: &apos;vue-loader&apos;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  // devServer: &#123;</div><div class="line">  //   contentBase: &quot;../build&quot;,  //以build为根目录提供文件</div><div class="line">  //   colors: true,</div><div class="line">  //   historyApiFallback: true,</div><div class="line">  //   inline: true,</div><div class="line">  //   hot: true</div><div class="line">  // &#125;,</div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: path.join(__dirname, &quot;../src&quot;), //默认访问的静态文件的地址，建议最好是绝对路径</div><div class="line">    compress: true, // 启动 gzip 压缩 Enable gzip compression</div><div class="line">    port: 9000</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上配置文件，执行<code>webpack-dev-server --config build/webpack.config.js  --inline --hot</code>完成dev-server启动操作。</p>
+<h3 id="支持热替换"><a href="#支持热替换" class="headerlink" title="支持热替换"></a>支持热替换</h3><p>其实 –hot 已经支持了热替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">  &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</div><div class="line">  &quot;start&quot;: &quot;webpack-dev-server --config build/webpack.config.js  --inline --hot&quot;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>在package.json 加上以上这段，就支持了使用<code>npm run start</code>启动项目了。</p>
+<h3 id="支持es6-支持sass"><a href="#支持es6-支持sass" class="headerlink" title="支持es6 支持sass"></a>支持es6 支持sass</h3><p>到这时，我在想，需要安装些loader，css-loader、sass-loader、style-loader、babel-loader、file-loader(用于打包文件和图片),<br>在这里连续安装了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install sass-loader scss-loader --save-dev</div></pre></td></tr></table></figure>
+<p>在启动时，提示我需要安装<code>node-sass</code>,node-sass查了一下，简单说，就是将sass编译成css的一个工具，没有深究。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install sass-loader scss-loader --save-dev</div></pre></td></tr></table></figure>
+<p>装完之后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  test: /\.vue$/,</div><div class="line">  loader: &apos;vue-loader&apos;,</div><div class="line">  options: &#123;</div><div class="line">    loaders: &#123;</div><div class="line">      &apos;scss&apos;: &apos;vue-style-loader!css-loader!sass-loader&apos;,</div><div class="line">      &apos;sass&apos;: &apos;vue-style-loader!css-loader!sass-loader?indentedSyntax&apos;</div><div class="line">    &#125;</div><div class="line">    // other vue-loader options go here</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>就直接ok了。</p>
+<p>下一步，支持es6，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  test: /\.js$/,</div><div class="line">  loader: &apos;babel-loader&apos;,</div><div class="line">  exclude: /node_modules/</div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line">  test: /\.(png|jpg|gif|svg)$/,</div><div class="line">  loader: &apos;file-loader&apos;, // file-loader 都是用于打包文件和图片</div><div class="line">  options: &#123;</div><div class="line">    name: &apos;[name].[ext]?[hash]&apos;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行<code>npm run start</code>,提示安装babel-loader和babel-core，并依次安装</p>
+<h3 id="执行编译，自动引入到html文档中，使用html-webpack-plugin这个插件"><a href="#执行编译，自动引入到html文档中，使用html-webpack-plugin这个插件" class="headerlink" title="执行编译，自动引入到html文档中，使用html-webpack-plugin这个插件"></a>执行编译，自动引入到html文档中，使用<code>html-webpack-plugin</code>这个插件</h3><p>安装<code>npm install html-webpack-plugin --save-dev</code><br>添加此配置，其中template是指定处理的模版文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">plugins: [</div><div class="line">  new HtmlWebpackPlugin(&#123;</div><div class="line">    template: &apos;src/index.html&apos; //指定处理模版</div><div class="line">  &#125;)</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>另外有一点需要注意的是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">  path: path.resolve(__dirname, &apos;../dist&apos;), //打包文件的输出地址</div><div class="line">  filename: &apos;[name].[hash].js&apos;,</div><div class="line">  publicPath: &quot;/&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>html-webpack-plugin</code>插件是根据输出文件的路径配置进行对index.html进行处理的，将js文件插入到index.html中，需要保证此配置正确。<br>其中“path”仅仅告诉Webpack结果存储在哪里，然而“publicPath”项则被许多Webpack的插件用于在生产模式下更新内嵌到css、html文件里的url值。</p>
 
         </div>
         <footer class="article-footer">
@@ -302,20 +334,20 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/03/09/我们这一代如何学习/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/04/25/control-myself/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            我们这一代如何学习
+            第一次控制自我
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/02/13/javascript安全类型监测/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/04/17/webpack-note-01/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">javascript安全类型监测</p>
+        <p class="article-nav-title">从零开始学习webpack搭建vue工程-01</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
