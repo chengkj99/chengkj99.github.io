@@ -6,14 +6,17 @@
     <title>从零开始学习webpack搭建vue工程-02 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="vue,webpack" />
+        <meta name="keywords" content="webpack,vue" />
     
     <meta name="description" content="webpack+vue项目实践记录02配置webpack.config.js文件
 支持http dev
 支持热替换
 支持es6
 支持sass
-打包的js文件自动插入到index.html模版中安装dev-server12345# 安装$ npm install webpack-dev-server -g# 运行$ webpack-dev-server --progress --colors">
+打包的js文件自动插入到index.html模版中安装dev-server
+
+12345# 安装$ npm install webpack-dev-server -g# 运行$ webpack-dev-server --progress
+注意的是以上的安装方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始学习webpack搭建vue工程-02">
 <meta property="og:url" content="http://yoursite.com/2017/05/06/webpack-note-02/index.html">
@@ -23,9 +26,12 @@
 支持热替换
 支持es6
 支持sass
-打包的js文件自动插入到index.html模版中安装dev-server12345# 安装$ npm install webpack-dev-server -g# 运行$ webpack-dev-server --progress --colors">
+打包的js文件自动插入到index.html模版中安装dev-server
+
+12345# 安装$ npm install webpack-dev-server -g# 运行$ webpack-dev-server --progress
+注意的是以上的安装方">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg">
-<meta property="og:updated_time" content="2017-05-06T11:18:21.000Z">
+<meta property="og:updated_time" content="2017-05-06T11:50:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始学习webpack搭建vue工程-02">
 <meta name="twitter:description" content="webpack+vue项目实践记录02配置webpack.config.js文件
@@ -33,7 +39,10 @@
 支持热替换
 支持es6
 支持sass
-打包的js文件自动插入到index.html模版中安装dev-server12345# 安装$ npm install webpack-dev-server -g# 运行$ webpack-dev-server --progress --colors">
+打包的js文件自动插入到index.html模版中安装dev-server
+
+12345# 安装$ npm install webpack-dev-server -g# 运行$ webpack-dev-server --progress
+注意的是以上的安装方">
 <meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492372473602&di=1580186104b43ad4dec7f6f8030cdefa&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160725%2F20160725120056_6745.jpg">
     
 
@@ -176,7 +185,7 @@ ga('send', 'pageview');
         
             <div class="article-subtitle">
                 <a href="/2017/05/06/webpack-note-02/" class="article-date">
-    <time datetime="2017-05-06T11:17:16.000Z" itemprop="datePublished">2017-05-06</time>
+    <time datetime="2017-05-06T11:19:43.000Z" itemprop="datePublished">2017-05-06</time>
 </a>
                 
     <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -190,19 +199,22 @@ ga('send', 'pageview');
 <li>支持热替换</li>
 <li>支持es6</li>
 <li>支持sass</li>
-<li>打包的js文件自动插入到index.html模版中<h3 id="安装dev-server"><a href="#安装dev-server" class="headerlink" title="安装dev-server"></a>安装dev-server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">$ npm install webpack-dev-server -g</div><div class="line"></div><div class="line"># 运行</div><div class="line">$ webpack-dev-server --progress --colors</div></pre></td></tr></table></figure>
-</li>
+<li>打包的js文件自动插入到index.html模版中<h3 id="安装dev-server"><a href="#安装dev-server" class="headerlink" title="安装dev-server"></a>安装dev-server</h3></li>
 </ul>
-<blockquote>
-<p><code>webpack  --config build/webpack.config.js  --progress</code>这条命令可以启动watch mode模式。</p>
-</blockquote>
-<p>以上的安装方式除了要安装全局，还要本地安装。执行那条命令，没有找到配置文件，但是需要制定配置文件。<br>使用<code>webpack-dev-server --config build/webpack.config.js  --inline --hot</code>完成服务的启动，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">  contentBase: path.join(__dirname, &quot;dist&quot;),</div><div class="line">  compress: true,</div><div class="line">  port: 9000</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>服务启动的文件如上所示，但是问题又来了，当我访问浏览器localhost:9000时，没有找到资源文件，说明还是有配置没有搞好。</p>
-<h3 id="搞好配置文件，实现可以正常访问项目"><a href="#搞好配置文件，实现可以正常访问项目" class="headerlink" title="搞好配置文件，实现可以正常访问项目"></a>搞好配置文件，实现可以正常访问项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line"></div><div class="line">  entry: path.resolve(__dirname, &apos;../src/main.js&apos;),</div><div class="line">  output: &#123;</div><div class="line">    path: path.resolve(__dirname, &apos;../dist&apos;),</div><div class="line">    filename: &apos;bundle.js&apos;,</div><div class="line">    publicPath: &quot;/dist&quot; //打包文件的输出地址</div><div class="line">  &#125;,</div><div class="line">  module: &#123;</div><div class="line">    rules: [</div><div class="line">      &#123;</div><div class="line">        test: /\.vue$/,</div><div class="line">        loader: &apos;vue-loader&apos;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  // devServer: &#123;</div><div class="line">  //   contentBase: &quot;../build&quot;,  //以build为根目录提供文件</div><div class="line">  //   colors: true,</div><div class="line">  //   historyApiFallback: true,</div><div class="line">  //   inline: true,</div><div class="line">  //   hot: true</div><div class="line">  // &#125;,</div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: path.join(__dirname, &quot;../src&quot;), //默认访问的静态文件的地址，建议最好是绝对路径</div><div class="line">    compress: true, // 启动 gzip 压缩 Enable gzip compression</div><div class="line">    port: 9000</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">$ npm install webpack-dev-server -g</div><div class="line"></div><div class="line"># 运行</div><div class="line">$ webpack-dev-server --progress</div></pre></td></tr></table></figure>
+<p>注意的是以上的安装方式除了要安装全局，还要本地安装。</p>
+<p>执行<code>webpack-dev-server --progress</code>命令，报错显示没有找到配置文件，原来是需要<code>--config</code>来指定配置文件。</p>
+<p>使用<code>webpack-dev-server --config build/webpack.config.js  --inline --hot</code>完成服务的启动。</p>
+<p>也可以使用 <code>webpack  --config build/webpack.config.js  --progress --watch</code> //这条命令可以启动watch观察者模式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">  contentBase: path.join(__dirname, &quot;dist&quot;),</div><div class="line">  compress: true,</div><div class="line">  port: 9000</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>服务启动的文件如上所示，但是问题又来了，当我访问浏览器localhost:9000时，没有找到资源文件，说明还是有配置没有搞好，主要是路径配置的问题，搞这需要搞明白contentBase、path、publicPath…这些参数的含义。</p>
+<h3 id="搞好配置文件，实现可以正常访问项目"><a href="#搞好配置文件，实现可以正常访问项目" class="headerlink" title="搞好配置文件，实现可以正常访问项目"></a>搞好配置文件，实现可以正常访问项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line">const webpack = require(&apos;webpack&apos;)</div><div class="line">let HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;)</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line"></div><div class="line">  entry: &#123;</div><div class="line">    app: path.resolve(__dirname, &apos;../src/main.js&apos;),</div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    path: path.resolve(__dirname, &apos;../dist&apos;), //打包文件的输出地址</div><div class="line">    filename: &apos;[name].[hash].js&apos;,</div><div class="line">    publicPath: &quot;/&quot;</div><div class="line">  &#125;,</div><div class="line">  resolve: &#123;</div><div class="line">    alias: &#123;</div><div class="line">      &apos;vue$&apos;: &apos;vue/dist/vue.common.js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  module: &#123;</div><div class="line">    rules: [</div><div class="line">      &#123;</div><div class="line">        test: /\.vue$/,</div><div class="line">        loader: &apos;vue-loader&apos;,</div><div class="line">        options: &#123;</div><div class="line">          loaders: &#123;</div><div class="line">            &apos;scss&apos;: &apos;vue-style-loader!css-loader!sass-loader&apos;,</div><div class="line">            &apos;sass&apos;: &apos;vue-style-loader!css-loader!sass-loader?indentedSyntax&apos;</div><div class="line">          &#125;</div><div class="line">          // other vue-loader options go here</div><div class="line">        &#125;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        loader: &apos;babel-loader&apos;,</div><div class="line">        exclude: /node_modules/</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.(png|jpg|gif|svg)$/,</div><div class="line">        loader: &apos;file-loader&apos;, // file-loader 都是用于打包文件和图片</div><div class="line">        options: &#123;</div><div class="line">          name: &apos;[name].[ext]?[hash]&apos;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new webpack.HotModuleReplacementPlugin(), //支持热替换</div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">      template: &apos;src/index.html&apos; //指定处理模版</div><div class="line">    &#125;)</div><div class="line">  ],</div><div class="line">  // devServer: &#123;</div><div class="line">  //   colors: true,</div><div class="line">  // &#125;,</div><div class="line">  devServer: &#123;</div><div class="line">    historyApiFallback: true, //不跳转</div><div class="line">    contentBase: path.join(__dirname, &quot;../src&quot;), //默认访问的本地静态文件的地址目录，建议最好是绝对路径</div><div class="line">    compress: true, // 启动gzip 压缩 Enable gzip compression</div><div class="line">    inline: true, //时时刷新</div><div class="line">    hot: true, //支持热更新</div><div class="line">    port: 9999</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如上配置文件，执行<code>webpack-dev-server --config build/webpack.config.js  --inline --hot</code>完成dev-server启动操作。</p>
 <h3 id="支持热替换"><a href="#支持热替换" class="headerlink" title="支持热替换"></a>支持热替换</h3><p>其实 –hot 已经支持了热替换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">  &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</div><div class="line">  &quot;start&quot;: &quot;webpack-dev-server --config build/webpack.config.js  --inline --hot&quot;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<p>在package.json 加上以上这段，就支持了使用<code>npm run start</code>启动项目了。</p>
+<p>但是另我不明白的是如果在CLI中不使用<code>--line --hot</code>，但是在devServer的配置中添加了指令，<code>webpack-dev-server --config build/webpack.config.js</code>执行时，热替换没有生效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">  historyApiFallback: true, //不跳转</div><div class="line">  contentBase: path.join(__dirname, &quot;../src&quot;), //默认访问的本地静态文件的地址目录，建议最好是绝对路径</div><div class="line">  compress: true, // 启动gzip 压缩 Enable gzip compression</div><div class="line">  inline: true, //时时刷新</div><div class="line">  hot: true, //支持热更新</div><div class="line">  port: 9999</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>直到我添加下面的这个插件，解决了这个问题。<strong>至于原因至今未知。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">plugins: [</div><div class="line">  new webpack.HotModuleReplacementPlugin(),//支持热替换</div><div class="line">],</div></pre></td></tr></table></figure></p>
+<p>在package.json 加上以下这段，就支持了使用<code>npm run start</code>启动项目了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">  &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</div><div class="line">  &quot;start&quot;: &quot;webpack-dev-server --config build/webpack.config.js  --inline --hot&quot;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 <h3 id="支持es6-支持sass"><a href="#支持es6-支持sass" class="headerlink" title="支持es6 支持sass"></a>支持es6 支持sass</h3><p>到这时，我在想，需要安装些loader，css-loader、sass-loader、style-loader、babel-loader、file-loader(用于打包文件和图片),<br>在这里连续安装了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install sass-loader scss-loader --save-dev</div></pre></td></tr></table></figure>
 <p>在启动时，提示我需要安装<code>node-sass</code>,node-sass查了一下，简单说，就是将sass编译成css的一个工具，没有深究。</p>
@@ -369,7 +381,7 @@ ga('send', 'pageview');
                         <div class="item-inner">
                             <p class="item-category"></p>
                             <p class="item-title"><a href="/2017/05/06/webpack-note-02/" class="title">从零开始学习webpack搭建vue工程-02</a></p>
-                            <p class="item-date"><time datetime="2017-05-06T11:17:16.000Z" itemprop="datePublished">2017-05-06</time></p>
+                            <p class="item-date"><time datetime="2017-05-06T11:19:43.000Z" itemprop="datePublished">2017-05-06</time></p>
                         </div>
                     </li>
                 
