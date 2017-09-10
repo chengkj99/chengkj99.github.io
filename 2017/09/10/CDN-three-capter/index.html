@@ -3,29 +3,44 @@
 <head>
     <meta charset="utf-8">
     
-    <title>尤雨溪知乎Live总结 上篇 | 程是非sky</title>
+    <title>CDN技术详解-内容缓存工作原理及实现 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="javascript,vue" />
+        <meta name="keywords" content="CDN" />
     
-    <meta name="description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。
-针对不同的场景、框架背后需要解决的问题、结合经验选择框架。
-组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
+    <meta name="description" content="缓存（Cache）是CDN的基础技术和组成单元，从外部看，整个CDN像一个大的Cache向外部提供服务。
+
+1 内容缓存技术的发展背景
+随着网络内容和用户数量的增长，网站服务面临瓶颈。 为此，提高服务器硬件配置、后来出现多台服务器组成服务器集群负载分担，但这些都没有解决网络延迟、“最后一公里”等问题，所以，内容缓存技术出现了。
+
+网站的问题和需求：
+网站无法及时满足用户增长的需要；
+不容易满足远">
 <meta property="og:type" content="article">
-<meta property="og:title" content="尤雨溪知乎Live总结 上篇">
-<meta property="og:url" content="http://yoursite.com/2017/06/05/evan-you-live/index.html">
+<meta property="og:title" content="CDN技术详解-内容缓存工作原理及实现">
+<meta property="og:url" content="http://yoursite.com/2017/09/10/CDN-three-capter/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。
-针对不同的场景、框架背后需要解决的问题、结合经验选择框架。
-组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
-<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/vuepic.jpg">
-<meta property="og:updated_time" content="2017-06-05T12:10:46.000Z">
+<meta property="og:description" content="缓存（Cache）是CDN的基础技术和组成单元，从外部看，整个CDN像一个大的Cache向外部提供服务。
+
+1 内容缓存技术的发展背景
+随着网络内容和用户数量的增长，网站服务面临瓶颈。 为此，提高服务器硬件配置、后来出现多台服务器组成服务器集群负载分担，但这些都没有解决网络延迟、“最后一公里”等问题，所以，内容缓存技术出现了。
+
+网站的问题和需求：
+网站无法及时满足用户增长的需要；
+不容易满足远">
+<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
+<meta property="og:updated_time" content="2017-09-10T11:06:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="尤雨溪知乎Live总结 上篇">
-<meta name="twitter:description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。
-针对不同的场景、框架背后需要解决的问题、结合经验选择框架。
-组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
-<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/vuepic.jpg">
+<meta name="twitter:title" content="CDN技术详解-内容缓存工作原理及实现">
+<meta name="twitter:description" content="缓存（Cache）是CDN的基础技术和组成单元，从外部看，整个CDN像一个大的Cache向外部提供服务。
+
+1 内容缓存技术的发展背景
+随着网络内容和用户数量的增长，网站服务面临瓶颈。 为此，提高服务器硬件配置、后来出现多台服务器组成服务器集群负载分担，但这些都没有解决网络延迟、“最后一公里”等问题，所以，内容缓存技术出现了。
+
+网站的问题和需求：
+网站无法及时满足用户增长的需要；
+不容易满足远">
+<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
     
 
     
@@ -151,14 +166,14 @@ ga('send', 'pageview');
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-evan-you-live" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-CDN-three-capter" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        尤雨溪知乎Live总结 上篇
+        CDN技术详解-内容缓存工作原理及实现
         </h1>
     
 
@@ -166,42 +181,130 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/2017/06/05/evan-you-live/" class="article-date">
-    <time datetime="2017-06-05T11:55:59.000Z" itemprop="datePublished">2017-06-05</time>
+                <a href="/2017/09/10/CDN-three-capter/" class="article-date">
+    <time datetime="2017-09-10T10:50:27.000Z" itemprop="datePublished">2017-09-10</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDN/">CDN</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。</p>
-<p>针对不同的场景、框架背后需要解决的问题、结合经验选择框架。</p>
-<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>现在所有的框架都已经支持组件化的开发方式。<br>最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。<br>后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件树的，这是偏展示的一个理解，react的出现揭示了一个事实，就是组件可以是函数。</p>
-<p>想象一下，整个应用是一个大的函数，函数里面可以调用别的函数，每个组件是一个函数，一个组件可以调用别的函数，返回viture dom,这突破了我们原来对静态页面的理解方式。但是这种简单的函数式的组件在实际应用过程中是不够的，所以react默认的组件形式里有了state，然后外面用class来包装等等。</p>
-<h4 id="组件可以分为四类："><a href="#组件可以分为四类：" class="headerlink" title="组件可以分为四类："></a>组件可以分为四类：</h4><ul>
-<li>纯展示组件  </li>
-<li>接入性组件container（会和数据层的serverce打交道）  </li>
-<li>交互型组件（比如各类加强版的表单组件，通常强调复用<br>）  </li>
-<li>功能型组件（组件本身不渲染任何内容，作为功能扩展而存在比如 <code>&lt;router-view&gt;</code>，<code>&lt;transition&gt;</code>，作为一种扩展、抽象机制存在。）</li>
+            <blockquote>
+<p>缓存（Cache）是CDN的基础技术和组成单元，从外部看，整个CDN像一个大的Cache向外部提供服务。</p>
+</blockquote>
+<h2 id="1-内容缓存技术的发展背景"><a href="#1-内容缓存技术的发展背景" class="headerlink" title="1 内容缓存技术的发展背景"></a>1 内容缓存技术的发展背景</h2><blockquote>
+<p>随着网络内容和用户数量的增长，网站服务面临瓶颈。 为此，提高服务器硬件配置、后来出现多台服务器组成服务器集群负载分担，但这些都没有解决网络延迟、“最后一公里”等问题，所以，内容缓存技术出现了。</p>
+</blockquote>
+<h4 id="网站的问题和需求："><a href="#网站的问题和需求：" class="headerlink" title="网站的问题和需求："></a>网站的问题和需求：</h4><ul>
+<li>网站无法及时满足用户增长的需要；</li>
+<li>不容易满足远处客户的需要；</li>
+<li>设置镜像后，中心服务器和镜像之间同步不及时；</li>
+<li>一个镜像失败，无法及时高效的切换调度最近的镜像服务；</li>
+<li>通过部署更多镜像解决问题增加成本；</li>
+<li>中心服务器IP暴露易遭受DDos攻击；</li>
 </ul>
-<h4 id="template和jsx的对比："><a href="#template和jsx的对比：" class="headerlink" title="template和jsx的对比："></a>template和jsx的对比：</h4><p>jsx在写功能性组件的时候，是非常方便的，因为其继承了javascript语言的灵活性，是远超模版的。template在写纯展示型组件的时候是非常方便的。</p>
-<p><strong>colocation含义</strong>: 把应该放一起的东西放一起，比如vue的单文件把 style 、script 、 template 放一起。（以前是以语言为单位进行切分）</p>
-<h2 id="变化侦测和渲染机制"><a href="#变化侦测和渲染机制" class="headerlink" title="变化侦测和渲染机制"></a>变化侦测和渲染机制</h2><h3 id="Declarative-Programming-声明式编程"><a href="#Declarative-Programming-声明式编程" class="headerlink" title="Declarative Programming 声明式编程"></a>Declarative Programming 声明式编程</h3><p>告诉“机器”你想要的是什么(what)，让机器想出如何去做(how)。<br>（react、vue等框架的方式，直接描述dom和数据的关系就可以了，这就是数据驱动。）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;!--声明式风格--&gt;</div><div class="line">&lt;!--只需声明你要啥--&gt;</div><div class="line">var numbers = [1,2,3,4,5]</div><div class="line">var doubled = numbers.map (function (n) &#123;</div><div class="line">  return n * 2</div><div class="line">&#125;)</div><div class="line">console.log (doubled) //=&gt; [2,4,6,8,10]</div></pre></td></tr></table></figure></p>
-<h3 id="Imperative-Programming-命令式编程"><a href="#Imperative-Programming-命令式编程" class="headerlink" title="Imperative Programming 命令式编程"></a>Imperative Programming 命令式编程</h3><p>命令“机器”如何去做事情(how)，这样不管你想要的是什么(what)，它都会按照你的命令实现。 （jquery直接干的方式）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!--命令式风格--&gt;</div><div class="line">&lt;!--需要干事情--&gt;</div><div class="line">var numbers = [1,2,3,4,5]</div><div class="line">var doubled = []</div><div class="line">for(var i = 0; i &lt; numbers.length; i++) &#123;</div><div class="line">  var newNumber = numbers[i] * 2</div><div class="line">  doubled.push (newNumber)</div><div class="line">&#125;</div><div class="line">console.log (doubled) //=&gt; [2,4,6,8,10]</div></pre></td></tr></table></figure>
-<h3 id="view-render-state"><a href="#view-render-state" class="headerlink" title="view = render(state)"></a>view = render(state)</h3><p>render就是react里jsx中的render函数，其实vue的template最终也是编译成一个个render函数的。模版本身和jsx和本质上相似的，他们的输入都是state，输出都是dom。</p>
-<h3 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h3><p>底层实现可以是Virtual DOM，也可以是细粒度的绑定等等。</p>
-<h4 id="一直有一个疑问，以前-被人诟病，为啥-vue-的声明式写法就是推崇的？"><a href="#一直有一个疑问，以前-被人诟病，为啥-vue-的声明式写法就是推崇的？" class="headerlink" title="一直有一个疑问，以前 被人诟病，为啥 vue  的声明式写法就是推崇的？"></a>一直有一个疑问，以前<div onclick="clickHandler"></div> 被人诟病，为啥 vue  的声明式写法就是推崇的？</h4><p>onclick绑定的作用域是全局的，造成了环境污染，裸写的函数完全不知道是被哪个dom引用。<br>vue中的绑定是局部作用域，而且javascript的逻辑是放在组件里的，符合colocation的理念，这样就很好维护了。</p>
-<h3 id="变化侦测"><a href="#变化侦测" class="headerlink" title="　变化侦测"></a>　变化侦测</h3><p><a href="https://docs.google.com/presentation/d/1_BlJxudppfKmAtfbNIcqNwzrC5vLrR_h1e09apcpdNY/edit?usp=sharing" target="_blank" rel="external">Reactivity in Frontend JavaScript Frameworks
-</a></p>
-<p>变化侦测有两种方式：pull 和  push</p>
-<p>react的setState和angular的脏检查属于pull的方式。</p>
-<p>pull的方式，系统不知道数据什么时候变化，那么它需要一个信号告诉他说知道数据有可能变了，这个时候系统来进行一个暴力的比对，react通过Virtual DOM中的diff方式，angular是脏检查。能过这么做是因为javascript已经足够快，有浪费但是可以接受。</p>
-<p>push的方式，Vue （响应式）和 Rx.js（abzrable） 的方式，更加细粒度的更新，但是同样也会带来内存和性能的开销。</p>
-<p>vue2选择了相对折中的方案，在组件层面，vue2使用的是pull的方式，每一个组件都是响应式的watcher，这样vue能够知道哪些组件内部的状态发生了变化，然后在组件内部使用push的方式通过virtual Dom进行比对更新。</p>
-<p>pull和push的对比，不能说哪个方案一定好，本质区别是用侦测成本换取自动优化的成本。</p>
+<p>这些问题也是CDN致力于解决的问题；</p>
+<h4 id="CDN出现前的网站服务技术："><a href="#CDN出现前的网站服务技术：" class="headerlink" title="CDN出现前的网站服务技术："></a>CDN出现前的网站服务技术：</h4><ol>
+<li><p>扩展技术 Scale up／out</p>
+<ul>
+<li>提高服务器硬件配置</li>
+<li>采用服务器集群技术</li>
+</ul>
+</li>
+<li><p>镜像技术 Mirroring<br>镜像：数字媒体的服务能力和完整内容备份到网络上不同地址的另一个地方。<br>实现：对整个网站进行镜像复制，多点部署（不同地区不同运营商）。</p>
+</li>
+<li><p>缓存技术</p>
+<p>缓存：访问过的内容储存起来，为后续重复访问使用。<br>缓存代理服务一定范围的访问域（分层缓存）。<br>CDN将内容缓存到离用户最近的地方实现就近服务；可以说，CDN就是在缓存技术的基础上发展起来的，<br>也可以说，CDN是缓存的分布式集群实现。（负载均衡系统、运营管理系统是为了各个缓存节点更好的协同工作）   </p>
+<p>CDN也可以理解为是（智能调度）+（分层缓存技术）的组合。</p>
+</li>
+</ol>
+<h2 id="2-Cache设备工作方式和设计要求"><a href="#2-Cache设备工作方式和设计要求" class="headerlink" title="2 Cache设备工作方式和设计要求"></a>2 Cache设备工作方式和设计要求</h2><h4 id="Cache设备："><a href="#Cache设备：" class="headerlink" title="Cache设备："></a>Cache设备：</h4><!-- 我们是怎么进行区分开发的：我们目前没有区分进行开发 -->
+<p>  根据内容不同，将Cache设备分为 Web Cache（只要用于网页内容和对象） 和 流媒体 Cache（主要用于视频流媒体加速服务）。   大多数设备厂商不会对两者进行区分。但是，CDN服务提供商会对两类服务分别进行开发和优化（内容类型、用户行为、内容更新的差异）。  </p>
+<p>  Web Cache：</p>
+<p>  WebCache作为一种网页缓存技术，可以在任何一个中间网元上实现。<br>  通常，一次网页访问，会涉及四个关键网元：用户、代理、网关、Web服务器。<br>  WebCache通常作为代理或网关部署在用户访问路径上。<br>  部署位置不同，工作模式不同，对WebCache有不同的要求。   </p>
+<p>  部署在代理位置时：透明代理、正向代理模式进行服务。<br>  部署在网关位置时：反向代理。（多数部署在网关）</p>
+<h4 id="代理模式："><a href="#代理模式：" class="headerlink" title="代理模式："></a>代理模式：</h4><!-- 我们主要使用的是反向代理 -->
+<ol>
+<li>正向代理<br>配置正向代理的服务器地址和端口号即可。也常用于中小企业网络环境的搭建。</li>
+<li>反向代理<!--  反向代理服务器怎么接收客户端的请求的-->
+反向代理服务器会接收用户的请求向原始服务器进行请求并响应。</li>
+<li>透明代理<!-- 截获请求，怎么截获的？ 网关默认截获 -->
+可以看作是通过网络设备和协议实现的正向代理工作模式。</li>
+</ol>
+<h4 id="WebCache-产品实现关键要素分析"><a href="#WebCache-产品实现关键要素分析" class="headerlink" title="WebCache 产品实现关键要素分析"></a>WebCache 产品实现关键要素分析</h4><p>WebCache应具备HTTP协议所描述的基本功能；（转发访问请求）   </p>
+<p>要根据应用场景和工作模式来确定WebCache具备的功能：<br>面向企业时：主要考虑正向代理、透明代理、用户数量、并发链接数、流量大小、存储空间、缓存大小，以及数据分析、过滤和安全保障能力等情况<br>面向Web站点时：主要考虑新增链接的处理能力、并发链接处理能力、存储空间和缓存大小等性能指标</p>
+<h2 id="3-Web-Cache的实现基础-基于HTTP协议的Web缓存技术"><a href="#3-Web-Cache的实现基础-基于HTTP协议的Web缓存技术" class="headerlink" title="3 Web Cache的实现基础 - 基于HTTP协议的Web缓存技术"></a>3 Web Cache的实现基础 - 基于HTTP协议的Web缓存技术</h2><h3 id="Web与HTTP"><a href="#Web与HTTP" class="headerlink" title="Web与HTTP"></a>Web与HTTP</h3><h5 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h5><p>互联网被大众接受，是万维网（World Wide Web）的诞生开始的。</p>
+<p>Web特性： 跨平台性、交互性<br>Web三个精华之处：</p>
+<ol>
+<li>用超文本技术 HTML 实现信息和信息的链接</li>
+<li>用统一资源定位符 URL 实现全球信息的精确定位</li>
+<li>用应用层协议 HTTP 实现分布式的信息共享</li>
+</ol>
+<h5 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h5><p>HTTP请求前需建立好TCP链接；<br>HTTP是无状态协议，每次请求和响应都是独立的。<br>HTTP链接：</p>
+<ol>
+<li>非持久链接</li>
+<li>持续链接机制<ul>
+<li>不带流水线的链接：只有在上一个请求响应后才能发出下一个请求；</li>
+<li>带流水线：发现引用就可发起链接；</li>
+</ul>
+</li>
+</ol>
+<p>在HTTP1.1中，默认的是持续的带流水线的HTTP链接。对应的是HTTP 头中的 Connection: Keep-Alive（持久链接） or false（非持久链接）</p>
+<p>HTTP工作方式：请求 + 响应<br><!-- 实体，隧道？ --><br>关键概念：连接、消息、请求、响应、资源、实体、客户端、服务器、源服务器、代理、网关、隧道、缓存<br>HTTP请求格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">请求方法 URL 版本号  </div><div class="line">通用头1： 通用头值1  </div><div class="line">...  </div><div class="line">通用头N： 通用头N  </div><div class="line">...</div><div class="line">请求头1: 请求头N  </div><div class="line">...  </div><div class="line">请求头： 请求头N</div><div class="line">实体头1: 实体头N  </div><div class="line">...  </div><div class="line">实体头： 实体头N</div><div class="line"></div><div class="line">实体内容</div></pre></td></tr></table></figure></p>
+<p>请求方式：GET、HEAD、POST、PUT、DELETE、TRACE、CONNECT<br>通用请求头：Connection、Date、Pragma、Transfer-Encoding、Upgrade、Via、Warning</p>
+<p>常用请求头：Accept Accept-Charset …</p>
+<p>此外还有响应格式、响应方式、响应头。</p>
+<p>除了以上基本原理之外，还有Cookie、Session、安全协议、缓存机制关键应用。</p>
+<h5 id="HTTP中的Cookie和Session"><a href="#HTTP中的Cookie和Session" class="headerlink" title="HTTP中的Cookie和Session"></a>HTTP中的Cookie和Session</h5><p>在请求发出去前，浏览器会先查看本地是否保存此网站的cookie文件，如果有会将cookie信息放在cookie头中一并发出去，如果没有，则不会发送。</p>
+<p>Cookie信息的Exporation有效期设置，如果没有设置，浏览器认为不保存Cookie信息；<br>每个客户端最多保存300个Cookie；每个域下20个；<br>Cookie欺骗；</p>
+<p>服务器将SessionID返回给浏览器两种方法：一种是cookie方法；URL重写；</p>
+<p>两者在应用场景、安全性、性能、失效性、等其他方面存在区别；</p>
+<h5 id="HTTPS安全协议"><a href="#HTTPS安全协议" class="headerlink" title="HTTPS安全协议"></a>HTTPS安全协议</h5><p>HTTP + SSL 更能保证整个通信的保密性；</p>
+<h5 id="HTTP协议中的缓存技术"><a href="#HTTP协议中的缓存技术" class="headerlink" title="HTTP协议中的缓存技术"></a>HTTP协议中的缓存技术</h5><p>使用缓存三大好处：减少延迟；减少网络损耗；降低服务器负载；</p>
+<p>HTTP协议定义了各种各样的缓存控制方法，合理使用，帮助提高网站服务能力；</p>
+<p>缓存工作的基本原则；<br>头信息设置不缓存 、源服务器认证或涉及安全协议，使请求内容不被缓存；<br>含有过期时间和寿命信息、且此内容没有过期、缓存内容近期提供过服务且最后更新时间相对于最近使用的时间较持久，使的不需要从源服务器重新获取内容；<br>若缓存内容已过期，缓存内容服务器向源服务器发出认证是否可以继续使用当前内容；<br>若网络中断，缓存内容在过期的情况下继续提供服务；<br>如果响应消息中不存在用于判断内容是否变化的值（ETag、Last-Modified），且没有任何新鲜度的消息，内容不会被缓存。</p>
+<p>控制缓存的方法：</p>
+<ol>
+<li>HTML META标签和HTTP头信息</li>
+<li>Expires（过期时间）头信息来控制保鲜期</li>
+<li>验证（验证缓存内容是否可用）</li>
+<li>Cache-Control（缓存控制）HTTP 头信息</li>
+<li>Pragma HTTP 头信息</li>
+</ol>
+<h2 id="4-Web-Cache-技术实现关键点分析"><a href="#4-Web-Cache-技术实现关键点分析" class="headerlink" title="4 Web Cache 技术实现关键点分析"></a>4 Web Cache 技术实现关键点分析</h2><p>WebCache多采用反向代理的工作方式，用于衡量设备的关键性能指标：</p>
+<h5 id="关键性能指标"><a href="#关键性能指标" class="headerlink" title="关键性能指标"></a>关键性能指标</h5><p>并发量、吞吐量、命中率、请求时间和丢包率</p>
+<h5 id="内容存储机制"><a href="#内容存储机制" class="headerlink" title="内容存储机制"></a>内容存储机制</h5><p>三种方案：共享存储、本地附加存储（DAS）、分布式存储<br><!-- 现在不考虑存储机制的技术方案，硬件设备存储能力很强。 --></p>
+<h5 id="内容更新机制"><a href="#内容更新机制" class="headerlink" title="内容更新机制"></a>内容更新机制</h5><p>涉及两方面的内容：哪些内容需要缓存？缓存内容如何更新？<br>缓存原则：</p>
+<ol>
+<li>头信息告诉Cache不用缓存</li>
+<li>内容的请求信息需要认证或安全加密的，不缓存</li>
+<li>在HTTP响应中没有Etag或Last-Modified头信息，Cache会认为缺少直接的更新度信息，默认不缓存；</li>
+<li>Cache认为缓存内容是足够新的，不会去源站请求；（1.完整的过期时间和寿命控制头信息；2.缓存内容被使用过，并检查过新鲜度。）</li>
+<li>如果缓存内容很旧了，会向源站进行验证是否继续可用，如果可用将避免重新获取。<br>（根据经验，一般html文件、图片等静态资源会被缓存；而动态资源一般不会被缓存。）</li>
+</ol>
+<h5 id="Web-Cache-协议优化"><a href="#Web-Cache-协议优化" class="headerlink" title="Web Cache 协议优化"></a>Web Cache 协议优化</h5><p>对Web Cache的性能优化除了可以从存储机制、内容更新机制入手，也可以从协议优化入手；  </p>
+<p>优化方法：</p>
+<ol>
+<li>HTTP链接聚合(把多个短链接聚合成一个长链接，减少频繁开启关闭TCP链接带来的资源消耗)</li>
+<li>HTTP gzip压缩（网页中音乐、视频等文件被压缩过，再压缩处理效果不大；对HTML、CSS、JS等文件进行压缩可以取得较好的效果）<!-- 链接聚合：比如十个人同时请求一个链接，WebCache回源一次。 -->
+</li>
+</ol>
+<h5 id="Web-Cache安全实现机制"><a href="#Web-Cache安全实现机制" class="headerlink" title="Web Cache安全实现机制"></a>Web Cache安全实现机制</h5><ol>
+<li>访问控制</li>
+<li>病毒防护</li>
+<li>网络安全防护</li>
+<li>内容加密</li>
+</ol>
+<h2 id="开源的Web缓存代理软件-squid"><a href="#开源的Web缓存代理软件-squid" class="headerlink" title="开源的Web缓存代理软件-squid"></a>开源的Web缓存代理软件-squid</h2><p>功能：</p>
+<ol>
+<li>web代理</li>
+<li>内容缓存和加速</li>
+<li>ACL访问控制</li>
+<li>用户认证</li>
+<li>日志</li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -319,20 +422,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/06/05/evan-you-live-pro/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            尤雨溪知乎Live总结 下篇
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/05/15/what-is-a-rest-apis/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/09/05/CDN-two-capter/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">【翻译】什么是Rest API？</p>
+        <p class="article-nav-title">CDN技术详解-CDN技术概述</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
