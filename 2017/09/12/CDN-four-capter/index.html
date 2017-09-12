@@ -3,32 +3,32 @@
 <head>
     <meta charset="utf-8">
     
-    <title>记一次敏捷开发Scrum培训及实践的感受 | 程是非sky</title>
+    <title>CDN技术详解-集群服务和负载均衡技术 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="思考,成长,敏捷开发" />
+        <meta name="keywords" content="CDN" />
     
-    <meta name="description" content="在2016年10月26日，部门请到了亚信的内训师，亚信国际的王林皓讲师来给我们BDX的大数据云平台部和数据产品线专门培训敏捷开发Scrum。王老师很早以前就是Scrum Master，带过很多敏捷的团队，在Scrum方面有丰富的经验。
-
-作为自己在这个培训之前，通过工作中的体会和一些资料的阅读，我对敏捷开发也有一点点的认识。知道敏捷开发的敏捷性，小步代跑的过程能够根据不断变化的需求快速响应。
-在">
+    <meta name="description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。
+服务器集群技术服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。CDN的节点系统是一种典型的负载均衡系统。  
+集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。
+Cac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记一次敏捷开发Scrum培训及实践的感受">
-<meta property="og:url" content="http://yoursite.com/2017/03/11/敏捷开发Scrum培训及实践总结/index.html">
+<meta property="og:title" content="CDN技术详解-集群服务和负载均衡技术">
+<meta property="og:url" content="http://yoursite.com/2017/09/12/CDN-four-capter/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="在2016年10月26日，部门请到了亚信的内训师，亚信国际的王林皓讲师来给我们BDX的大数据云平台部和数据产品线专门培训敏捷开发Scrum。王老师很早以前就是Scrum Master，带过很多敏捷的团队，在Scrum方面有丰富的经验。
-
-作为自己在这个培训之前，通过工作中的体会和一些资料的阅读，我对敏捷开发也有一点点的认识。知道敏捷开发的敏捷性，小步代跑的过程能够根据不断变化的需求快速响应。
-在">
-<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/scrum.jpg">
-<meta property="og:updated_time" content="2017-03-11T14:42:25.000Z">
+<meta property="og:description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。
+服务器集群技术服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。CDN的节点系统是一种典型的负载均衡系统。  
+集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。
+Cac">
+<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
+<meta property="og:updated_time" content="2017-09-12T12:12:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记一次敏捷开发Scrum培训及实践的感受">
-<meta name="twitter:description" content="在2016年10月26日，部门请到了亚信的内训师，亚信国际的王林皓讲师来给我们BDX的大数据云平台部和数据产品线专门培训敏捷开发Scrum。王老师很早以前就是Scrum Master，带过很多敏捷的团队，在Scrum方面有丰富的经验。
-
-作为自己在这个培训之前，通过工作中的体会和一些资料的阅读，我对敏捷开发也有一点点的认识。知道敏捷开发的敏捷性，小步代跑的过程能够根据不断变化的需求快速响应。
-在">
-<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/scrum.jpg">
+<meta name="twitter:title" content="CDN技术详解-集群服务和负载均衡技术">
+<meta name="twitter:description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。
+服务器集群技术服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。CDN的节点系统是一种典型的负载均衡系统。  
+集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。
+Cac">
+<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
     
 
     
@@ -154,14 +154,14 @@ ga('send', 'pageview');
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-敏捷开发Scrum培训及实践总结" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-CDN-four-capter" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        记一次敏捷开发Scrum培训及实践的感受
+        CDN技术详解-集群服务和负载均衡技术
         </h1>
     
 
@@ -169,28 +169,57 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/2017/03/11/敏捷开发Scrum培训及实践总结/" class="article-date">
-    <time datetime="2017-03-11T14:24:13.000Z" itemprop="datePublished">2017-03-11</time>
+                <a href="/2017/09/12/CDN-four-capter/" class="article-date">
+    <time datetime="2017-09-12T12:11:20.000Z" itemprop="datePublished">2017-09-12</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/思考/">思考</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/敏捷开发/">敏捷开发</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDN/">CDN</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>在2016年10月26日，部门请到了亚信的内训师，亚信国际的王林皓讲师来给我们BDX的大数据云平台部和数据产品线专门培训敏捷开发Scrum。王老师很早以前就是Scrum Master，带过很多敏捷的团队，在Scrum方面有丰富的经验。</p>
-</blockquote>
-<p>作为自己在这个培训之前，通过工作中的体会和一些资料的阅读，我对敏捷开发也有一点点的认识。知道敏捷开发的敏捷性，小步代跑的过程能够根据不断变化的需求快速响应。</p>
-<p>在当天培训中，讲师通过八个章节的内容介绍，中间穿插着一系列的活动作示例，并结合理论的讲解，让我听得受益匪浅，对敏捷开发有了新的认知。</p>
-<p>首先，讲师介绍敏捷的五大要素（<strong>勇气、开放、承诺、专注、尊重</strong>）过程中，自己其实是挺感慨的，自己参与了一年左右的敏捷开发流程，却不知道自己需要以一种怎样的态度来参与敏捷。以上的五大要素中，在自己目前的实践中，自己在勇气和开放方面做的最不好，对于今后，会通过各个击破的方式一项一项整体提高这五大要素的要求。</p>
-<p>现在是处于互联网的时代，在这个时代下要求产品的研发要快、准、狠才能跟的上跟得上市场的步伐。敏捷原则和思维刚刚好解释了在这个时代下选择敏捷开发是因为开发需要敏捷这个特性。敏捷不是一个方法论、过程或者框架，敏捷是一种思维。这个思维特性要求自己以一种开放的心态不断的学习和改变来适应周围的变化。</p>
-<p>讲师通过一系列的活动实践告诉我们实践敏捷的价值就是优先做最有价值的事，虽然这并不容易做到，这要求参与敏捷的每个人都要拥有共同的价值观，大家齐心协力在一个方向上努力。除非需求的市场前景特别明晰，不然需求价值的大小有时候并不容易统一，这在实践过程中是有挑战的。通过敏捷实践价值这节的学习，要求自己在今后了解自己工作内容的价值，这样应该会让自己更好的开展工作。</p>
-<p>通过对scrum的特征、框架、团队方面内容的学习，让我对敏捷开发的认识比较全面。在透明性、跨职能、自组织三个特征中， 目前团队的敏捷实践对这些特征没有明显的体现，可见，我们需要改进的地方还有很多。个人角度来看，需要先从自己的心态上、行为上逐渐的去改变。</p>
-<p>讲师在讲解的过程中，也通过提出一个问题引发我们的思考最后解决问题来引起我们的共鸣。有个问题令我印象深刻，“每周计划制定之后，计划外的任务打乱原计划时，计划如何调整？”,因为这个问题目前正在发生，我们的方式是尽量赶计划，实在完成不了计划就会延迟。老师给出”进多少，出多少“的方案是比较客观合理的。</p>
-<p>在敏捷开发过程中，有一块内容是我感觉非常困难的，就是敏捷估算。虽然讲师告诉我们不要绝对估算，要使用相对估算的方法，即使这样估算起来还是摸不着头脑。比如在从用户故事进行任务量估算，完全是凭感觉来的，估算的值很不准确，这方面可能随着业务经验的增长会逐渐变好吧。</p>
-<p>本次培训是能够引发自己思考的一次培训，因为这和每天的工作息息相关，讲的内容也容易接受。但是理论和实践总是存在着一定的距离。王阳明有句话说：”知之真切笃实处即是行，行之明觉精察处即是知。“，我们下一个目标就是将所学所用付诸于实践，在未来，我们通过点滴的不断的改变不足之处、实践、调整、反思、再实践，团队最终肯定会实现规范的、适合团队的、有效的敏捷开发。</p>
+            <h1 id="集群服务和负载均衡技术"><a href="#集群服务和负载均衡技术" class="headerlink" title="集群服务和负载均衡技术"></a>集群服务和负载均衡技术</h1><p>当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。</p>
+<h2 id="服务器集群技术"><a href="#服务器集群技术" class="headerlink" title="服务器集群技术"></a>服务器集群技术</h2><p>服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性<br>集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。<br>CDN的节点系统是一种典型的负载均衡系统。  </p>
+<p>集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。<br><!-- 集群管理系统层？ --></p>
+<h2 id="Cache-集群协同交互法"><a href="#Cache-集群协同交互法" class="headerlink" title="Cache 集群协同交互法"></a>Cache 集群协同交互法</h2><p>协同的目标：在各个服务器节点间建立良好的通信通道，及时沟通服务器的缓存情况，为用户提供良好的用户体验。<br>通信协议：松散耦合（ICP、HTCP、Digest、Cache Pre-filling）、紧密耦合（CARP）两类。<br>ICP：基于UDP协议实现，应答不包含HTTP头信息，通过向邻居发出请求并获得应答来反应Web对象在集群中的缓存情况。<br>HTCP：它能够管理一组HTTP Cache服务器并监控相关的缓存活动，应答包含HTTP头信息，数据和认证。<br>Cache Diest： 它的出现主要为了解决ICP 和 HTCP 协议在使用时的网络延迟和拥塞问题，不采用请求响应模式，而是在服务器之间建立对等关系，是一种用空间交换时间的思路。<br>Cache Pre-filling： 是一种推送Cache内容的机制，优点是可以向多个接收器传输大容量的数据，缺乏统一的标准。<br>CARP：一个分布式的缓存协议。<br><!-- 目前使用CARP --></p>
+<h2 id="负载均衡技术实现"><a href="#负载均衡技术实现" class="headerlink" title="负载均衡技术实现"></a>负载均衡技术实现</h2><p>按照负载均衡策略分发；<br>两种：任务负担、协同计算；<br>以前负载均衡主要在OSI七层模型的第四层展开；<br>现在，基于第七层的负载均衡技术逐渐称为主流；</p>
+<h5 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h5><p>负载均衡分发<br>会话持续性保证<br>服务器健康监测  </p>
+<ol>
+<li><p>负载均衡调度算法<br>轮询、加权轮询、随机、加权随机、基于源IP的Hash、基于源IP端口的Hash、基于目的IP的Hash、基于UDP报文净荷的Hash、最小链接、加权最小链接、最小响应时间  </p>
+</li>
+<li><p>会话持续性保证技术</p>
+</li>
+</ol>
+<ul>
+<li>基于源IP地址的持续性保持</li>
+<li>基于Cookie数据的持续性保持</li>
+<li>基于SIP报文Call-ID的持续性保持</li>
+<li>基于HTTP报文头的持续性保持</li>
+</ul>
+<ol>
+<li>服务器健康监测技术<br>ICMP、 TCP、 HTTP、 FTP、 DNS、 RAUIUS、 SSL</li>
+</ol>
+<h5 id="负载均衡部署方式"><a href="#负载均衡部署方式" class="headerlink" title="负载均衡部署方式"></a>负载均衡部署方式</h5><p>常用方式：  </p>
+<ol>
+<li>直连部署</li>
+<li>旁挂部署</li>
+</ol>
+<p>双机热备部署方式：</p>
+<ol>
+<li>主备模式</li>
+<li>负载分担模式</li>
+</ol>
+<h5 id="服务器负载均衡"><a href="#服务器负载均衡" class="headerlink" title="服务器负载均衡"></a>服务器负载均衡</h5><ol>
+<li>四层负载均衡<br>NAT方式、DR方式</li>
+<li>七层负载均衡</li>
+</ol>
+<h5 id="链路负载均衡"><a href="#链路负载均衡" class="headerlink" title="链路负载均衡"></a>链路负载均衡</h5><ol>
+<li>OutBound链路负载均衡</li>
+<li>Inbound链路负载均衡</li>
+</ol>
+<p>####</p>
+<h2 id="开源负载均衡软件"><a href="#开源负载均衡软件" class="headerlink" title="开源负载均衡软件"></a>开源负载均衡软件</h2><p>我们的架构：LVS（负载均衡）| Nginx | OpenResty | ATS</p>
 
         </div>
         <footer class="article-footer">
@@ -308,20 +337,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/03/15/JS对象的深拷贝和浅拷贝/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            JS对象的深拷贝和浅拷贝
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/03/10/终身受用的世界顶尖思维/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/09/10/CDN-three-capter/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">终身受用的世界顶尖思维</p>
+        <p class="article-nav-title">CDN技术详解-内容缓存工作原理及实现</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
