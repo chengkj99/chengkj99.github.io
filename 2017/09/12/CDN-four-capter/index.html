@@ -9,25 +9,31 @@
         <meta name="keywords" content="CDN" />
     
     <meta name="description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。
-服务器集群技术服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。CDN的节点系统是一种典型的负载均衡系统。  
-集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。
-Cac">
+服务器集群技术
+服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性  
+集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。  
+CDN的节点系统是一种典型的负载均衡系统。  
+集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CDN技术详解-集群服务和负载均衡技术">
 <meta property="og:url" content="http://yoursite.com/2017/09/12/CDN-four-capter/index.html">
 <meta property="og:site_name" content="程是非sky">
 <meta property="og:description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。
-服务器集群技术服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。CDN的节点系统是一种典型的负载均衡系统。  
-集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。
-Cac">
+服务器集群技术
+服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性  
+集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。  
+CDN的节点系统是一种典型的负载均衡系统。  
+集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系">
 <meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
-<meta property="og:updated_time" content="2017-09-12T12:12:49.000Z">
+<meta property="og:updated_time" content="2017-09-20T06:08:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDN技术详解-集群服务和负载均衡技术">
 <meta name="twitter:description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。
-服务器集群技术服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。CDN的节点系统是一种典型的负载均衡系统。  
-集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。
-Cac">
+服务器集群技术
+服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性  
+集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。  
+CDN的节点系统是一种典型的负载均衡系统。  
+集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系">
 <meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
     
 
@@ -180,16 +186,31 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <h1 id="集群服务和负载均衡技术"><a href="#集群服务和负载均衡技术" class="headerlink" title="集群服务和负载均衡技术"></a>集群服务和负载均衡技术</h1><p>当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。</p>
-<h2 id="服务器集群技术"><a href="#服务器集群技术" class="headerlink" title="服务器集群技术"></a>服务器集群技术</h2><p>服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性<br>集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。<br>CDN的节点系统是一种典型的负载均衡系统。  </p>
-<p>集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。<br><!-- 集群管理系统层？ --></p>
-<h2 id="Cache-集群协同交互法"><a href="#Cache-集群协同交互法" class="headerlink" title="Cache 集群协同交互法"></a>Cache 集群协同交互法</h2><p>协同的目标：在各个服务器节点间建立良好的通信通道，及时沟通服务器的缓存情况，为用户提供良好的用户体验。<br>通信协议：松散耦合（ICP、HTCP、Digest、Cache Pre-filling）、紧密耦合（CARP）两类。<br>ICP：基于UDP协议实现，应答不包含HTTP头信息，通过向邻居发出请求并获得应答来反应Web对象在集群中的缓存情况。<br>HTCP：它能够管理一组HTTP Cache服务器并监控相关的缓存活动，应答包含HTTP头信息，数据和认证。<br>Cache Diest： 它的出现主要为了解决ICP 和 HTCP 协议在使用时的网络延迟和拥塞问题，不采用请求响应模式，而是在服务器之间建立对等关系，是一种用空间交换时间的思路。<br>Cache Pre-filling： 是一种推送Cache内容的机制，优点是可以向多个接收器传输大容量的数据，缺乏统一的标准。<br>CARP：一个分布式的缓存协议。<br><!-- 目前使用CARP --></p>
-<h2 id="负载均衡技术实现"><a href="#负载均衡技术实现" class="headerlink" title="负载均衡技术实现"></a>负载均衡技术实现</h2><p>按照负载均衡策略分发；<br>两种：任务负担、协同计算；<br>以前负载均衡主要在OSI七层模型的第四层展开；<br>现在，基于第七层的负载均衡技术逐渐称为主流；</p>
-<h5 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h5><p>负载均衡分发<br>会话持续性保证<br>服务器健康监测  </p>
-<ol>
-<li><p>负载均衡调度算法<br>轮询、加权轮询、随机、加权随机、基于源IP的Hash、基于源IP端口的Hash、基于目的IP的Hash、基于UDP报文净荷的Hash、最小链接、加权最小链接、最小响应时间  </p>
+<h2 id="服务器集群技术"><a href="#服务器集群技术" class="headerlink" title="服务器集群技术"></a>服务器集群技术</h2><ul>
+<li>服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性  </li>
+<li>集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。  </li>
+<li>CDN的节点系统是一种典型的负载均衡系统。  </li>
+<li>集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。</li>
+</ul>
+<h2 id="Cache-集群协同交互法"><a href="#Cache-集群协同交互法" class="headerlink" title="Cache 集群协同交互法"></a>Cache 集群协同交互法</h2><ul>
+<li>协同的目标：在各个服务器节点间建立良好的通信通道，及时沟通服务器的缓存情况，为用户提供良好的用户体验。  </li>
+<li>通信协议：松散耦合（ICP、HTCP、Digest、Cache Pre-filling）、紧密耦合（CARP）两类。   </li>
+<li>ICP：基于UDP协议实现，应答不包含HTTP头信息，通过向邻居发出请求并获得应答来反应Web对象在集群中的缓存情况。  </li>
+<li>HTCP：它能够管理一组HTTP Cache服务器并监控相关的缓存活动，应答包含HTTP头信息，数据和认证。   </li>
+<li>Cache Diest： 它的出现主要为了解决ICP 和 HTCP 协议在使用时的网络延迟和拥塞问题，不采用请求响应模式，而是在服务器之间建立对等关系，是一种用空间交换时间的思路。  </li>
+<li>Cache Pre-filling： 是一种推送Cache内容的机制，优点是可以向多个接收器传输大容量的数据，缺乏统一的标准。  </li>
+<li>CARP：一个分布式的缓存协议。  <!-- 目前使用CARP -->
 </li>
-<li><p>会话持续性保证技术</p>
-</li>
+</ul>
+<h2 id="负载均衡技术实现"><a href="#负载均衡技术实现" class="headerlink" title="负载均衡技术实现"></a>负载均衡技术实现</h2><ul>
+<li>按照负载均衡策略分发；   </li>
+<li>两种角色：任务负担、协同计算；  </li>
+<li>以前负载均衡主要在OSI七层模型的第四层展开；  </li>
+<li>现在，基于第七层的负载均衡技术逐渐称为主流；</li>
+</ul>
+<h5 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h5><ol>
+<li>负载均衡调度算法<br>轮询、加权轮询、随机、加权随机、基于源IP的Hash、基于源IP端口的Hash、基于目的IP的Hash、基于UDP报文净荷的Hash、最小链接、加权最小链接、最小响应时间  </li>
+<li>会话持续性保证技术</li>
 </ol>
 <ul>
 <li>基于源IP地址的持续性保持</li>
@@ -198,7 +219,7 @@ ga('send', 'pageview');
 <li>基于HTTP报文头的持续性保持</li>
 </ul>
 <ol>
-<li>服务器健康监测技术<br>ICMP、 TCP、 HTTP、 FTP、 DNS、 RAUIUS、 SSL</li>
+<li>服务器健康监测技术（服务器健康监测）：  ICMP、 TCP、 HTTP、 FTP、 DNS、 RAUIUS、 SSL</li>
 </ol>
 <h5 id="负载均衡部署方式"><a href="#负载均衡部署方式" class="headerlink" title="负载均衡部署方式"></a>负载均衡部署方式</h5><p>常用方式：  </p>
 <ol>
@@ -218,8 +239,7 @@ ga('send', 'pageview');
 <li>OutBound链路负载均衡</li>
 <li>Inbound链路负载均衡</li>
 </ol>
-<p>####</p>
-<h2 id="开源负载均衡软件"><a href="#开源负载均衡软件" class="headerlink" title="开源负载均衡软件"></a>开源负载均衡软件</h2><p>我们的架构：LVS（负载均衡）| Nginx | OpenResty | ATS</p>
+<h4 id="开源负载均衡软件"><a href="#开源负载均衡软件" class="headerlink" title="开源负载均衡软件"></a>开源负载均衡软件</h4><p>我们的架构：LVS（负载均衡）| Nginx | OpenResty | ATS</p>
 
         </div>
         <footer class="article-footer">
