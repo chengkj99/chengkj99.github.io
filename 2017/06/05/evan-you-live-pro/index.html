@@ -177,9 +177,9 @@ ga('send', 'pageview');
 <p>声明式渲染解决了从状态到UI的映射</p>
 <p>状态管理解决的是事件到状态的映射，将这部分代码抽离出来，管理好，维护好，是状态管理工具做的事情。</p>
 <p>redux和mobx体现两种截然不同的思维方式或者说范式，redux强调数据不改变，reducer拿到原来的state和action返回的是一个新的state。mobox和vue中数据是可变的。</p>
-<p><a href="https://jsfiddle.net/yyx990803/0a22ojps/" target="_blank" rel="external">把 Vue 当 redux 用</a><br><a href="https://jsfiddle.net/yyx990803/f5a24dk3/" target="_blank" rel="external">让 Vue 当 MobX 用</a></p>
+<p><a href="https://jsfiddle.net/yyx990803/0a22ojps/" target="_blank" rel="noopener">把 Vue 当 redux 用</a><br><a href="https://jsfiddle.net/yyx990803/f5a24dk3/" target="_blank" rel="noopener">让 Vue 当 MobX 用</a></p>
 <p>这些方案都没有回答如何处理异步，mobx和vuex的异步处理，就是你在action里想怎么搞怎么搞。</p>
-<p>一般的CRUD操作，不存在太复杂的异步，杀鸡不用牛刀。<br>如果遇到复杂的场景，如服务端推送、实时、同时请求。，可以考虑Rx.js处理，Rx.js最适合处理事件流。<br><a href="http://reactivex.io/" target="_blank" rel="external">Rx.js</a><br><a href="https://cycle.js.org/" target="_blank" rel="external">Cycle.js</a></p>
+<p>一般的CRUD操作，不存在太复杂的异步，杀鸡不用牛刀。<br>如果遇到复杂的场景，如服务端推送、实时、同时请求。，可以考虑Rx.js处理，Rx.js最适合处理事件流。<br><a href="http://reactivex.io/" target="_blank" rel="noopener">Rx.js</a><br><a href="https://cycle.js.org/" target="_blank" rel="noopener">Cycle.js</a></p>
 <p>状态的改变在vuex这些工具中需要在mutation中写出来。如果在使用Rx.js的场景下，直接从事件源，映射到结果。其中为代表的是Cycle.js，从头到尾就是一个流，从获取事件是一个流、到状态改变是一个流、到更新dom是一个流。</p>
 <p>组件状态和全局状态如何区分，至今也没有一个好的区分方案。</p>
 <h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>传统的路由思想，比较早的是从Ember.js这个框架中出现单页应用的路由。<br>自从react和vue这些框架出现以后，会发现，把组件和路由解耦是可行的，而且更加灵活，另一个启示是从组件出发思考，<strong>路由就是将url映射到组件的一个过程。</strong></p>
@@ -194,8 +194,8 @@ ga('send', 'pageview');
 <li>Vue 的单文件组件 CSS，或是 Angular 的组件 CSS（写在装饰器里面），一种比较折中的方案</li>
 </ul>
 <h4 id="比较要结合场景"><a href="#比较要结合场景" class="headerlink" title="比较要结合场景"></a>比较要结合场景</h4><p>在单页应用的场景下，使用BEM相当于平行的维护了两套结构，一套是组件结构，一套是规范结构。将两者统一是比较好的方案。</p>
-<h4 id="css-in-js"><a href="#css-in-js" class="headerlink" title="css in js"></a>css in js</h4><p><a href="https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660" target="_blank" rel="external">https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660</a></p>
-<p><a href="https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660" target="_blank" rel="external">https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660</a></p>
+<h4 id="css-in-js"><a href="#css-in-js" class="headerlink" title="css in js"></a>css in js</h4><p><a href="https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660" target="_blank" rel="noopener">https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660</a></p>
+<p><a href="https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660" target="_blank" rel="noopener">https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660</a></p>
 <p>传统 css 的一些问题：</p>
 <ol>
 <li>作用域 （解决的已经很好了，css module， inline sytle ，vue scoped）</li>
@@ -220,16 +220,16 @@ ga('send', 'pageview');
 <p>大多数情况下 npm script + webpack 组合就可以了。</p>
 <p>最终代码跑在浏览器里，这个限制要求我们必须构建，因为我们没有浏览器的控制权。</p>
 <p>现在前端的构建工具链很完善了。html 、css 、js 都有自己的构建工具，只需写转换规则就好。</p>
-<p><a href="https://www.zhihu.com/question/20790576" target="_blank" rel="external">关于部署的一个文章</a>  </p>
+<p><a href="https://www.zhihu.com/question/20790576" target="_blank" rel="noopener">关于部署的一个文章</a>  </p>
 <p>部署优化：请求合并（打包），静态资源路径映射，小尺寸资源内联，代码分割、时间戳。<br>webpack复杂是因为解决的问题本来就很复杂。<br>rollup简单优雅，因为做的事情简单。</p>
 <p>构建时优化</p>
 <h2 id="服务端数据通信"><a href="#服务端数据通信" class="headerlink" title="服务端数据通信"></a>服务端数据通信</h2><p>restful api  ==&gt; crud</p>
-<p>实时数据库firebase、<a href="http://horizon.io/" target="_blank" rel="external">horizon</a> ==&gt; 数据实时性</p>
-<p>数据关联性 <a href="http://graphql.org/learn/" target="_blank" rel="external">graphQL</a>:暴露一个接口，急于图的查询而不是表，对复杂关联数据的获取，数数据量的优化也更加精确。</p>
+<p>实时数据库firebase、<a href="http://horizon.io/" target="_blank" rel="noopener">horizon</a> ==&gt; 数据实时性</p>
+<p>数据关联性 <a href="http://graphql.org/learn/" target="_blank" rel="noopener">graphQL</a>:暴露一个接口，急于图的查询而不是表，对复杂关联数据的获取，数数据量的优化也更加精确。</p>
 <h4 id="服务端的数据是否应该放在store里面去？"><a href="#服务端的数据是否应该放在store里面去？" class="headerlink" title="服务端的数据是否应该放在store里面去？"></a>服务端的数据是否应该放在store里面去？</h4><p>有些多此一举，因为改还是需要通过接口改。</p>
 <h2 id="跨平台渲染"><a href="#跨平台渲染" class="headerlink" title="跨平台渲染"></a>跨平台渲染</h2><p>React native 、 Weex<br>本质：设计框架的时候，框架的渲染机制和dom解耦。<br>ReactNative 针对每一个平台设计渲染引擎。</p>
-<h2 id="新规范"><a href="#新规范" class="headerlink" title="新规范"></a>新规范</h2><p><a href="https://www.webcomponents.org/" target="_blank" rel="external">Web Component</a></p>
-<p><a href="http://webassembly.org/" target="_blank" rel="external">webassembly</a></p>
+<h2 id="新规范"><a href="#新规范" class="headerlink" title="新规范"></a>新规范</h2><p><a href="https://www.webcomponents.org/" target="_blank" rel="noopener">Web Component</a></p>
+<p><a href="http://webassembly.org/" target="_blank" rel="noopener">webassembly</a></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们聊了很多东西，可能比较杂，但我希望大家发现其中一些共性的东西：<br>技术方案都是<strong>先有问题，再有思路</strong>，同时伴随着取舍。<strong>在选择衡量技术的时候，尽量去思考这个技术背后是在解决什么问题</strong>，它做了怎样的取舍。这样一方面可以帮助我们更好的理解和使用这些技术，也为以后哪天你遇到业务中的特殊情况，需要自己做方案的时候打好基础。</p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h4 id="关于react和vue具体的技术选型能举个例子来说明这两个框架所适用的场景吗？"><a href="#关于react和vue具体的技术选型能举个例子来说明这两个框架所适用的场景吗？" class="headerlink" title="关于react和vue具体的技术选型能举个例子来说明这两个框架所适用的场景吗？"></a>关于react和vue具体的技术选型能举个例子来说明这两个框架所适用的场景吗？</h4><pre><code>适用场景几乎差不多。
 </code></pre><h4 id="对于前端框架的学习需要到什么程度才算比较好？熟悉源码？理解思想？还是其他什么？"><a href="#对于前端框架的学习需要到什么程度才算比较好？熟悉源码？理解思想？还是其他什么？" class="headerlink" title="对于前端框架的学习需要到什么程度才算比较好？熟悉源码？理解思想？还是其他什么？"></a>对于前端框架的学习需要到什么程度才算比较好？熟悉源码？理解思想？还是其他什么？</h4><pre><code>理解思想更重要，学习源码，吸收设计原理和方案对做业务没啥帮助。
@@ -384,6 +384,26 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/12/14/unknow/" class="thumbnail">
+    
+    
+        <span style="background-image:url(../images/wheat.png)" alt="我的无知" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/12/14/unknow/" class="title">我的无知</a></p>
+                            <p class="item-date"><time datetime="2017-12-14T13:53:19.000Z" itemprop="datePublished">2017-12-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/09/12/CDN-four-capter/" class="thumbnail">
     
     
@@ -461,26 +481,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/08/18/Capriccio-01/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/cutter.jpg)" alt="未知的花，魅知的旅" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/08/18/Capriccio-01/" class="title">未知的花，魅知的旅</a></p>
-                            <p class="item-date"><time datetime="2017-08-18T05:29:08.000Z" itemprop="datePublished">2017-08-18</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -493,7 +493,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -503,7 +503,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rest-API/">Rest API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思考/">思考</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我/">我</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷开发/">敏捷开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转发-成长/">转发 成长</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rest-API/">Rest API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思考/">思考</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我/">我</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷开发/">敏捷开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转发-成长/">转发 成长</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -513,7 +513,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CDN/" style="font-size: 16px;">CDN</a> <a href="/tags/Rest-API/" style="font-size: 10px;">Rest API</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/互联网/" style="font-size: 12px;">互联网</a> <a href="/tags/学习/" style="font-size: 12px;">学习</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/心情/" style="font-size: 14px;">心情</a> <a href="/tags/思考/" style="font-size: 18px;">思考</a> <a href="/tags/感悟/" style="font-size: 12px;">感悟</a> <a href="/tags/成长/" style="font-size: 18px;">成长</a> <a href="/tags/我/" style="font-size: 12px;">我</a> <a href="/tags/敏捷开发/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/生活/" style="font-size: 16px;">生活</a> <a href="/tags/转发-成长/" style="font-size: 10px;">转发 成长</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+            <a href="/tags/CDN/" style="font-size: 15px;">CDN</a> <a href="/tags/Rest-API/" style="font-size: 10px;">Rest API</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/webpack/" style="font-size: 11.67px;">webpack</a> <a href="/tags/互联网/" style="font-size: 11.67px;">互联网</a> <a href="/tags/学习/" style="font-size: 11.67px;">学习</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/心情/" style="font-size: 13.33px;">心情</a> <a href="/tags/思考/" style="font-size: 18.33px;">思考</a> <a href="/tags/感悟/" style="font-size: 11.67px;">感悟</a> <a href="/tags/成长/" style="font-size: 16.67px;">成长</a> <a href="/tags/我/" style="font-size: 11.67px;">我</a> <a href="/tags/敏捷开发/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/转发-成长/" style="font-size: 10px;">转发 成长</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
         </div>
     </div>
 
