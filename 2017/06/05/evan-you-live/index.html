@@ -17,7 +17,7 @@
 <meta property="og:description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。 针对不同的场景、框架背后需要解决的问题、结合经验选择框架。 组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/vuepic.jpg">
-<meta property="og:updated_time" content="2017-06-05T12:10:46.000Z">
+<meta property="og:updated_time" content="2018-05-10T15:13:27.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尤雨溪知乎Live总结 上篇">
 <meta name="twitter:description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。 针对不同的场景、框架背后需要解决的问题、结合经验选择框架。 组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
@@ -193,10 +193,10 @@ ga('send', 'pageview');
 <h3 id="变化侦测"><a href="#变化侦测" class="headerlink" title="　变化侦测"></a>　变化侦测</h3><p><a href="https://docs.google.com/presentation/d/1_BlJxudppfKmAtfbNIcqNwzrC5vLrR_h1e09apcpdNY/edit?usp=sharing" target="_blank" rel="noopener">Reactivity in Frontend JavaScript Frameworks
 </a></p>
 <p>变化侦测有两种方式：pull 和  push</p>
-<p>react的setState和angular的脏检查属于pull的方式。</p>
-<p>pull的方式，系统不知道数据什么时候变化，那么它需要一个信号告诉他说知道数据有可能变了，这个时候系统来进行一个暴力的比对，react通过Virtual DOM中的diff方式，angular是脏检查。能过这么做是因为javascript已经足够快，有浪费但是可以接受。</p>
-<p>push的方式，Vue （响应式）和 Rx.js（abzrable） 的方式，更加细粒度的更新，但是同样也会带来内存和性能的开销。</p>
-<p>vue2选择了相对折中的方案，在组件层面，vue2使用的是pull的方式，每一个组件都是响应式的watcher，这样vue能够知道哪些组件内部的状态发生了变化，然后在组件内部使用push的方式通过virtual Dom进行比对更新。</p>
+<p>react 的 setState 和 angular 的脏检查属于 pull 的方式。</p>
+<p>pull的方式，系统不知道数据什么时候变化，那么它需要一个信号告诉他说知道数据有可能变了，这个时候系统来进行一个暴力的比对，react 通过 Virtual DOM 中的diff方式，angular 是脏检查。能过这么做是因为 javascript 已经足够快，有浪费但是可以接受。</p>
+<p>push的方式，Vue （响应式）和 Rx.js（Observable） 的方式，更加细粒度的更新，意味着更多的watcher，同样也会带来内存和性能的开销。</p>
+<p>vue2选择了相对折中的方案，在组件层面，vue2使用的是 push 的方式，每一个组件都是响应式的watcher，这样vue能够知道哪些组件内部的状态发生了变化，然后在组件内部使用 pull 的方式通过virtual Dom进行比对更新。</p>
 <p>pull和push的对比，不能说哪个方案一定好，本质区别是用侦测成本换取自动优化的成本。</p>
 
         </div>
