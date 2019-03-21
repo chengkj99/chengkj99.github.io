@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
     <title>javascript安全类型监测 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="javascript" />
+        <meta name="keywords" content="javascript">
     
     <meta name="description" content="数据类型检测ECMAScript有五种简单的数据类型，分别为Undefined、Null、String、Number、Boolean，还有一个复杂的数据类型Object。ECMAScript的语言的动态性意味着我们可以使用以上6种数据类型表示任何数据。 因为数据类型是松散的，所以我们需要一些手段来准确的检测给定变量的数据类型。 typeoftepeof是检测基本数据类型的好手，他有六种检测结果，分">
 <meta name="keywords" content="javascript">
@@ -16,20 +16,20 @@
 <meta property="og:site_name" content="程是非sky">
 <meta property="og:description" content="数据类型检测ECMAScript有五种简单的数据类型，分别为Undefined、Null、String、Number、Boolean，还有一个复杂的数据类型Object。ECMAScript的语言的动态性意味着我们可以使用以上6种数据类型表示任何数据。 因为数据类型是松散的，所以我们需要一些手段来准确的检测给定变量的数据类型。 typeoftepeof是检测基本数据类型的好手，他有六种检测结果，分">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/javascript.png">
-<meta property="og:updated_time" content="2017-03-06T07:43:38.000Z">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/javascript.png">
+<meta property="og:updated_time" content="2019-03-20T15:05:24.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript安全类型监测">
 <meta name="twitter:description" content="数据类型检测ECMAScript有五种简单的数据类型，分别为Undefined、Null、String、Number、Boolean，还有一个复杂的数据类型Object。ECMAScript的语言的动态性意味着我们可以使用以上6种数据类型表示任何数据。 因为数据类型是松散的，所以我们需要一些手段来准确的检测给定变量的数据类型。 typeoftepeof是检测基本数据类型的好手，他有六种检测结果，分">
-<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/javascript.png">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/javascript.png">
     
 
     
-        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml" />
+        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml">
     
 
     
-        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png" />
+        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -58,7 +58,7 @@ ga('send', 'pageview');
     
 
 </head>
-
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -71,7 +71,7 @@ ga('send', 'pageview');
                     </h1>
                     
                         <h2 class="subtitle-wrap">
-                            <p class="subtitle">多读书，多思考，未来会很好</p>
+                            <p class="subtitle">但行好事 莫问前程</p>
                         </h2>
                     
                 </div>
@@ -80,13 +80,13 @@ ga('send', 'pageview');
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
                                         
                                     
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
                             
@@ -95,14 +95,14 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -190,7 +190,7 @@ ga('send', 'pageview');
 <h3 id="如何解决上述问题"><a href="#如何解决上述问题" class="headerlink" title="如何解决上述问题"></a>如何解决上述问题</h3><p>上述解决的办法都一样，在任何值上调用Object原生的toString方法时，都会返回一个类似于［object NativeConstructorName］格式的字符串，比如：</p>
 <p><code>Object.prototype.toString.call([&#39;&#39;])    //&quot;[object Array]&quot;</code></p>
 <p>由于原生数组的构造函数名和全局作用域无关，因此使用toString就能返回一致的值。利用这点可以创建以下函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function isArray(value) &#123;  </span><br><span class="line">  return Object.prototype.toString.call(value) == &quot;[object Array]&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function isFunction(value) &#123;  </span><br><span class="line">  return Object.prototype.toString.call(value) == &quot;[object Function]&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function isRegExp(value) &#123;  </span><br><span class="line">  return Object.prototype.toString.call(value) == &quot;[object RegExp]&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function isNativeJSON(value) &#123;  </span><br><span class="line">  return window.JSON&amp;&amp;Object.prototype.toString.call(value) == &quot;[object JSON]&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function isArray(value) &#123;</span><br><span class="line">  return Object.prototype.toString.call(value) == &quot;[object Array]&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function isFunction(value) &#123;</span><br><span class="line">  return Object.prototype.toString.call(value) == &quot;[object Function]&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function isRegExp(value) &#123;</span><br><span class="line">  return Object.prototype.toString.call(value) == &quot;[object RegExp]&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function isNativeJSON(value) &#123;</span><br><span class="line">  return window.JSON&amp;&amp;Object.prototype.toString.call(value) == &quot;[object JSON]&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>⚠需要注意的一点是，Object.prototype.toString()本身也会被修改，本文讨论的仅仅是该方法未被修改的情况下。</p>
 
         </div>
@@ -336,7 +336,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
-            <ul id="recent-post" class="">
+            <ul id="recent-post" class>
                 
                     <li>
                         
@@ -364,7 +364,7 @@ ga('send', 'pageview');
                             <a href="/2018/03/07/How-to-live-in-a-cruel-world/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
     
     
 </a>
@@ -384,7 +384,7 @@ ga('send', 'pageview');
                             <a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/WechatIMG56.jpeg)" alt="对雄安新区从不屑到关注" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg)" alt="聊聊也好" class="thumbnail-image"></span>
     
     
 </a>
@@ -393,7 +393,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">对雄安新区从不屑到关注</a></p>
+                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">聊聊也好</a></p>
                             <p class="item-date"><time datetime="2018-01-06T16:34:18.000Z" itemprop="datePublished">2018-01-07</time></p>
                         </div>
                     </li>
@@ -424,7 +424,7 @@ ga('send', 'pageview');
                             <a href="/2017/09/12/CDN-four-capter/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
     
     
 </a>
@@ -515,9 +515,9 @@ ga('send', 'pageview');
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 程康健</p>
+                <p>&copy; 2019 程康健</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
-                <p id="busuanzi_container_page_pv" style='display:none'>
+                <p id="busuanzi_container_page_pv" style="display:none">
                   本站已被访问<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>个访问本站小伙伴
                 </p>
             </div>

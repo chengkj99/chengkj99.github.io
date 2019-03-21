@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
     <title>CDN技术详解-集群服务和负载均衡技术 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="CDN" />
+        <meta name="keywords" content="CDN">
     
-    <meta name="description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。 服务器集群技术 服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性   集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。   CDN的节点系统是一种典型的负载均衡系统。   集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系">
+    <meta name="description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。 服务器集群技术 服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性 集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。 CDN的节点系统是一种典型的负载均衡系统。 集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。  C">
 <meta name="keywords" content="CDN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CDN技术详解-集群服务和负载均衡技术">
 <meta property="og:url" content="http://yoursite.com/2017/09/12/CDN-four-capter/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。 服务器集群技术 服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性   集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。   CDN的节点系统是一种典型的负载均衡系统。   集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系">
+<meta property="og:description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。 服务器集群技术 服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性 集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。 CDN的节点系统是一种典型的负载均衡系统。 集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。  C">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
-<meta property="og:updated_time" content="2017-09-20T06:08:54.000Z">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
+<meta property="og:updated_time" content="2019-03-21T02:05:09.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDN技术详解-集群服务和负载均衡技术">
-<meta name="twitter:description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。 服务器集群技术 服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性   集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。   CDN的节点系统是一种典型的负载均衡系统。   集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系">
-<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
+<meta name="twitter:description" content="集群服务和负载均衡技术当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。 服务器集群技术 服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性 集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。 CDN的节点系统是一种典型的负载均衡系统。 集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。  C">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
     
 
     
-        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml" />
+        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml">
     
 
     
-        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png" />
+        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -58,7 +58,7 @@ ga('send', 'pageview');
     
 
 </head>
-
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -71,7 +71,7 @@ ga('send', 'pageview');
                     </h1>
                     
                         <h2 class="subtitle-wrap">
-                            <p class="subtitle">多读书，多思考，未来会很好</p>
+                            <p class="subtitle">但行好事 莫问前程</p>
                         </h2>
                     
                 </div>
@@ -80,13 +80,13 @@ ga('send', 'pageview');
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
                                         
                                     
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
                             
@@ -95,14 +95,14 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -174,29 +174,29 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <h1 id="集群服务和负载均衡技术"><a href="#集群服务和负载均衡技术" class="headerlink" title="集群服务和负载均衡技术"></a>集群服务和负载均衡技术</h1><p>当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。</p>
 <h2 id="服务器集群技术"><a href="#服务器集群技术" class="headerlink" title="服务器集群技术"></a>服务器集群技术</h2><ul>
-<li>服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性  </li>
-<li>集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。  </li>
-<li>CDN的节点系统是一种典型的负载均衡系统。  </li>
+<li>服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性</li>
+<li>集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。</li>
+<li>CDN的节点系统是一种典型的负载均衡系统。</li>
 <li>集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。</li>
 </ul>
 <h2 id="Cache-集群协同交互法"><a href="#Cache-集群协同交互法" class="headerlink" title="Cache 集群协同交互法"></a>Cache 集群协同交互法</h2><ul>
-<li>协同的目标：在各个服务器节点间建立良好的通信通道，及时沟通服务器的缓存情况，为用户提供良好的用户体验。  </li>
-<li>通信协议：松散耦合（ICP、HTCP、Digest、Cache Pre-filling）、紧密耦合（CARP）两类。   </li>
-<li>ICP：基于UDP协议实现，应答不包含HTTP头信息，通过向邻居发出请求并获得应答来反应Web对象在集群中的缓存情况。  </li>
-<li>HTCP：它能够管理一组HTTP Cache服务器并监控相关的缓存活动，应答包含HTTP头信息，数据和认证。   </li>
-<li>Cache Diest： 它的出现主要为了解决ICP 和 HTCP 协议在使用时的网络延迟和拥塞问题，不采用请求响应模式，而是在服务器之间建立对等关系，是一种用空间交换时间的思路。  </li>
-<li>Cache Pre-filling： 是一种推送Cache内容的机制，优点是可以向多个接收器传输大容量的数据，缺乏统一的标准。  </li>
-<li>CARP：一个分布式的缓存协议。  <!-- 目前使用CARP -->
+<li>协同的目标：在各个服务器节点间建立良好的通信通道，及时沟通服务器的缓存情况，为用户提供良好的用户体验。</li>
+<li>通信协议：松散耦合（ICP、HTCP、Digest、Cache Pre-filling）、紧密耦合（CARP）两类。</li>
+<li>ICP：基于UDP协议实现，应答不包含HTTP头信息，通过向邻居发出请求并获得应答来反应Web对象在集群中的缓存情况。</li>
+<li>HTCP：它能够管理一组HTTP Cache服务器并监控相关的缓存活动，应答包含HTTP头信息，数据和认证。</li>
+<li>Cache Diest： 它的出现主要为了解决ICP 和 HTCP 协议在使用时的网络延迟和拥塞问题，不采用请求响应模式，而是在服务器之间建立对等关系，是一种用空间交换时间的思路。</li>
+<li>Cache Pre-filling： 是一种推送Cache内容的机制，优点是可以向多个接收器传输大容量的数据，缺乏统一的标准。</li>
+<li>CARP：一个分布式的缓存协议。<!-- 目前使用CARP -->
 </li>
 </ul>
 <h2 id="负载均衡技术实现"><a href="#负载均衡技术实现" class="headerlink" title="负载均衡技术实现"></a>负载均衡技术实现</h2><ul>
-<li>按照负载均衡策略分发；   </li>
-<li>两种角色：任务负担、协同计算；  </li>
-<li>以前负载均衡主要在OSI七层模型的第四层展开；  </li>
+<li>按照负载均衡策略分发；</li>
+<li>两种角色：任务负担、协同计算；</li>
+<li>以前负载均衡主要在OSI七层模型的第四层展开；</li>
 <li>现在，基于第七层的负载均衡技术逐渐称为主流；</li>
 </ul>
 <h5 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h5><ol>
-<li>负载均衡调度算法<br>轮询、加权轮询、随机、加权随机、基于源IP的Hash、基于源IP端口的Hash、基于目的IP的Hash、基于UDP报文净荷的Hash、最小链接、加权最小链接、最小响应时间  </li>
+<li>负载均衡调度算法<br>轮询、加权轮询、随机、加权随机、基于源IP的Hash、基于源IP端口的Hash、基于目的IP的Hash、基于UDP报文净荷的Hash、最小链接、加权最小链接、最小响应时间</li>
 <li>会话持续性保证技术</li>
 </ol>
 <ul>
@@ -205,10 +205,10 @@ ga('send', 'pageview');
 <li>基于SIP报文Call-ID的持续性保持</li>
 <li>基于HTTP报文头的持续性保持</li>
 </ul>
-<ol>
+<ol start="3">
 <li>服务器健康监测技术（服务器健康监测）：  ICMP、 TCP、 HTTP、 FTP、 DNS、 RAUIUS、 SSL</li>
 </ol>
-<h5 id="负载均衡部署方式"><a href="#负载均衡部署方式" class="headerlink" title="负载均衡部署方式"></a>负载均衡部署方式</h5><p>常用方式：  </p>
+<h5 id="负载均衡部署方式"><a href="#负载均衡部署方式" class="headerlink" title="负载均衡部署方式"></a>负载均衡部署方式</h5><p>常用方式：</p>
 <ol>
 <li>直连部署</li>
 <li>旁挂部署</li>
@@ -371,7 +371,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
-            <ul id="recent-post" class="">
+            <ul id="recent-post" class>
                 
                     <li>
                         
@@ -399,7 +399,7 @@ ga('send', 'pageview');
                             <a href="/2018/03/07/How-to-live-in-a-cruel-world/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
     
     
 </a>
@@ -419,7 +419,7 @@ ga('send', 'pageview');
                             <a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/WechatIMG56.jpeg)" alt="对雄安新区从不屑到关注" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg)" alt="聊聊也好" class="thumbnail-image"></span>
     
     
 </a>
@@ -428,7 +428,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">对雄安新区从不屑到关注</a></p>
+                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">聊聊也好</a></p>
                             <p class="item-date"><time datetime="2018-01-06T16:34:18.000Z" itemprop="datePublished">2018-01-07</time></p>
                         </div>
                     </li>
@@ -459,7 +459,7 @@ ga('send', 'pageview');
                             <a href="/2017/09/12/CDN-four-capter/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
     
     
 </a>
@@ -550,9 +550,9 @@ ga('send', 'pageview');
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 程康健</p>
+                <p>&copy; 2019 程康健</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
-                <p id="busuanzi_container_page_pv" style='display:none'>
+                <p id="busuanzi_container_page_pv" style="display:none">
                   本站已被访问<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>个访问本站小伙伴
                 </p>
             </div>

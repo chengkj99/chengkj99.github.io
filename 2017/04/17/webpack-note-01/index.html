@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
     <title>从零开始学习webpack搭建vue工程-01 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="vue,webpack" />
+        <meta name="keywords" content="vue,webpack">
     
     <meta name="description" content="webpack+vue项目实践记录01目的：练习render背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法">
 <meta name="keywords" content="vue,webpack">
@@ -25,11 +25,11 @@
     
 
     
-        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml" />
+        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml">
     
 
     
-        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png" />
+        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -58,7 +58,7 @@ ga('send', 'pageview');
     
 
 </head>
-
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -71,7 +71,7 @@ ga('send', 'pageview');
                     </h1>
                     
                         <h2 class="subtitle-wrap">
-                            <p class="subtitle">多读书，多思考，未来会很好</p>
+                            <p class="subtitle">但行好事 莫问前程</p>
                         </h2>
                     
                 </div>
@@ -80,13 +80,13 @@ ga('send', 'pageview');
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
                                         
                                     
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
                             
@@ -95,14 +95,14 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -175,7 +175,7 @@ ga('send', 'pageview');
             <h1 id="webpack-vue项目实践记录01"><a href="#webpack-vue项目实践记录01" class="headerlink" title="webpack+vue项目实践记录01"></a>webpack+vue项目实践记录01</h1><p>目的：练习render<br>背景：一直使用vue-cli搭建vue工程，虽然vue全家桶在实际项目中应用的还过得去，以及之前也学习和练习了webpack的用法，但是在实践项目中没有使用太多，而且vue的前端工程化学习到的感觉是空中楼阁，对于未来的工程问题，仅仅使用vue-cli时不能够灵活的进行解决的，于是产生重新开始学习vue结合webpack搭建web工程的想法。</p>
 <h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>新建文件夹 vue-pro<br>在vue-pro下新建文件夹 build<br>在vue-pro下新建文件夹 src<br>在vue-pro目录下执行<code>npm init</code>,初始化package.json<br>在vue-pro目录下执行<code>npm install vue --save-dev</code>,安装vue</p>
 <p>在src下新建 index.html main.js App.vue 分别作为实例挂载点、实例挂载入口文件、和vue单页模版根文件<br>在build文件夹下创建dev-server.js 用于配置本地项目的启动文件</p>
-<h2 id="初始化这个项目"><a href="#初始化这个项目" class="headerlink" title="初始化这个项目"></a>初始化这个项目</h2><p>下一步： 安装webpack、并配置，跑起来这个项目<br>安装vue-loader<br>安装webpack，查看版本号为1.14，应升级2.33 npm install -g webpack@2.3.3<br>刚开始执行webpack build/webpack/config.js错误，是没找到webpack.config.js这个文件<br>后来cd build 后执行 webpack webpack.config.js 报错</p>
+<h2 id="初始化这个项目"><a href="#初始化这个项目" class="headerlink" title="初始化这个项目"></a>初始化这个项目</h2><p>下一步： 安装webpack、并配置，跑起来这个项目<br>安装vue-loader<br>安装webpack，查看版本号为1.14，应升级2.33 npm install -g <a href="mailto:webpack@2.3.3" target="_blank" rel="noopener">webpack@2.3.3</a><br>刚开始执行webpack build/webpack/config.js错误，是没找到webpack.config.js这个文件<br>后来cd build 后执行 webpack webpack.config.js 报错</p>
 <p>缺少<code>vue-template-compiler</code>，继续安装此模块<br>缺少<code>css-loader</code>，继续安装此模块</p>
 <p>执行<code>webpack webpack.config.js</code>成功 双击index.html</p>
 <p>报错<code>You are using the runtime-only build of Vue where the template compiler is not available.</code><br><a href="https://zhuanlan.zhihu.com/p/22115243" target="_blank" rel="noopener">找到了一篇文章</a><br><code>package.json 中的 main 属性决定了，当项目被引入时，输出的是哪个文件，而 vue 的 package.json 中的 main 指向的是 dist/vue.common.js。</code><br> 擦，并不太懂是什么鬼，就是把</p>
@@ -345,7 +345,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
-            <ul id="recent-post" class="">
+            <ul id="recent-post" class>
                 
                     <li>
                         
@@ -373,7 +373,7 @@ ga('send', 'pageview');
                             <a href="/2018/03/07/How-to-live-in-a-cruel-world/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
     
     
 </a>
@@ -393,7 +393,7 @@ ga('send', 'pageview');
                             <a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/WechatIMG56.jpeg)" alt="对雄安新区从不屑到关注" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg)" alt="聊聊也好" class="thumbnail-image"></span>
     
     
 </a>
@@ -402,7 +402,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">对雄安新区从不屑到关注</a></p>
+                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">聊聊也好</a></p>
                             <p class="item-date"><time datetime="2018-01-06T16:34:18.000Z" itemprop="datePublished">2018-01-07</time></p>
                         </div>
                     </li>
@@ -433,7 +433,7 @@ ga('send', 'pageview');
                             <a href="/2017/09/12/CDN-four-capter/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
     
     
 </a>
@@ -524,9 +524,9 @@ ga('send', 'pageview');
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 程康健</p>
+                <p>&copy; 2019 程康健</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
-                <p id="busuanzi_container_page_pv" style='display:none'>
+                <p id="busuanzi_container_page_pv" style="display:none">
                   本站已被访问<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>个访问本站小伙伴
                 </p>
             </div>

@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
     <title>javascript高级编程-Array引用类型用法总结 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="javascript,数组" />
+        <meta name="keywords" content="javascript,数组">
     
-    <meta name="description" content="引用类型-Array类型引用类型是一种数据结构，用于将数据和功能联系起来。 创建对象的方式： 1.new操作符 var array = new Array() 2.字面量表示法创建 var array = [] Array1.检测数组:检测数组是基本类型还是引用类型   2.转换方法:将数组转换成字符串或数组对象     3.栈方法:后进先出的操作数组的方法     4.队列方法:先进先出的操作数">
+    <meta name="description" content="引用类型-Array类型引用类型是一种数据结构，用于将数据和功能联系起来。 创建对象的方式： 1.new操作符 var array = new Array() 2.字面量表示法创建 var array = [] Array1.检测数组:检测数组是基本类型还是引用类型 2.转换方法:将数组转换成字符串或数组对象 3.栈方法:后进先出的操作数组的方法 4.队列方法:先进先出的操作数组的方法 5.操作方">
 <meta name="keywords" content="javascript,数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript高级编程-Array引用类型用法总结">
 <meta property="og:url" content="http://yoursite.com/2016/09/17/javascriptArray/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="引用类型-Array类型引用类型是一种数据结构，用于将数据和功能联系起来。 创建对象的方式： 1.new操作符 var array = new Array() 2.字面量表示法创建 var array = [] Array1.检测数组:检测数组是基本类型还是引用类型   2.转换方法:将数组转换成字符串或数组对象     3.栈方法:后进先出的操作数组的方法     4.队列方法:先进先出的操作数">
+<meta property="og:description" content="引用类型-Array类型引用类型是一种数据结构，用于将数据和功能联系起来。 创建对象的方式： 1.new操作符 var array = new Array() 2.字面量表示法创建 var array = [] Array1.检测数组:检测数组是基本类型还是引用类型 2.转换方法:将数组转换成字符串或数组对象 3.栈方法:后进先出的操作数组的方法 4.队列方法:先进先出的操作数组的方法 5.操作方">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/javascript.png">
-<meta property="og:updated_time" content="2017-03-24T12:41:54.000Z">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/javascript.png">
+<meta property="og:updated_time" content="2019-03-20T15:05:19.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级编程-Array引用类型用法总结">
-<meta name="twitter:description" content="引用类型-Array类型引用类型是一种数据结构，用于将数据和功能联系起来。 创建对象的方式： 1.new操作符 var array = new Array() 2.字面量表示法创建 var array = [] Array1.检测数组:检测数组是基本类型还是引用类型   2.转换方法:将数组转换成字符串或数组对象     3.栈方法:后进先出的操作数组的方法     4.队列方法:先进先出的操作数">
-<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/javascript.png">
+<meta name="twitter:description" content="引用类型-Array类型引用类型是一种数据结构，用于将数据和功能联系起来。 创建对象的方式： 1.new操作符 var array = new Array() 2.字面量表示法创建 var array = [] Array1.检测数组:检测数组是基本类型还是引用类型 2.转换方法:将数组转换成字符串或数组对象 3.栈方法:后进先出的操作数组的方法 4.队列方法:先进先出的操作数组的方法 5.操作方">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/javascript.png">
     
 
     
-        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml" />
+        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml">
     
 
     
-        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png" />
+        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -58,7 +58,7 @@ ga('send', 'pageview');
     
 
 </head>
-
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -71,7 +71,7 @@ ga('send', 'pageview');
                     </h1>
                     
                         <h2 class="subtitle-wrap">
-                            <p class="subtitle">多读书，多思考，未来会很好</p>
+                            <p class="subtitle">但行好事 莫问前程</p>
                         </h2>
                     
                 </div>
@@ -80,13 +80,13 @@ ga('send', 'pageview');
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
                                         
                                     
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
                             
@@ -95,14 +95,14 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -178,14 +178,14 @@ ga('send', 'pageview');
 <pre><code>var array = new Array()
 </code></pre><p>2.字面量表示法创建</p>
 <pre><code>var array = []
-</code></pre><h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>1.检测数组:检测数组是基本类型还是引用类型  </p>
-<p>2.转换方法:将数组转换成字符串或数组对象    </p>
-<p>3.栈方法:后进先出的操作数组的方法    </p>
-<p>4.队列方法:先进先出的操作数组的方法   </p>
-<p>5.操作方法:数组的拼接、截取、插入、删除、替换   </p>
-<p>6.位置方法:查找数组项、返回索引值  </p>
-<p>7.迭代方法:对每个数组项进行操作的方法    </p>
-<p>8.缩小方法:操作数组的每一项，构建最终的返回值   </p>
+</code></pre><h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>1.检测数组:检测数组是基本类型还是引用类型</p>
+<p>2.转换方法:将数组转换成字符串或数组对象</p>
+<p>3.栈方法:后进先出的操作数组的方法</p>
+<p>4.队列方法:先进先出的操作数组的方法</p>
+<p>5.操作方法:数组的拼接、截取、插入、删除、替换</p>
+<p>6.位置方法:查找数组项、返回索引值</p>
+<p>7.迭代方法:对每个数组项进行操作的方法</p>
+<p>8.缩小方法:操作数组的每一项，构建最终的返回值</p>
 <h3 id="1-检测数组"><a href="#1-检测数组" class="headerlink" title="1 检测数组"></a>1 检测数组</h3><blockquote>
 <p>检测数组的方法；instanceof操作符的问题是当开发环境引入多个框架存在多个全局环境的时候，会出现不同的Array构造函数，进而出现不同的结果。<br>Array.isArray()这个方法很好的解决了这个问题。</p>
 </blockquote>
@@ -229,7 +229,7 @@ ga('send', 'pageview');
 <ul>
 <li>splice() 三个参数:分别对应起始位置，删除项的个数，替换项;通过对这三个参数的合理运用可以实现删除、插入、替换等操作。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 从第一项开始删除两项</span><br><span class="line">var splice_arr1 = [&apos;h&apos;,&apos;e&apos;,&apos;l&apos;,&apos;l&apos;,&apos;o&apos;]</span><br><span class="line">console.log(splice_arr1.splice(1,2)) // 返回的是被删除的项组成的数组[&quot;e&quot;, &quot;l&quot;]</span><br><span class="line"></span><br><span class="line">// 从第二项后插入三项old</span><br><span class="line">var splice_arr2 = [&apos;h&apos;,&apos;e&apos;,&apos;l&apos;,&apos;l&apos;,&apos;o&apos;]</span><br><span class="line">var removed = splice_arr2.splice(2,0,&quot;K&quot;,&quot;K&quot;)</span><br><span class="line">console.log(splice_arr2)//[&quot;h&quot;, &quot;e&quot;, &quot;K&quot;, &quot;K&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;]      		</span><br><span class="line">console.log(removed) // 返回的是一个空数组</span><br><span class="line"></span><br><span class="line">// 替换</span><br><span class="line">var removed = splice_arr3.splice(2,2,&quot;P&quot;,&quot;P&quot;)</span><br><span class="line">console.log(splice_arr3)//[&quot;h&quot;, &quot;e&quot;, &quot;P&quot;, &quot;P&quot;, &quot;o&quot;]</span><br><span class="line">console.log(removed) // 返回的是被替换的值[&quot;l&quot;, &quot;l&quot;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 从第一项开始删除两项</span><br><span class="line">var splice_arr1 = [&apos;h&apos;,&apos;e&apos;,&apos;l&apos;,&apos;l&apos;,&apos;o&apos;]</span><br><span class="line">console.log(splice_arr1.splice(1,2)) // 返回的是被删除的项组成的数组[&quot;e&quot;, &quot;l&quot;]</span><br><span class="line"></span><br><span class="line">// 从第二项后插入三项old</span><br><span class="line">var splice_arr2 = [&apos;h&apos;,&apos;e&apos;,&apos;l&apos;,&apos;l&apos;,&apos;o&apos;]</span><br><span class="line">var removed = splice_arr2.splice(2,0,&quot;K&quot;,&quot;K&quot;)</span><br><span class="line">console.log(splice_arr2)//[&quot;h&quot;, &quot;e&quot;, &quot;K&quot;, &quot;K&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;]</span><br><span class="line">console.log(removed) // 返回的是一个空数组</span><br><span class="line"></span><br><span class="line">// 替换</span><br><span class="line">var removed = splice_arr3.splice(2,2,&quot;P&quot;,&quot;P&quot;)</span><br><span class="line">console.log(splice_arr3)//[&quot;h&quot;, &quot;e&quot;, &quot;P&quot;, &quot;P&quot;, &quot;o&quot;]</span><br><span class="line">console.log(removed) // 返回的是被替换的值[&quot;l&quot;, &quot;l&quot;]</span><br></pre></td></tr></table></figure>
 <h3 id="6-位置方法"><a href="#6-位置方法" class="headerlink" title="6 位置方法"></a>6 位置方法</h3><blockquote>
 <p>返回索引值</p>
 </blockquote>
@@ -417,7 +417,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
-            <ul id="recent-post" class="">
+            <ul id="recent-post" class>
                 
                     <li>
                         
@@ -445,7 +445,7 @@ ga('send', 'pageview');
                             <a href="/2018/03/07/How-to-live-in-a-cruel-world/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
     
     
 </a>
@@ -465,7 +465,7 @@ ga('send', 'pageview');
                             <a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/WechatIMG56.jpeg)" alt="对雄安新区从不屑到关注" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg)" alt="聊聊也好" class="thumbnail-image"></span>
     
     
 </a>
@@ -474,7 +474,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">对雄安新区从不屑到关注</a></p>
+                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">聊聊也好</a></p>
                             <p class="item-date"><time datetime="2018-01-06T16:34:18.000Z" itemprop="datePublished">2018-01-07</time></p>
                         </div>
                     </li>
@@ -505,7 +505,7 @@ ga('send', 'pageview');
                             <a href="/2017/09/12/CDN-four-capter/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
     
     
 </a>
@@ -596,9 +596,9 @@ ga('send', 'pageview');
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 程康健</p>
+                <p>&copy; 2019 程康健</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
-                <p id="busuanzi_container_page_pv" style='display:none'>
+                <p id="busuanzi_container_page_pv" style="display:none">
                   本站已被访问<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>个访问本站小伙伴
                 </p>
             </div>

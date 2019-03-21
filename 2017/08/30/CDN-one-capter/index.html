@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
     <title>CDN技术详解-基本概念 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="CDN" />
+        <meta name="keywords" content="CDN">
     
     <meta name="description" content="前段时间，因工作内容中中设计到很多CDN业务的知识，于是读了一遍《CDN技术详解》，这本书内容很丰富，讲了很多CDN实现的原理和细节，想吃透这本书，读一遍肯定是不够的，需要理解、思考、和长期实践才能真正的理解CDN这块内容。 在阅读此书之前，我仅仅是知道CDN可以提高内容的加载速度，通过将网站的资源图片等文件放到七牛的存储服务器中，会提高资源的加载效率，但是我没有测试过，也不知道其是如何做到的。经">
 <meta name="keywords" content="CDN">
@@ -16,20 +16,20 @@
 <meta property="og:site_name" content="程是非sky">
 <meta property="og:description" content="前段时间，因工作内容中中设计到很多CDN业务的知识，于是读了一遍《CDN技术详解》，这本书内容很丰富，讲了很多CDN实现的原理和细节，想吃透这本书，读一遍肯定是不够的，需要理解、思考、和长期实践才能真正的理解CDN这块内容。 在阅读此书之前，我仅仅是知道CDN可以提高内容的加载速度，通过将网站的资源图片等文件放到七牛的存储服务器中，会提高资源的加载效率，但是我没有测试过，也不知道其是如何做到的。经">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
-<meta property="og:updated_time" content="2017-08-31T10:48:47.000Z">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
+<meta property="og:updated_time" content="2019-03-21T02:05:12.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDN技术详解-基本概念">
 <meta name="twitter:description" content="前段时间，因工作内容中中设计到很多CDN业务的知识，于是读了一遍《CDN技术详解》，这本书内容很丰富，讲了很多CDN实现的原理和细节，想吃透这本书，读一遍肯定是不够的，需要理解、思考、和长期实践才能真正的理解CDN这块内容。 在阅读此书之前，我仅仅是知道CDN可以提高内容的加载速度，通过将网站的资源图片等文件放到七牛的存储服务器中，会提高资源的加载效率，但是我没有测试过，也不知道其是如何做到的。经">
-<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
     
 
     
-        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml" />
+        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml">
     
 
     
-        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png" />
+        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -58,7 +58,7 @@ ga('send', 'pageview');
     
 
 </head>
-
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -71,7 +71,7 @@ ga('send', 'pageview');
                     </h1>
                     
                         <h2 class="subtitle-wrap">
-                            <p class="subtitle">多读书，多思考，未来会很好</p>
+                            <p class="subtitle">但行好事 莫问前程</p>
                         </h2>
                     
                 </div>
@@ -80,13 +80,13 @@ ga('send', 'pageview');
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
                                         
                                     
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
                             
@@ -95,14 +95,14 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -176,7 +176,7 @@ ga('send', 'pageview');
 <p>在阅读此书之前，我仅仅是知道CDN可以提高内容的加载速度，通过将网站的资源图片等文件放到七牛的存储<br>服务器中，会提高资源的加载效率，但是我没有测试过，也不知道其是如何做到的。<br>经过几个月的工作实践和阅读，我对CDN的理解更进一步。尤其是让我进一步了解了CDN和互联网这个概念。</p>
 <p>CDN是全称是(Content-Distribute-Network),中文直译名称：内容分发忘网络。简单说，CDN要做的是<br>将网络一端内容快速、准确的传输到用户面前。类似于现实世界的物流，将企业的商品，快速、安全的送达到<br>用户手中。</p>
 <p>现如今，互联网世界里的人都在大谈特谈互联网、互联网+，感觉自己作为一名互联网从业人员，并没有理解互<br>联网，它是人类几十年智慧的结晶，我知道真正理解它并不容易。《CDN技术详解》提到，互联网概念可以从<br>两层层面看:一层是狭义的互联网，一层是广义的互联网。</p>
-<p>狭义的互联网是以TCP／IP代表的网络层，也就是通过TCP／IP网络形成的互联网基础，将计算机链接起来，<br>实现了计算机之间的互联互通。广义的互联网也就是我们常说的互联网，它由以TCP／IP代表的网络层和<br>以WWW万维网为代表的应用层两层组成。  </p>
+<p>狭义的互联网是以TCP／IP代表的网络层，也就是通过TCP／IP网络形成的互联网基础，将计算机链接起来，<br>实现了计算机之间的互联互通。广义的互联网也就是我们常说的互联网，它由以TCP／IP代表的网络层和<br>以WWW万维网为代表的应用层两层组成。</p>
 <p>互联网的设计理念是中立和无控制的，任何人都有决定权，它的任务就是如何更好的将数据进行端对端的传输。</p>
 
         </div>
@@ -322,7 +322,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
-            <ul id="recent-post" class="">
+            <ul id="recent-post" class>
                 
                     <li>
                         
@@ -350,7 +350,7 @@ ga('send', 'pageview');
                             <a href="/2018/03/07/How-to-live-in-a-cruel-world/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
     
     
 </a>
@@ -370,7 +370,7 @@ ga('send', 'pageview');
                             <a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/WechatIMG56.jpeg)" alt="对雄安新区从不屑到关注" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg)" alt="聊聊也好" class="thumbnail-image"></span>
     
     
 </a>
@@ -379,7 +379,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">对雄安新区从不屑到关注</a></p>
+                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">聊聊也好</a></p>
                             <p class="item-date"><time datetime="2018-01-06T16:34:18.000Z" itemprop="datePublished">2018-01-07</time></p>
                         </div>
                     </li>
@@ -410,7 +410,7 @@ ga('send', 'pageview');
                             <a href="/2017/09/12/CDN-four-capter/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
     
     
 </a>
@@ -501,9 +501,9 @@ ga('send', 'pageview');
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 程康健</p>
+                <p>&copy; 2019 程康健</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
-                <p id="busuanzi_container_page_pv" style='display:none'>
+                <p id="busuanzi_container_page_pv" style="display:none">
                   本站已被访问<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>个访问本站小伙伴
                 </p>
             </div>

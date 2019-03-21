@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
     <title>CDN技术详解-内容缓存工作原理及实现 | 程是非sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="CDN" />
+        <meta name="keywords" content="CDN">
     
     <meta name="description" content="缓存（Cache）是CDN的基础技术和组成单元，从外部看，整个CDN像一个大的Cache向外部提供服务。  1 内容缓存技术的发展背景 随着网络内容和用户数量的增长，网站服务面临瓶颈。 为此，提高服务器硬件配置、后来出现多台服务器组成服务器集群负载分担，但这些都没有解决网络延迟、“最后一公里”等问题，所以，内容缓存技术出现了。 网站的问题和需求： 网站无法及时满足用户增长的需要； 不容易满足远处">
 <meta name="keywords" content="CDN">
@@ -16,20 +16,20 @@
 <meta property="og:site_name" content="程是非sky">
 <meta property="og:description" content="缓存（Cache）是CDN的基础技术和组成单元，从外部看，整个CDN像一个大的Cache向外部提供服务。  1 内容缓存技术的发展背景 随着网络内容和用户数量的增长，网站服务面临瓶颈。 为此，提高服务器硬件配置、后来出现多台服务器组成服务器集群负载分担，但这些都没有解决网络延迟、“最后一公里”等问题，所以，内容缓存技术出现了。 网站的问题和需求： 网站无法及时满足用户增长的需要； 不容易满足远处">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
-<meta property="og:updated_time" content="2017-09-20T06:17:32.000Z">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
+<meta property="og:updated_time" content="2019-03-21T02:05:16.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDN技术详解-内容缓存工作原理及实现">
 <meta name="twitter:description" content="缓存（Cache）是CDN的基础技术和组成单元，从外部看，整个CDN像一个大的Cache向外部提供服务。  1 内容缓存技术的发展背景 随着网络内容和用户数量的增长，网站服务面临瓶颈。 为此，提高服务器硬件配置、后来出现多台服务器组成服务器集群负载分担，但这些都没有解决网络延迟、“最后一公里”等问题，所以，内容缓存技术出现了。 网站的问题和需求： 网站无法及时满足用户增长的需要； 不容易满足远处">
-<meta name="twitter:image" content="http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
     
 
     
-        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml" />
+        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml">
     
 
     
-        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png" />
+        <link rel="icon" href="http://o9h84ok6f.bkt.clouddn.com/cheng%20%281%29.png">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -58,7 +58,7 @@ ga('send', 'pageview');
     
 
 </head>
-
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -71,7 +71,7 @@ ga('send', 'pageview');
                     </h1>
                     
                         <h2 class="subtitle-wrap">
-                            <p class="subtitle">多读书，多思考，未来会很好</p>
+                            <p class="subtitle">但行好事 莫问前程</p>
                         </h2>
                     
                 </div>
@@ -80,13 +80,13 @@ ga('send', 'pageview');
                     <div class="nav-container-inner">
                         <ul id="main-nav">
                             
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
                                         
                                     
-                                <li class="main-nav-list-item" >
+                                <li class="main-nav-list-item">
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
                             
@@ -95,14 +95,14 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -186,12 +186,12 @@ ga('send', 'pageview');
 </ul>
 <p>这些问题也是CDN致力于解决的问题；</p>
 <h4 id="CDN出现前的网站服务技术："><a href="#CDN出现前的网站服务技术：" class="headerlink" title="CDN出现前的网站服务技术："></a>CDN出现前的网站服务技术：</h4><h5 id="扩展技术-Scale-up／out"><a href="#扩展技术-Scale-up／out" class="headerlink" title="扩展技术 Scale up／out"></a>扩展技术 Scale up／out</h5><ul>
-<li>提高服务器硬件配置  </li>
+<li>提高服务器硬件配置</li>
 <li>采用服务器集群技术<h5 id="镜像技术-Mirroring"><a href="#镜像技术-Mirroring" class="headerlink" title="镜像技术 Mirroring"></a>镜像技术 Mirroring</h5></li>
-<li>镜像：数字媒体的服务能力和完整内容备份到网络上不同地址的另一个地方。  </li>
+<li>镜像：数字媒体的服务能力和完整内容备份到网络上不同地址的另一个地方。</li>
 <li>实现：对整个网站进行镜像复制，多点部署（不同地区不同运营商）。<h5 id="缓存技术"><a href="#缓存技术" class="headerlink" title="缓存技术"></a>缓存技术</h5></li>
-<li>缓存：访问过的内容储存起来，为后续重复访问使用。  </li>
-<li>缓存代理服务一定范围的访问域（分层缓存）。  </li>
+<li>缓存：访问过的内容储存起来，为后续重复访问使用。</li>
+<li>缓存代理服务一定范围的访问域（分层缓存）。</li>
 <li>CDN将内容缓存到离用户最近的地方实现就近服务；可以说，CDN就是在缓存技术的基础上发展起来的，</li>
 </ul>
 <p>也可以说，CDN是缓存的分布式集群实现。（负载均衡系统、运营管理系统是为了各个缓存节点更好的协同工作）<br>  CDN也可以理解为是（智能调度）+（分层缓存技术）的组合。</p>
@@ -199,13 +199,13 @@ ga('send', 'pageview');
 <ul>
 <li>根据内容不同，将Cache设备分为 Web Cache（只要用于网页内容和对象） 和 流媒体 Cache（主要用于视频流媒体加速服务）。   大多数设备厂商不会对两者进行区分。但是，CDN服务提供商会对两类服务分别进行开发和优化（内容类型、用户行为、内容更新的差异）。</li>
 <li>Web Cache：<ul>
-<li>WebCache作为一种网页缓存技术，可以在任何一个中间网元上实现。   </li>
-<li>通常，一次网页访问，会涉及四个关键网元：用户、代理、网关、Web服务器。   </li>
-<li>WebCache通常作为代理或网关部署在用户访问路径上。      </li>
-<li>部署位置不同，工作模式不同，对WebCache有不同的要求。   </li>
+<li>WebCache作为一种网页缓存技术，可以在任何一个中间网元上实现。</li>
+<li>通常，一次网页访问，会涉及四个关键网元：用户、代理、网关、Web服务器。</li>
+<li>WebCache通常作为代理或网关部署在用户访问路径上。</li>
+<li>部署位置不同，工作模式不同，对WebCache有不同的要求。</li>
 </ul>
 </li>
-<li>部署在代理位置时：透明代理、正向代理模式进行服务。   </li>
+<li>部署在代理位置时：透明代理、正向代理模式进行服务。</li>
 <li>部署在网关位置时：反向代理。（多数部署在网关）</li>
 </ul>
 <h4 id="代理模式："><a href="#代理模式：" class="headerlink" title="代理模式："></a>代理模式：</h4>  <!-- 我们主要使用的是反向代理 -->
@@ -217,14 +217,14 @@ ga('send', 'pageview');
 可以看作是通过网络设备和协议实现的正向代理工作模式。</li>
 </ol>
 <h4 id="WebCache-产品实现关键要素分析"><a href="#WebCache-产品实现关键要素分析" class="headerlink" title="WebCache 产品实现关键要素分析"></a>WebCache 产品实现关键要素分析</h4><ul>
-<li>WebCache应具备HTTP协议所描述的基本功能(转发访问请求)。     </li>
+<li>WebCache应具备HTTP协议所描述的基本功能(转发访问请求)。</li>
 <li>要根据应用场景和工作模式来确定WebCache具备的功能：</li>
 <li>面向企业时：主要考虑正向代理、透明代理、用户数量、并发链接数、流量大小、存储空间、缓存大小，以及数据分析、过滤和安全保障能力等情况</li>
 <li>面向Web站点时：主要考虑新增链接的处理能力、并发链接处理能力、存储空间和缓存大小等性能指标</li>
 </ul>
-<h2 id="3-Web-Cache的实现基础-基于HTTP协议的Web缓存技术"><a href="#3-Web-Cache的实现基础-基于HTTP协议的Web缓存技术" class="headerlink" title="3 Web Cache的实现基础 - 基于HTTP协议的Web缓存技术"></a>3 Web Cache的实现基础 - 基于HTTP协议的Web缓存技术</h2><h5 id="Web与HTTP"><a href="#Web与HTTP" class="headerlink" title="Web与HTTP"></a>Web与HTTP</h5><p>WEB：  </p>
+<h2 id="3-Web-Cache的实现基础-基于HTTP协议的Web缓存技术"><a href="#3-Web-Cache的实现基础-基于HTTP协议的Web缓存技术" class="headerlink" title="3 Web Cache的实现基础 - 基于HTTP协议的Web缓存技术"></a>3 Web Cache的实现基础 - 基于HTTP协议的Web缓存技术</h2><h5 id="Web与HTTP"><a href="#Web与HTTP" class="headerlink" title="Web与HTTP"></a>Web与HTTP</h5><p>WEB：</p>
 <ul>
-<li>互联网被大众接受，是万维网（World Wide Web）的诞生开始的。  </li>
+<li>互联网被大众接受，是万维网（World Wide Web）的诞生开始的。</li>
 <li>Web特性： 跨平台性、交互性</li>
 <li>Web三个精华之处：<ul>
 <li>用超文本技术 HTML 实现信息和信息的链接</li>
@@ -233,7 +233,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ul>
-<p>HTTP：  </p>
+<p>HTTP：</p>
 <ul>
 <li>HTTP请求前需建立好TCP链接；</li>
 <li>HTTP是无状态协议，每次请求和响应都是独立的。</li>
@@ -249,7 +249,7 @@ ga('send', 'pageview');
 </ul>
 <p>在HTTP1.1中，默认的是持续的带流水线的HTTP链接。对应的是HTTP 头中的 Connection: Keep-Alive（持久链接） or false（非持久链接）</p>
 <h5 id="HTTP工作方式：请求-响应"><a href="#HTTP工作方式：请求-响应" class="headerlink" title="HTTP工作方式：请求 + 响应"></a>HTTP工作方式：请求 + 响应</h5><!-- 实体，隧道？ -->
-<p>关键概念：连接、消息、请求、响应、资源、实体、客户端、服务器、源服务器、代理、网关、隧道、缓存<br>HTTP请求格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">请求方法 URL 版本号  </span><br><span class="line">通用头1： 通用头值1  </span><br><span class="line">...  </span><br><span class="line">通用头N： 通用头N  </span><br><span class="line">...</span><br><span class="line">请求头1: 请求头N  </span><br><span class="line">...  </span><br><span class="line">请求头： 请求头N</span><br><span class="line">实体头1: 实体头N  </span><br><span class="line">...  </span><br><span class="line">实体头： 实体头N</span><br><span class="line"></span><br><span class="line">实体内容</span><br></pre></td></tr></table></figure></p>
+<p>关键概念：连接、消息、请求、响应、资源、实体、客户端、服务器、源服务器、代理、网关、隧道、缓存<br>HTTP请求格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">请求方法 URL 版本号</span><br><span class="line">通用头1： 通用头值1</span><br><span class="line">...</span><br><span class="line">通用头N： 通用头N</span><br><span class="line">...</span><br><span class="line">请求头1: 请求头N</span><br><span class="line">...</span><br><span class="line">请求头： 请求头N</span><br><span class="line">实体头1: 实体头N</span><br><span class="line">...</span><br><span class="line">实体头： 实体头N</span><br><span class="line"></span><br><span class="line">实体内容</span><br></pre></td></tr></table></figure></p>
 <p>请求方式：GET、HEAD、POST、PUT、DELETE、TRACE、CONNECT<br>通用请求头：Connection、Date、Pragma、Transfer-Encoding、Upgrade、Via、Warning</p>
 <p>常用请求头：Accept Accept-Charset …</p>
 <p>此外还有响应格式、响应方式、响应头。</p>
@@ -263,10 +263,10 @@ ga('send', 'pageview');
 <li>使用缓存三大好处：减少延迟；减少网络损耗；降低服务器负载；</li>
 <li>HTTP协议定义了各种各样的缓存控制方法，合理使用，帮助提高网站服务能力；</li>
 <li>缓存工作的基本原则；<ul>
-<li>头信息设置不缓存 、源服务器认证或涉及安全协议，使请求内容不被缓存；  </li>
-<li>含有过期时间和寿命信息、且此内容没有过期、缓存内容近期提供过服务且最后更新时间相对于最近使用的时间较持久，使的不需要从源服务器重新获取内容；  </li>
-<li>若缓存内容已过期，缓存内容服务器向源服务器发出认证是否可以继续使用当前内容；  </li>
-<li>若网络中断，缓存内容在过期的情况下继续提供服务；  </li>
+<li>头信息设置不缓存 、源服务器认证或涉及安全协议，使请求内容不被缓存；</li>
+<li>含有过期时间和寿命信息、且此内容没有过期、缓存内容近期提供过服务且最后更新时间相对于最近使用的时间较持久，使的不需要从源服务器重新获取内容；</li>
+<li>若缓存内容已过期，缓存内容服务器向源服务器发出认证是否可以继续使用当前内容；</li>
+<li>若网络中断，缓存内容在过期的情况下继续提供服务；</li>
 <li>如果响应消息中不存在用于判断内容是否变化的值（ETag、Last-Modified），且没有任何新鲜度的消息，内容不会被缓存。</li>
 </ul>
 </li>
@@ -290,7 +290,7 @@ ga('send', 'pageview');
 <li>Cache认为缓存内容是足够新的，不会去源站请求；（1.完整的过期时间和寿命控制头信息；2.缓存内容被使用过，并检查过新鲜度。）</li>
 <li>如果缓存内容很旧了，会向源站进行验证是否继续可用，如果可用将避免重新获取。<br>（根据经验，一般html文件、图片等静态资源会被缓存；而动态资源一般不会被缓存。）</li>
 </ol>
-<h5 id="Web-Cache-协议优化"><a href="#Web-Cache-协议优化" class="headerlink" title="Web Cache 协议优化"></a>Web Cache 协议优化</h5><p>对Web Cache的性能优化除了可以从存储机制、内容更新机制入手，也可以从协议优化入手；  </p>
+<h5 id="Web-Cache-协议优化"><a href="#Web-Cache-协议优化" class="headerlink" title="Web Cache 协议优化"></a>Web Cache 协议优化</h5><p>对Web Cache的性能优化除了可以从存储机制、内容更新机制入手，也可以从协议优化入手；</p>
 <p>优化方法：</p>
 <ol>
 <li>HTTP链接聚合(把多个短链接聚合成一个长链接，减少频繁开启关闭TCP链接带来的资源消耗)</li>
@@ -455,7 +455,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
-            <ul id="recent-post" class="">
+            <ul id="recent-post" class>
                 
                     <li>
                         
@@ -483,7 +483,7 @@ ga('send', 'pageview');
                             <a href="/2018/03/07/How-to-live-in-a-cruel-world/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
     
     
 </a>
@@ -503,7 +503,7 @@ ga('send', 'pageview');
                             <a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/WechatIMG56.jpeg)" alt="对雄安新区从不屑到关注" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg)" alt="聊聊也好" class="thumbnail-image"></span>
     
     
 </a>
@@ -512,7 +512,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">对雄安新区从不屑到关注</a></p>
+                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">聊聊也好</a></p>
                             <p class="item-date"><time datetime="2018-01-06T16:34:18.000Z" itemprop="datePublished">2018-01-07</time></p>
                         </div>
                     </li>
@@ -543,7 +543,7 @@ ga('send', 'pageview');
                             <a href="/2017/09/12/CDN-four-capter/" class="thumbnail">
     
     
-        <span style="background-image:url(http://o9h4emdrs.bkt.clouddn.com/CDN%20Globe.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg)" alt="CDN技术详解-集群服务和负载均衡技术" class="thumbnail-image"></span>
     
     
 </a>
@@ -634,9 +634,9 @@ ga('send', 'pageview');
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 程康健</p>
+                <p>&copy; 2019 程康健</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
-                <p id="busuanzi_container_page_pv" style='display:none'>
+                <p id="busuanzi_container_page_pv" style="display:none">
                   本站已被访问<span id="busuanzi_value_site_pv"></span>次，您是第<span id="busuanzi_value_site_uv"></span>个访问本站小伙伴
                 </p>
             </div>
