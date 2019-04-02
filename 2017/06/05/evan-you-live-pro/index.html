@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>尤雨溪知乎Live总结 下篇 | 程是非sky</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="javascript,vue">
+    
+    <meta name="description" content="状态管理flux、redux、vuex、mobx、Rx.js… 本质：从源事件映射到状态的迁移（改变），映射到UI的改变。按钮 --1--&amp;gt; 状态 --2--&amp;gt;  UI 声明式渲染解决了从状态到UI的映射 状态管理解决的是事件到状态的映射，将这部分代码抽离出来，管理好，维护好，是状态管理工具做的事情。 redux和mobx体现两种截然不同的思维方式或者说范式，redux强调数据不改变，">
+<meta name="keywords" content="javascript,vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尤雨溪知乎Live总结 下篇">
+<meta property="og:url" content="http://www.chengkangjian.com/2017/06/05/evan-you-live-pro/index.html">
+<meta property="og:site_name" content="程是非sky">
+<meta property="og:description" content="状态管理flux、redux、vuex、mobx、Rx.js… 本质：从源事件映射到状态的迁移（改变），映射到UI的改变。按钮 --1--&amp;gt; 状态 --2--&amp;gt;  UI 声明式渲染解决了从状态到UI的映射 状态管理解决的是事件到状态的映射，将这部分代码抽离出来，管理好，维护好，是状态管理工具做的事情。 redux和mobx体现两种截然不同的思维方式或者说范式，redux强调数据不改变，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/vuepic.jpg">
+<meta property="og:updated_time" content="2019-03-21T05:13:25.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="尤雨溪知乎Live总结 下篇">
+<meta name="twitter:description" content="状态管理flux、redux、vuex、mobx、Rx.js… 本质：从源事件映射到状态的迁移（改变），映射到UI的改变。按钮 --1--&amp;gt; 状态 --2--&amp;gt;  UI 声明式渲染解决了从状态到UI的映射 状态管理解决的是事件到状态的映射，将这部分代码抽离出来，管理好，维护好，是状态管理工具做的事情。 redux和mobx体现两种截然不同的思维方式或者说范式，redux强调数据不改变，">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/vuepic.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="程是非sky" type="application/atom+xml">
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">但行好事 莫问前程</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-evan-you-live-pro" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        尤雨溪知乎Live总结 下篇
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/06/05/evan-you-live-pro/" class="article-date">
+            <time datetime="2017-06-05T12:04:38.000Z" itemprop="datePublished">2017-06-05</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript/">javascript</a>, <a class="tag-link" href="/tags/vue/">vue</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h2><p>flux、redux、vuex、mobx、Rx.js…</p>
+<p>本质：从源事件映射到状态的迁移（改变），映射到UI的改变。<br><code>按钮 --1--&gt; 状态 --2--&gt;  UI</code></p>
+<p>声明式渲染解决了从状态到UI的映射</p>
+<p>状态管理解决的是事件到状态的映射，将这部分代码抽离出来，管理好，维护好，是状态管理工具做的事情。</p>
+<p>redux和mobx体现两种截然不同的思维方式或者说范式，redux强调数据不改变，reducer拿到原来的state和action返回的是一个新的state。mobox和vue中数据是可变的。</p>
+<p><a href="https://jsfiddle.net/yyx990803/0a22ojps/" target="_blank" rel="noopener">把 Vue 当 redux 用</a><br><a href="https://jsfiddle.net/yyx990803/f5a24dk3/" target="_blank" rel="noopener">让 Vue 当 MobX 用</a></p>
+<p>这些方案都没有回答如何处理异步，mobx和vuex的异步处理，就是你在action里想怎么搞怎么搞。</p>
+<p>一般的CRUD操作，不存在太复杂的异步，杀鸡不用牛刀。<br>如果遇到复杂的场景，如服务端推送、实时、同时请求。，可以考虑Rx.js处理，Rx.js最适合处理事件流。<br><a href="http://reactivex.io/" target="_blank" rel="noopener">Rx.js</a><br><a href="https://cycle.js.org/" target="_blank" rel="noopener">Cycle.js</a></p>
+<p>状态的改变在vuex这些工具中需要在mutation中写出来。如果在使用Rx.js的场景下，直接从事件源，映射到结果。其中为代表的是Cycle.js，从头到尾就是一个流，从获取事件是一个流、到状态改变是一个流、到更新dom是一个流。</p>
+<p>组件状态和全局状态如何区分，至今也没有一个好的区分方案。</p>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>传统的路由思想，比较早的是从Ember.js这个框架中出现单页应用的路由。<br>自从react和vue这些框架出现以后，会发现，把组件和路由解耦是可行的，而且更加灵活，另一个启示是从组件出发思考，<strong>路由就是将url映射到组件的一个过程。</strong></p>
+<p>url到组件的映射，从url出发还是状态出发，其实url就是一个状态。<br>这样的话，一个简单的路由，就是一个动态组件，在vue里面就是component is，在react里就是一个对象表，通过key去渲染。<br>那是一个假象，完整的路由系统要考虑：hash模式和history模式兼容、懒加载、钩子、跳转…其实这是有些复杂度的。</p>
+<p>react-router4是一个去中心化的路由方案，类似通过功能性组件（组件做路由）实现。</p>
+<p>Web路由和APP路由区别:切换方式的区别</p>
+<p>Web路由：二级切换，切换即替换<br>APP路由：卡碟式切换，切换即覆盖</p>
+<h2 id="CSS方案"><a href="#CSS方案" class="headerlink" title="CSS方案"></a>CSS方案</h2><h4 id="主流的-CSS-方案"><a href="#主流的-CSS-方案" class="headerlink" title="主流的 CSS 方案"></a>主流的 CSS 方案</h4><ul>
+<li>跟 JS 完全解耦，靠预处理器和比如 BEM 这样的规范来保持可维护性，偏传统</li>
+<li>CSS Modules，依然是 CSS，但是通过编译来避免 CSS 类名的全局冲突 （命名随机化避免命名冲突）</li>
+<li>各类 CSS-in-JS 方案，React 社区为代表，比较激进</li>
+<li>Vue 的单文件组件 CSS，或是 Angular 的组件 CSS（写在装饰器里面），一种比较折中的方案</li>
+</ul>
+<h4 id="比较要结合场景"><a href="#比较要结合场景" class="headerlink" title="比较要结合场景"></a>比较要结合场景</h4><p>在单页应用的场景下，使用BEM相当于平行的维护了两套结构，一套是组件结构，一套是规范结构。将两者统一是比较好的方案。</p>
+<h4 id="css-in-js"><a href="#css-in-js" class="headerlink" title="css in js"></a>css in js</h4><p><a href="https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660" target="_blank" rel="noopener">https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660</a></p>
+<p><a href="https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660" target="_blank" rel="noopener">https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660</a></p>
+<p>传统 css 的一些问题：</p>
+<ol>
+<li>作用域 （解决的已经很好了，css module， inline sytle ，vue scoped）</li>
+<li>Critical CSS （仅导出页面相对应的css代码，不加载不必要的css代码）</li>
+<li>Atomic CSS （减小体积）</li>
+<li>分发复用</li>
+<li>跨平台复用</li>
+</ol>
+<p>css in js 通过运行时能较好的解决问题2。</p>
+<h4 id="在vue里-使用CSS-Modules-会不会比-使用-scoped-好？"><a href="#在vue里-使用CSS-Modules-会不会比-使用-scoped-好？" class="headerlink" title="在vue里 使用CSS Modules 会不会比 使用 scoped 好？"></a>在vue里 使用CSS Modules 会不会比 使用 scoped 好？</h4><p>没有本质区别，scoped成本更低，但是导出的页面更大。css module一定程度运行时的代价，因为需要动态的class绑定，区别不大。</p>
+<p>Atomic CSS：原子类css，将公共的共享的样式类抽象成原子类，最终的体积会比较小。<br>分发复用：css in js都是javascript,可以像普通javascript一样分发的npm上进行复用：其实css放到包里也可以发布到npm上进行复用的，不算是个大优势。<br>跨平台复用：css in js跨平台复用，其实css 也可以pass成javascript进行跨平台复用的。</p>
+<p>这个方案，不一定好，态度保留。</p>
+<h2 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h2><p>出现背景：平台越来越强 要求越来越高  任务复杂度  工具复杂度</p>
+<p>构建工具解决的其实是几方面的问题：</p>
+<ul>
+<li>任务的自动化</li>
+<li>开发体验和效率（新的语言功能，语法糖，hot reload 等等）</li>
+<li>部署相关的需求</li>
+<li>编译时优化</li>
+</ul>
+<p>grunt - gulp - webpack - rollup - systemjs，这些构建工具中，主打一切皆模块的webpack脱颖而出。</p>
+<p>大多数情况下 npm script + webpack 组合就可以了。</p>
+<p>最终代码跑在浏览器里，这个限制要求我们必须构建，因为我们没有浏览器的控制权。</p>
+<p>现在前端的构建工具链很完善了。html 、css 、js 都有自己的构建工具，只需写转换规则就好。</p>
+<p><a href="https://www.zhihu.com/question/20790576" target="_blank" rel="noopener">关于部署的一个文章</a></p>
+<p>部署优化：请求合并（打包），静态资源路径映射，小尺寸资源内联，代码分割、时间戳。<br>webpack复杂是因为解决的问题本来就很复杂。<br>rollup简单优雅，因为做的事情简单。</p>
+<p>构建时优化</p>
+<h2 id="服务端数据通信"><a href="#服务端数据通信" class="headerlink" title="服务端数据通信"></a>服务端数据通信</h2><p>restful api  ==&gt; crud</p>
+<p>实时数据库firebase、<a href="http://horizon.io/" target="_blank" rel="noopener">horizon</a> ==&gt; 数据实时性</p>
+<p>数据关联性 <a href="http://graphql.org/learn/" target="_blank" rel="noopener">graphQL</a>:暴露一个接口，急于图的查询而不是表，对复杂关联数据的获取，数数据量的优化也更加精确。</p>
+<h4 id="服务端的数据是否应该放在store里面去？"><a href="#服务端的数据是否应该放在store里面去？" class="headerlink" title="服务端的数据是否应该放在store里面去？"></a>服务端的数据是否应该放在store里面去？</h4><p>有些多此一举，因为改还是需要通过接口改。</p>
+<h2 id="跨平台渲染"><a href="#跨平台渲染" class="headerlink" title="跨平台渲染"></a>跨平台渲染</h2><p>React native 、 Weex<br>本质：设计框架的时候，框架的渲染机制和dom解耦。<br>ReactNative 针对每一个平台设计渲染引擎。</p>
+<h2 id="新规范"><a href="#新规范" class="headerlink" title="新规范"></a>新规范</h2><p><a href="https://www.webcomponents.org/" target="_blank" rel="noopener">Web Component</a></p>
+<p><a href="http://webassembly.org/" target="_blank" rel="noopener">webassembly</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们聊了很多东西，可能比较杂，但我希望大家发现其中一些共性的东西：<br>技术方案都是<strong>先有问题，再有思路</strong>，同时伴随着取舍。<strong>在选择衡量技术的时候，尽量去思考这个技术背后是在解决什么问题</strong>，它做了怎样的取舍。这样一方面可以帮助我们更好的理解和使用这些技术，也为以后哪天你遇到业务中的特殊情况，需要自己做方案的时候打好基础。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h4 id="关于react和vue具体的技术选型能举个例子来说明这两个框架所适用的场景吗？"><a href="#关于react和vue具体的技术选型能举个例子来说明这两个框架所适用的场景吗？" class="headerlink" title="关于react和vue具体的技术选型能举个例子来说明这两个框架所适用的场景吗？"></a>关于react和vue具体的技术选型能举个例子来说明这两个框架所适用的场景吗？</h4><pre><code>适用场景几乎差不多。
+</code></pre><h4 id="对于前端框架的学习需要到什么程度才算比较好？熟悉源码？理解思想？还是其他什么？"><a href="#对于前端框架的学习需要到什么程度才算比较好？熟悉源码？理解思想？还是其他什么？" class="headerlink" title="对于前端框架的学习需要到什么程度才算比较好？熟悉源码？理解思想？还是其他什么？"></a>对于前端框架的学习需要到什么程度才算比较好？熟悉源码？理解思想？还是其他什么？</h4><pre><code>理解思想更重要，学习源码，吸收设计原理和方案对做业务没啥帮助。
+</code></pre><h4 id="vue现在一直在推后端渲染的模式，是为了seo么？现在前端的性能在不断提高，不是应该前端渲染的发展趋势更好么？"><a href="#vue现在一直在推后端渲染的模式，是为了seo么？现在前端的性能在不断提高，不是应该前端渲染的发展趋势更好么？" class="headerlink" title="vue现在一直在推后端渲染的模式，是为了seo么？现在前端的性能在不断提高，不是应该前端渲染的发展趋势更好么？"></a>vue现在一直在推后端渲染的模式，是为了seo么？现在前端的性能在不断提高，不是应该前端渲染的发展趋势更好么？</h4><pre><code>TTC 直出的价值 让用户早一点再早一点看到界面
+</code></pre><h4 id="现在HTTP-2越来越普及，前端构建工具在针对HTTP-2上怎么去找一个平衡点呢？"><a href="#现在HTTP-2越来越普及，前端构建工具在针对HTTP-2上怎么去找一个平衡点呢？" class="headerlink" title="现在HTTP/2越来越普及，前端构建工具在针对HTTP/2上怎么去找一个平衡点呢？"></a>现在HTTP/2越来越普及，前端构建工具在针对HTTP/2上怎么去找一个平衡点呢？</h4><pre><code>实际测量才能有的谈
+</code></pre>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://www.chengkangjian.com/2017/06/05/evan-you-live-pro/" data-id="cjtzq9ssx000m3lh46xp717c7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "程康健"
+        },
+        "headline": "尤雨溪知乎Live总结 下篇",
+        "image": "http://www.chengkangjian.comhttp://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/vuepic.jpg",
+        "keywords": "javascript vue",
+        "genre": "",
+        "datePublished": "2017-06-05",
+        "dateCreated": "2017-06-05",
+        "dateModified": "2019-03-21",
+        "url": "http://www.chengkangjian.com/2017/06/05/evan-you-live-pro/",
+        "description": "状态管理flux、redux、vuex、mobx、Rx.js…
+本质：从源事件映射到状态的迁移（改变），映射到UI的改变。按钮 --1--&gt; 状态 --2--&gt;  UI
+声明式渲染解决了从状态到UI的映射
+状态管理解决的是事件到状态的映射，将这部分代码抽离出来，管理好，维护好，是状态管理工具做的事情。
+redux和mobx体现两种截然不同的思维方式或者说范式，redux强调数据不改变，"
+        "wordCount": 216
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="zhihu" href="https://www.zhihu.com/people/chengkj" target="_blank" rel="noopener">
+                        <i class="icon fa fa-zhihu"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/chengkj99" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/chengkangjian" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/chengkangjian" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/07/14/luqispeech/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            【转】陆奇最新演讲：如何成为一个优秀的工程师
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/06/05/evan-you-live/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">尤雨溪知乎Live总结 上篇</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/03/26/about-select/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/selection.jpg)" alt="你有你的计划，世界另有安排 - 选择" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/03/26/about-select/" class="title">你有你的计划，世界另有安排 - 选择</a></p>
+                            <p class="item-date"><time datetime="2019-03-26T12:35:21.000Z" itemprop="datePublished">2019-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/11/what-is-god/" class="thumbnail">
+    
+    
+        <span style="background-image:url(../images/god.jpg)" alt="我好像知道了上帝是谁" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/11/11/what-is-god/" class="title">我好像知道了上帝是谁</a></p>
+                            <p class="item-date"><time datetime="2018-11-11T02:40:42.000Z" itemprop="datePublished">2018-11-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/07/How-to-live-in-a-cruel-world/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/live.jpg)" alt="如何在残酷的世界中好好生活" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/03/07/How-to-live-in-a-cruel-world/" class="title">如何在残酷的世界中好好生活</a></p>
+                            <p class="item-date"><time datetime="2018-03-07T15:00:02.000Z" itemprop="datePublished">2018-03-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg)" alt="聊聊也好" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/01/07/A-change-in-the-attitude-of-the-XiongAn/" class="title">聊聊也好</a></p>
+                            <p class="item-date"><time datetime="2018-01-06T16:34:18.000Z" itemprop="datePublished">2018-01-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/14/unknow/" class="thumbnail">
+    
+    
+        <span style="background-image:url(../images/wheat.png)" alt="我的无知" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/12/14/unknow/" class="title">我的无知</a></p>
+                            <p class="item-date"><time datetime="2017-12-14T13:53:19.000Z" itemprop="datePublished">2017-12-14</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思考/">思考</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我/">我</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷开发/">敏捷开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转发/">转发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/选择/">选择</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CDN/" style="font-size: 14.29px;">CDN</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 18.57px;">javascript</a> <a href="/tags/vue/" style="font-size: 15.71px;">vue</a> <a href="/tags/webpack/" style="font-size: 11.43px;">webpack</a> <a href="/tags/互联网/" style="font-size: 11.43px;">互联网</a> <a href="/tags/学习/" style="font-size: 11.43px;">学习</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/心情/" style="font-size: 12.86px;">心情</a> <a href="/tags/思考/" style="font-size: 20px;">思考</a> <a href="/tags/感悟/" style="font-size: 12.86px;">感悟</a> <a href="/tags/成长/" style="font-size: 17.14px;">成长</a> <a href="/tags/我/" style="font-size: 12.86px;">我</a> <a href="/tags/敏捷开发/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/生活/" style="font-size: 14.29px;">生活</a> <a href="/tags/转发/" style="font-size: 10px;">转发</a> <a href="/tags/选择/" style="font-size: 10px;">选择</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 程康健</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://www.chengkangjian.com/2017/06/05/evan-you-live-pro/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
