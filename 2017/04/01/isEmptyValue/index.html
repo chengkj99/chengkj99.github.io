@@ -49,6 +49,18 @@
         <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
     
     
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93092041-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
     
 
 
@@ -188,7 +200,7 @@
 <li>null</li>
 <li>undefined</li>
 </ul>
-<p>由于在JavaScript中的所有事物都是对象，所以需要先进行对象类型的判断，然后再根据不同的类型进行处理。typeof主要进行基本数据类型的检测，在这里不适用。考虑到<a href="http://www.chengkangjian.com/2017/02/13/javascript%E5%AE%89%E5%85%A8%E7%B1%BB%E5%9E%8B%E7%9B%91%E6%B5%8B/" target="_blank" rel="noopener">javascript安全的类型监测</a>，所以在这里如果使用instanceof在多个JS框架环境中使用并不保险。<br>所以安全起见，还是使用<code>Object.prototype.toString.call()</code>比较靠谱。</p>
+<p>由于在JavaScript中的所有事物都是对象，所以需要先进行对象类型的判断，然后再根据不同的类型进行处理。typeof主要进行基本数据类型的检测，在这里不适用。考虑到<a href="http://www.chengkangjian.com/2017/02/13/javascript%E5%AE%89%E5%85%A8%E7%B1%BB%E5%9E%8B%E7%9B%91%E6%B5%8B/">javascript安全的类型监测</a>，所以在这里如果使用instanceof在多个JS框架环境中使用并不保险。<br>所以安全起见，还是使用<code>Object.prototype.toString.call()</code>比较靠谱。</p>
 <p>下面就根据以上的想法产出了下面这段代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">function isEmptyVal (val) &#123;</span><br><span class="line">  let type;</span><br><span class="line">  let isEmptyObj = function (obj) &#123;</span><br><span class="line">    for (let name in val) &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">    return true</span><br><span class="line">  &#125;</span><br><span class="line">  type = Object.prototype.toString.call(val).slice(8, -1)</span><br><span class="line">  switch (type) &#123;</span><br><span class="line">    case &apos;Array&apos;:</span><br><span class="line">      return !val.length</span><br><span class="line">    case &apos;String&apos;:</span><br><span class="line">      return !val.trim()</span><br><span class="line">    case &apos;Object&apos;:</span><br><span class="line">      return isEmptyObj(val)</span><br><span class="line">    case &apos;Null&apos;:</span><br><span class="line">      return true</span><br><span class="line">    case &apos;Undefined&apos;:</span><br><span class="line">      return true</span><br><span class="line">    default:</span><br><span class="line">      return false</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let isEmptyVal1 = isEmptyVal(&apos;&apos;)</span><br><span class="line">let isEmptyVal2 = isEmptyVal(&#123;&#125;)</span><br><span class="line">let isEmptyVal3 = isEmptyVal([])</span><br><span class="line">let isEmptyVal4 = isEmptyVal(null)</span><br><span class="line">let isEmptyVal5 = isEmptyVal(undefined)</span><br><span class="line">let isEmptyVal6 = isEmptyVal(&apos; &apos;)</span><br><span class="line"></span><br><span class="line">console.log(isEmptyVal1) //true</span><br><span class="line">console.log(isEmptyVal2) //true</span><br><span class="line">console.log(isEmptyVal3) //true</span><br><span class="line">console.log(isEmptyVal4) //true</span><br><span class="line">console.log(isEmptyVal5) //true</span><br><span class="line">console.log(isEmptyVal6) //true</span><br></pre></td></tr></table></figure>
 
@@ -196,67 +208,42 @@
         <footer class="article-footer">
             
 
-
-
-    <a data-url="http://www.chengkangjian.com/2017/04/01/isEmptyValue/" data-id="cjtzq9st3000x3lh455f5582u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
 <script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
 
         </footer>
     </div>
@@ -279,7 +266,7 @@
         "description": "前端在开发过程中，经常会遇到后端传过来的数据为空的情况，如果我知道确定的数据类型还比较容易判断，但有时候类型是不确定的，比如数组类型，在数组为空的时候，不知道返回的是[] 还是 null，这个时候如果冒然的使用Array.length()进行判断，当返回的空数组的值不是[]而是null时就会出现问题。
 于是我就想写段代码，去检测数据是否为空，以后直接调用它便是。
 我将如下的数据值定义为空值，其他值"
-        "wordCount": 234
+        "wordCount": 232
     }
 </script>
 
@@ -528,7 +515,7 @@
             <ul>
                 
                     <li>
-                        <a href="http://hexo.io">Hexo</a>
+                        <a href="http://chengkangjian.lofter.com/">Lofter Blog</a>
                     </li>
                 
             </ul>
@@ -562,7 +549,16 @@
 
             </div>
         </div>
+        <div style="position: absolute; bottom: 0; right: 0;">
+            <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+              </span>
+        </div>
     </div>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </footer>
 
         
