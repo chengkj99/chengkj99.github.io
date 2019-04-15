@@ -276,11 +276,14 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <section id="comments">
     
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+    <div id="valine-thread"></div>
+
 
     
+    
+    <div id="valine-thread"></div>
+
+
     </section>
 
 
@@ -564,20 +567,23 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
         
     
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
     <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    var disqus_url = 'http://www.chengkangjian.com/2017/08/18/Capriccio-01/';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+        console.log('UUUUUUUUUUUUUUUUUUUUUU', Valine)
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'F6jFQaG21HE6wUeYaXTSccnG-gzGzoHsz',
+            app_key: 'xvsqUs1Nt3LtHilVGzspzqvk',
+            placeholder: 'Just Do It',
+            pageSize: '10',
+            avatar: 'identicon',
+            avatar_cdn:  'https://gravatar.loli.net/avatar/'
+        });
     </script>
+
 
 
 
