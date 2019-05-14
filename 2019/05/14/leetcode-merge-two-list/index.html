@@ -6,26 +6,26 @@
     
 
     
-    <title>CDN技术详解-CDN技术概述 | 程是非sky</title>
+    <title>LeetCode 合并两个有序链表 | 程是非sky</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="CDN">
+        <meta name="keywords" content="leetcode">
     
-    <meta name="description" content="CDN原理1.选择最优设备为用户服务；2.如果某个内容被用户所需要，他会被缓存在就近节点。   数百台CDN服务器（Cache）部署在IDC机房中，CDN服务器在Cache中复制内容，当内容提供者更新内容时，CDN向Cache重新分发。CDN提供一种机制，当用户请求内容时，该内容能被最快提供内容的Cache向用户提供。这个挑选最优的过程称之为负载均衡。CDN：内容缓存、负载均衡、流媒体加速、动态">
-<meta name="keywords" content="CDN">
+    <meta name="description" content="合并两个有序链表将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例: 12输入：1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4输出：1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4 解题: 123456789101112131415161718192021222324252627282930313233343536373839">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CDN技术详解-CDN技术概述">
-<meta property="og:url" content="http://www.chengkangjian.com/2017/09/05/CDN-two-capter/index.html">
+<meta property="og:title" content="LeetCode 合并两个有序链表">
+<meta property="og:url" content="http://www.chengkangjian.com/2019/05/14/leetcode-merge-two-list/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="CDN原理1.选择最优设备为用户服务；2.如果某个内容被用户所需要，他会被缓存在就近节点。   数百台CDN服务器（Cache）部署在IDC机房中，CDN服务器在Cache中复制内容，当内容提供者更新内容时，CDN向Cache重新分发。CDN提供一种机制，当用户请求内容时，该内容能被最快提供内容的Cache向用户提供。这个挑选最优的过程称之为负载均衡。CDN：内容缓存、负载均衡、流媒体加速、动态">
+<meta property="og:description" content="合并两个有序链表将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例: 12输入：1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4输出：1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4 解题: 123456789101112131415161718192021222324252627282930313233343536373839">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
-<meta property="og:updated_time" content="2019-03-21T02:05:19.426Z">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/leetcode.png">
+<meta property="og:updated_time" content="2019-05-14T10:51:10.511Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CDN技术详解-CDN技术概述">
-<meta name="twitter:description" content="CDN原理1.选择最优设备为用户服务；2.如果某个内容被用户所需要，他会被缓存在就近节点。   数百台CDN服务器（Cache）部署在IDC机房中，CDN服务器在Cache中复制内容，当内容提供者更新内容时，CDN向Cache重新分发。CDN提供一种机制，当用户请求内容时，该内容能被最快提供内容的Cache向用户提供。这个挑选最优的过程称之为负载均衡。CDN：内容缓存、负载均衡、流媒体加速、动态">
-<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
+<meta name="twitter:title" content="LeetCode 合并两个有序链表">
+<meta name="twitter:description" content="合并两个有序链表将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例: 12输入：1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4输出：1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4 解题: 123456789101112131415161718192021222324252627282930313233343536373839">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/leetcode.png">
     
 
     
@@ -155,14 +155,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-CDN-two-capter" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-leetcode-merge-two-list" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        CDN技术详解-CDN技术概述
+        LeetCode 合并两个有序链表
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/09/05/CDN-two-capter/" class="article-date">
-            <time datetime="2017-09-05T11:32:10.000Z" itemprop="datePublished">2017-09-05</time>
+        <a href="/2019/05/14/leetcode-merge-two-list/" class="article-date">
+            <time datetime="2019-05-14T06:50:18.000Z" itemprop="datePublished">2019-05-14</time>
         </a>
     </div>
 
@@ -182,27 +182,21 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/CDN/">CDN</a>
+        <a class="tag-link" href="/tags/leetcode/">leetcode</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <blockquote>
-<p>CDN原理<br>1.选择最优设备为用户服务；2.如果某个内容被用户所需要，他会被缓存在就近节点。</p>
-</blockquote>
-<blockquote>
-<p>数百台CDN服务器（Cache）部署在IDC机房中，CDN服务器在Cache中复制内容，当内容提供者更新内容时，CDN向Cache重新分发。<br>CDN提供一种机制，当用户请求内容时，该内容能被最快提供内容的Cache向用户提供。这个挑选最优的过程称之为负载均衡。<br>CDN：内容缓存、负载均衡、流媒体加速、动态内容加速</p>
-</blockquote>
-<h2 id="1-功能架构"><a href="#1-功能架构" class="headerlink" title="1 功能架构"></a>1 功能架构</h2><p>功能架构在2003年相对稳定。<br>CDN系统架构：内容分发系统、负载均衡系统、运营管理系统。</p>
-<p>内容分发系统：<br>一般由缓存服务器承担。作用是从内容源中心向边缘缓存和推送的内容（内容同步，向客户提供）。<br>含有多个子系统，如：网页加速子系统、流媒体加速子系统应用加速子系统等，这是衡量CDN服务能力的指标。<br>在承担内容同步、响应用户需求外，还要提供每个设备的响应情况、健康状况等信息。（以供调度决策使用哪个缓存组进行服务）</p>
-<p>负载均衡系统：<br><!-- 什么是本地本地负载均衡系统: 就是边缘缓存组的负载均衡--><br>也称调度系统，分为：全局负载均衡系统GSLB、本地负载均衡系统SLB。<br>运营管理系统：<br><!-- 和我们的现有的区别？ --><br>包含：运营管理 和 网络管理 两个子系统。<br>运营管理：业务层面的管理。包含客户、计费、产品、统计分析等管理。<br>网络管理：网络设备管理、拓扑管理、链路监控、故障管理等全网资源集中化的管理。</p>
-<h3 id="2-部署架构"><a href="#2-部署架构" class="headerlink" title="2 部署架构"></a>2 部署架构</h3><p>一般典型的三层架构：边缘层（边缘节点、POP节点）、区域层、中心层。<br>中心层可能承担服务响应请求的功能，也有可能只向下级节点服务。<br>无论是缓存节点还是中心节点均有 负载均衡设备 和 Cache设备构成。</p>
-<!-- 我们用的是 DR(Direct Router)模式 -->
-<p>Cache设备 和 负载均衡设备的链接一般方式两种：旁路（SLB交换机实现）和穿越（并联、公共的IP地址、软件实现）方式。</p>
-<h3 id="3-CDN系统分类"><a href="#3-CDN系统分类" class="headerlink" title="3 CDN系统分类"></a>3 CDN系统分类</h3><p>CDN发展和互联网发展相辅相成；<br>可以从两个视角进行分类： 1.不同服务承载类型；2.不同内容生成机制；<br>基于不同服务承载类型：1.网页加速；2.流媒体加速；3.文件传输加速；4.应用协议加速；</p>
-<p>基于不同内容生成机制：<br>互联网的内容主要有两类：1.静态内容；2.动态内容；<br>Web网站系统在逻辑上划分三个层次：变现层、业务逻辑层、数据访问层。</p>
+            <p>合并两个有序链表<br>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：<span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">4</span>, <span class="number">1</span>-&gt;<span class="number">3</span>-&gt;<span class="number">4</span></span><br><span class="line">输出：<span class="number">1</span>-&gt;<span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">3</span>-&gt;<span class="number">4</span>-&gt;<span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p><strong>解题:</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;ListNode&#125; l1</span></span><br><span class="line"><span class="comment"> * @param &#123;ListNode&#125; l2</span></span><br><span class="line"><span class="comment"> * @return &#123;ListNode&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历解法</span></span><br><span class="line"><span class="keyword">var</span> mergeTwoLists = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> head = &#123; <span class="attr">val</span>: <span class="number">-1</span>, <span class="attr">next</span>: <span class="literal">null</span> &#125;</span><br><span class="line">  <span class="keyword">let</span> curNode = head</span><br><span class="line">  <span class="keyword">while</span> (l1 &amp;&amp; l2) &#123;</span><br><span class="line">    <span class="keyword">if</span> (l1.val &lt; l2.val) &#123;</span><br><span class="line">      curNode.next = l1</span><br><span class="line">      l1 = l1.next</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      curNode.next = l2</span><br><span class="line">      l2 = l2.next</span><br><span class="line">    &#125;</span><br><span class="line">    curNode = curNode.next</span><br><span class="line">  &#125;</span><br><span class="line">  curNode.next = l1 ? l1 : l2</span><br><span class="line">  <span class="keyword">return</span> head.next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 递归解法</span></span><br><span class="line"><span class="keyword">var</span> mergeTwoLists = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!l1) &#123;</span><br><span class="line">    <span class="keyword">return</span> l2</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!l2) &#123;</span><br><span class="line">    <span class="keyword">return</span> l1</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (l1.val &lt; l2.val) &#123;</span><br><span class="line">    l1.next = mergeTwoLists(l1.next, l2)</span><br><span class="line">    <span class="keyword">return</span> l1</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    l2.next = mergeTwoLists(l2.next, l1)</span><br><span class="line">    <span class="keyword">return</span> l2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;V</span><br></pre></td></tr></table></figure>
+<p><strong>解题思路:</strong></p>
+<p>遍历解法：同时不断遍历两个链表，取出小的追加到新的头节点后，直至两者其中一个为空，再将另一者追加的新链表最后。</p>
+<p>递归解法：递归的核心方法是将问题规模不断缩小化，合并两个长度为n和m的链表，在value(n) &lt; value(m)可以将规模缩减为合并长度为(n-1)和m的链表。</p>
 
         </div>
         <footer class="article-footer">
@@ -255,20 +249,20 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             "@type": "Person",
             "name": "程康健"
         },
-        "headline": "CDN技术详解-CDN技术概述",
-        "image": "http://www.chengkangjian.comhttp://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg",
-        "keywords": "CDN",
+        "headline": "LeetCode 合并两个有序链表",
+        "image": "http://www.chengkangjian.comhttp://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/leetcode.png",
+        "keywords": "leetcode",
         "genre": "",
-        "datePublished": "2017-09-05",
-        "dateCreated": "2017-09-05",
-        "dateModified": "2019-03-21",
-        "url": "http://www.chengkangjian.com/2017/09/05/CDN-two-capter/",
-        "description": "
-CDN原理1.选择最优设备为用户服务；2.如果某个内容被用户所需要，他会被缓存在就近节点。
-
-
-数百台CDN服务器（Cache）部署在IDC机房中，CDN服务器在Cache中复制内容，当内容提供者更新内容时，CDN向Cache重新分发。CDN提供一种机制，当用户请求内容时，该内容能被最快提供内容的Cache向用户提供。这个挑选最优的过程称之为负载均衡。CDN：内容缓存、负载均衡、流媒体加速、动态"
-        "wordCount": 36
+        "datePublished": "2019-05-14",
+        "dateCreated": "2019-05-14",
+        "dateModified": "2019-05-14",
+        "url": "http://www.chengkangjian.com/2019/05/14/leetcode-merge-two-list/",
+        "description": "合并两个有序链表将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+示例:
+12输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4
+解题:
+123456789101112131415161718192021222324252627282930313233343536373839"
+        "wordCount": 364
     }
 </script>
 
@@ -343,20 +337,10 @@ CDN原理1.选择最优设备为用户服务；2.如果某个内容被用户所�
         
 <nav id="article-nav">
     
-        <a href="/2017/09/10/CDN-three-capter/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            CDN技术详解-内容缓存工作原理及实现
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/08/30/CDN-one-capter/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/13/leetcode-linked-list-reverse/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">CDN技术详解-基本概念</p>
+        <p class="article-nav-title">LeetCode ReverseLinkedList 反转单链表</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
