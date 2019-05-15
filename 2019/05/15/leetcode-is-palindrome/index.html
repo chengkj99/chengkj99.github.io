@@ -6,26 +6,26 @@
     
 
     
-    <title>Object.defineProperty 的使用总结 | 程是非sky</title>
+    <title>LeetCode 链表是否为回文链表 | 程是非sky</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="javascript">
+        <meta name="keywords" content="-leetcode">
     
-    <meta name="description" content="Object.definedProperty The Object.defineProperty() method defines a new property directly on an object, or modifies an existing property on an object, and returns the object.Object.defineProperty可以在一个">
-<meta name="keywords" content="javascript">
+    <meta name="description" content="请判断一个链表是否为回文链表。 示例: 1234567&amp;lt;!-- 示例1 --&amp;gt;输入: 1-&amp;gt;2输出: false&amp;lt;!-- 示例2 --&amp;gt;输入: 1-&amp;gt;2-&amp;gt;2-&amp;gt;1输出: true 进阶:你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？ 解题: 123456789101112131415161718192021222324252627">
+<meta name="keywords" content="-leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Object.defineProperty 的使用总结">
-<meta property="og:url" content="http://www.chengkangjian.com/2017/08/16/Object-defineProperty/index.html">
+<meta property="og:title" content="LeetCode 链表是否为回文链表">
+<meta property="og:url" content="http://www.chengkangjian.com/2019/05/15/leetcode-is-palindrome/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="Object.definedProperty The Object.defineProperty() method defines a new property directly on an object, or modifies an existing property on an object, and returns the object.Object.defineProperty可以在一个">
+<meta property="og:description" content="请判断一个链表是否为回文链表。 示例: 1234567&amp;lt;!-- 示例1 --&amp;gt;输入: 1-&amp;gt;2输出: false&amp;lt;!-- 示例2 --&amp;gt;输入: 1-&amp;gt;2-&amp;gt;2-&amp;gt;1输出: true 进阶:你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？ 解题: 123456789101112131415161718192021222324252627">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/javascript.png">
-<meta property="og:updated_time" content="2019-03-20T15:06:51.002Z">
+<meta property="og:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/bua-rsp/leetcode-white.png">
+<meta property="og:updated_time" content="2019-05-15T08:46:16.248Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Object.defineProperty 的使用总结">
-<meta name="twitter:description" content="Object.definedProperty The Object.defineProperty() method defines a new property directly on an object, or modifies an existing property on an object, and returns the object.Object.defineProperty可以在一个">
-<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/javascript.png">
+<meta name="twitter:title" content="LeetCode 链表是否为回文链表">
+<meta name="twitter:description" content="请判断一个链表是否为回文链表。 示例: 1234567&amp;lt;!-- 示例1 --&amp;gt;输入: 1-&amp;gt;2输出: false&amp;lt;!-- 示例2 --&amp;gt;输入: 1-&amp;gt;2-&amp;gt;2-&amp;gt;1输出: true 进阶:你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？ 解题: 123456789101112131415161718192021222324252627">
+<meta name="twitter:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/bua-rsp/leetcode-white.png">
     
 
     
@@ -155,14 +155,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Object-defineProperty" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-leetcode-is-palindrome" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Object.defineProperty 的使用总结
+        LeetCode 链表是否为回文链表
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/08/16/Object-defineProperty/" class="article-date">
-            <time datetime="2017-08-16T13:37:02.000Z" itemprop="datePublished">2017-08-16</time>
+        <a href="/2019/05/15/leetcode-is-palindrome/" class="article-date">
+            <time datetime="2019-05-15T08:27:41.000Z" itemprop="datePublished">2019-05-15</time>
         </a>
     </div>
 
@@ -182,41 +182,22 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/javascript/">javascript</a>
+        <a class="tag-link" href="/tags/leetcode/">-leetcode</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h3 id="Object-definedProperty"><a href="#Object-definedProperty" class="headerlink" title="Object.definedProperty"></a>Object.definedProperty</h3><blockquote>
-<p>The Object.defineProperty() method defines a new property directly on an object, or modifies an existing property on an object, and returns the object.<br>Object.defineProperty可以在一个对象上定义一个新的属性，或修改一个已经存在的属性。并返回该对象。</p>
-</blockquote>
-<p>简而言之，Object.defineProperty 是定义对象属性的方法。</p>
-<p>平时我们通过以下的方式定义属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;&#125;</span><br><span class="line">o.a = &apos;apple&apos;</span><br><span class="line">o[&apos;b&apos;] = &apos;banana&apos;</span><br></pre></td></tr></table></figure>
-<p>Object.defineProperty 算是第三种，这种方式比以上两种方式更加强大。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>Object.defineProperty(obj, prop, descriptor)</p>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
-<li>Object obj 目标对象</li>
-<li>String prop 需要定义的属性</li>
-<li>Object descriptor 该属性拥有的特性，可设置的值有：<ul>
-<li>value 属性的值，默认为 undefined。</li>
-<li>writable 该属性是否可写，如果设置成 false，则任何对该属性改写的操作都无效（但不会报错），默认为 false。</li>
-<li>get 一旦目标对象访问该属性，就会调用这个方法，并返回结果。默认为 undefined。</li>
-<li>set 一旦目标对象设置该属性，就会调用这个方法。默认为 undeinfed。</li>
-<li>configurable 如果为false，则任何尝试删除目标属性或修改属性以下特性（writable, configurable, enumerable）的行为将被无效化，默认为 false。</li>
-<li>enumerable 是否能在for…in循环中遍历出来或在Object.keys中列举出来。默认为 false。</li>
-</ul>
-</li>
-</ul>
-<h5 id="其中-Object-descriptor-是需要重点关注的属性："><a href="#其中-Object-descriptor-是需要重点关注的属性：" class="headerlink" title="其中 Object descriptor 是需要重点关注的属性："></a>其中 Object descriptor 是需要重点关注的属性：</h5><p>writable只有设置为true可写，默认为false，false为不可写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// writable: false</span><br><span class="line">var o = &#123;&#125;</span><br><span class="line">Object.defineProperty(o , &apos;msg&apos;, &#123;</span><br><span class="line">  value: &apos;hello&apos;,</span><br><span class="line">  writable: false</span><br><span class="line">&#125;)</span><br><span class="line">console.log(o.msg)  // hello</span><br><span class="line">o1.msg = &apos;world&apos;</span><br><span class="line">console.log(o.msg)  // hello</span><br><span class="line"></span><br><span class="line">// writable: true</span><br><span class="line">var o = &#123;&#125;</span><br><span class="line">Object.defineProperty(o , &apos;msg&apos;, &#123;</span><br><span class="line">  value: &apos;hello&apos;,</span><br><span class="line">  writable: true</span><br><span class="line">&#125;)</span><br><span class="line">console.log(o.msg)  // hello</span><br><span class="line">o1.msg = &apos;world&apos;</span><br><span class="line">console.log(o.msg)  // world</span><br></pre></td></tr></table></figure></p>
-<p>configurable: 如果为false，则任何尝试删除目标属性或修改属性以下特性（writable, configurable, enumerable）的行为将被无效化，默认为 false。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// configurable: false</span><br><span class="line">var o = &#123;&#125;</span><br><span class="line">Object.defineProperty(o , &apos;msg&apos;, &#123;</span><br><span class="line">  value: &apos;hello&apos;,</span><br><span class="line">  configurable: false</span><br><span class="line">&#125;)</span><br><span class="line">delete o.msg</span><br><span class="line">console.log(o.msg)  //hello</span><br><span class="line"></span><br><span class="line">// configurable: true</span><br><span class="line">var o = &#123;&#125;</span><br><span class="line">Object.defineProperty(o , &apos;msg&apos;, &#123;</span><br><span class="line">  value: &apos;hello&apos;,</span><br><span class="line">  configurable: true</span><br><span class="line">&#125;)</span><br><span class="line">delete o.msg</span><br><span class="line">console.log(o.msg)  //undefined</span><br></pre></td></tr></table></figure>
-<p>enumerable: true可枚举，false不可枚举，默认为false。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var o = &#123;&#125;;</span><br><span class="line">Object.defineProperty(o, &apos;a&apos;, &#123;</span><br><span class="line">  value: 1,</span><br><span class="line">  enumerable: true</span><br><span class="line">&#125;)</span><br><span class="line">Object.defineProperty(o, &apos;b&apos;, &#123;</span><br><span class="line"> value: 2,</span><br><span class="line"> enumerable: false</span><br><span class="line">&#125;)</span><br><span class="line">Object.defineProperty(o, &apos;c&apos;, &#123;</span><br><span class="line">  value: 3</span><br><span class="line">&#125;) // enumerable defaults to false</span><br><span class="line">o.d = 4 // enumerable defaults to true when creating a property by setting it</span><br><span class="line"></span><br><span class="line">for (var i in o) &#123;</span><br><span class="line">  console.log(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// a</span><br><span class="line">// d</span><br></pre></td></tr></table></figure>
-<p>get 一旦目标对象访问该属性，就会调用这个方法，并返回结果。默认为 undefined。<br>set 一旦目标对象设置该属性，就会调用这个方法。默认为 undeinfed。<br>下面是摘抄数据收集的案例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function archiver() &#123;</span><br><span class="line">	var temperature = null</span><br><span class="line">    var archive = []</span><br><span class="line"></span><br><span class="line">	Object.defineProperty(this, &apos;temperature&apos;, &#123;</span><br><span class="line">    get () &#123;</span><br><span class="line">      console.log(&apos;get&apos;)</span><br><span class="line"> 		  return temperature</span><br><span class="line">	  &#125;,</span><br><span class="line">    set (value) &#123;</span><br><span class="line">      temperature = value</span><br><span class="line">      archive.push(&#123;val: temperature&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">	this.getArchive = function () &#123; return archive &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var a = new archiver()</span><br><span class="line">a.temperature // get</span><br><span class="line">a.temperature = 100 // 100</span><br><span class="line">a.temperature = 200 // 200</span><br><span class="line">a.getArchive() // [0:&#123;val: 100&#125;, 1:&#123;val: 200&#125;]</span><br></pre></td></tr></table></figure></p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>在 descriptor 中不能同时设置访问器 (get 和 set) 和 wriable 或 value，否则会报以下错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught TypeError: Invalid property descriptor. Cannot both specify accessors and a value or writable attribute, #&lt;Object&gt;</span><br></pre></td></tr></table></figure></p>
+            <p>请判断一个链表是否为回文链表。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 示例<span class="number">1</span> --&gt;</span><br><span class="line">输入: <span class="number">1</span>-&gt;<span class="number">2</span></span><br><span class="line">输出: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">&lt;!-- 示例<span class="number">2</span> --&gt;</span><br><span class="line">输入: <span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">2</span>-&gt;<span class="number">1</span></span><br><span class="line">输出: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p><strong>进阶:</strong><br>你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？</p>
+<p><strong>解题:</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;ListNode&#125; head</span></span><br><span class="line"><span class="comment"> * @return &#123;boolean&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">&lt;!-- 方法<span class="number">1</span>: 通过将链表转为数组，判断数组是否回文 --&gt;</span><br><span class="line">&lt;!-- 思路: <span class="number">1.</span> 链表转数组； <span class="number">2.</span> 循环判断数组的首尾节点，只要出现不相等节点，则返回 <span class="literal">false</span>, 否则返回 <span class="literal">true</span>。 --&gt;</span><br><span class="line"><span class="keyword">var</span> isPalindrome = <span class="function"><span class="keyword">function</span>(<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!head) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> res = []</span><br><span class="line">  <span class="keyword">while</span> (head) &#123;</span><br><span class="line">    res.push(head.val)</span><br><span class="line">    head = head.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> len = res.length</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> start = res[i]</span><br><span class="line">    <span class="keyword">let</span> end = res[len - i - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> (start !== end) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= len - i - <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 方法<span class="number">2</span>: 找到链表中间节点，反转一侧节点，回文判断 --&gt;</span><br><span class="line">&lt;!-- 利用龟兔赛跑算法，找到中间节点 --&gt;</span><br><span class="line"><span class="keyword">var</span> findMid = <span class="function"><span class="params">head</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> p = head</span><br><span class="line">  <span class="keyword">let</span> q = head.next</span><br><span class="line">  <span class="keyword">if</span> (!p || !q) &#123;</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (q !== <span class="literal">null</span> &amp;&amp; q.next !== <span class="literal">null</span>) &#123;</span><br><span class="line">    p = p.next</span><br><span class="line">    q = q.next.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> p</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 利用递归反转节点 --&gt;</span><br><span class="line"><span class="keyword">var</span> reverse = <span class="function"><span class="params">head</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!head || !head.next) &#123;</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> newHead = reverse(head.next)</span><br><span class="line">  head.next.next = head</span><br><span class="line">  head.next = <span class="literal">null</span></span><br><span class="line">  <span class="keyword">return</span> newHead</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 利用以上两个函数，进行回文判断 --&gt;</span><br><span class="line">&lt;!-- 思路: <span class="number">1.</span> 寻找链表中间节点；<span class="number">2.</span> 反转后半部分节点；<span class="number">3.</span> 迭代循环判断前后两部分节点的值是不是相等，出现不相等，返回 <span class="literal">false</span>，否则返回 <span class="literal">true</span>。 --&gt;</span><br><span class="line">&lt;!-- 注意: 空链表也是属于回文链表。 --&gt;</span><br><span class="line"><span class="keyword">var</span> isPalindrome = <span class="function"><span class="keyword">function</span>(<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!head) &#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;</span><br><span class="line">  <span class="keyword">let</span> mid = findMid(head)</span><br><span class="line">  <span class="keyword">let</span> afterHalfHead = reverse(mid.next)</span><br><span class="line">  mid.next = <span class="literal">null</span></span><br><span class="line">  <span class="keyword">while</span> (head &amp;&amp; afterHalfHead) &#123;</span><br><span class="line">    <span class="keyword">if</span> (head.val !== afterHalfHead.val) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    head = head.next</span><br><span class="line">    afterHalfHead = afterHalfHead.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>总结:</strong></p>
+<p>方法 1 是自己想的，虽然测试可用，代码还更少，只是不够高级。</p>
+<p>方法 2 参考了别人的思路，然后自己写的，思路很正统，高级很多，而且很高效。</p>
 
         </div>
         <footer class="article-footer">
@@ -269,17 +250,21 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             "@type": "Person",
             "name": "程康健"
         },
-        "headline": "Object.defineProperty 的使用总结",
-        "image": "http://www.chengkangjian.comhttp://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/javascript.png",
-        "keywords": "javascript",
+        "headline": "LeetCode 链表是否为回文链表",
+        "image": "http://www.chengkangjian.comhttps://ckj-bucket.oss-cn-beijing.aliyuncs.com/bua-rsp/leetcode-white.png",
+        "keywords": "-leetcode",
         "genre": "",
-        "datePublished": "2017-08-16",
-        "dateCreated": "2017-08-16",
-        "dateModified": "2019-03-20",
-        "url": "http://www.chengkangjian.com/2017/08/16/Object-defineProperty/",
-        "description": "Object.definedProperty
-The Object.defineProperty() method defines a new property directly on an object, or modifies an existing property on an object, and returns the object.Object.defineProperty可以在一个"
-        "wordCount": 517
+        "datePublished": "2019-05-15",
+        "dateCreated": "2019-05-15",
+        "dateModified": "2019-05-15",
+        "url": "http://www.chengkangjian.com/2019/05/15/leetcode-is-palindrome/",
+        "description": "请判断一个链表是否为回文链表。
+示例:
+1234567&lt;!-- 示例1 --&gt;输入: 1-&gt;2输出: false&lt;!-- 示例2 --&gt;输入: 1-&gt;2-&gt;2-&gt;1输出: true
+进阶:你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？
+解题:
+123456789101112131415161718192021222324252627"
+        "wordCount": 619
     }
 </script>
 
@@ -354,20 +339,10 @@ The Object.defineProperty() method defines a new property directly on an object,
         
 <nav id="article-nav">
     
-        <a href="/2017/08/18/Capriccio-01/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            未知的花，魅知的旅
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/08/16/心情/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/05/14/leetcode-merge-two-list/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">心情</p>
+        <p class="article-nav-title">LeetCode 合并两个有序链表</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
