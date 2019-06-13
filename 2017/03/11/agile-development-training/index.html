@@ -6,26 +6,26 @@
     
 
     
-    <title>尤雨溪知乎Live总结 上篇 | 程是非sky</title>
+    <title>记一次敏捷开发Scrum培训及实践的感受 | 程是非sky</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="javascript,vue">
+        <meta name="keywords" content="思考,敏捷开发,成长">
     
-    <meta name="description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。 针对不同的场景、框架背后需要解决的问题、结合经验选择框架。 组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
-<meta name="keywords" content="javascript,vue">
+    <meta name="description" content="在2016年10月26日，部门请到了亚信的内训师王林皓讲师来给我们BDX的大数据云平台部和数据产品线专门培训敏捷开发Scrum。王老师很早以前就是Scrum Master，带过很多敏捷的团队，在Scrum方面有丰富的经验。  作为自己在这个培训之前，通过工作中的体会和一些资料的阅读，我对敏捷开发也有一点点的认识。知道敏捷开发的敏捷性，小步代跑的过程能够根据不断变化的需求快速响应。 在当天培训中，">
+<meta name="keywords" content="思考,敏捷开发,成长">
 <meta property="og:type" content="article">
-<meta property="og:title" content="尤雨溪知乎Live总结 上篇">
-<meta property="og:url" content="http://www.chengkangjian.com/2017/06/05/evan-you-live/index.html">
+<meta property="og:title" content="记一次敏捷开发Scrum培训及实践的感受">
+<meta property="og:url" content="http://www.chengkangjian.com/2017/03/11/agile-development-training/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。 针对不同的场景、框架背后需要解决的问题、结合经验选择框架。 组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
+<meta property="og:description" content="在2016年10月26日，部门请到了亚信的内训师王林皓讲师来给我们BDX的大数据云平台部和数据产品线专门培训敏捷开发Scrum。王老师很早以前就是Scrum Master，带过很多敏捷的团队，在Scrum方面有丰富的经验。  作为自己在这个培训之前，通过工作中的体会和一些资料的阅读，我对敏捷开发也有一点点的认识。知道敏捷开发的敏捷性，小步代跑的过程能够根据不断变化的需求快速响应。 在当天培训中，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/vuepic.png">
-<meta property="og:updated_time" content="2019-06-13T10:28:28.828Z">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/scrum.jpg">
+<meta property="og:updated_time" content="2019-06-13T10:25:49.746Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="尤雨溪知乎Live总结 上篇">
-<meta name="twitter:description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。 针对不同的场景、框架背后需要解决的问题、结合经验选择框架。 组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
-<meta name="twitter:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/vuepic.png">
+<meta name="twitter:title" content="记一次敏捷开发Scrum培训及实践的感受">
+<meta name="twitter:description" content="在2016年10月26日，部门请到了亚信的内训师王林皓讲师来给我们BDX的大数据云平台部和数据产品线专门培训敏捷开发Scrum。王老师很早以前就是Scrum Master，带过很多敏捷的团队，在Scrum方面有丰富的经验。  作为自己在这个培训之前，通过工作中的体会和一些资料的阅读，我对敏捷开发也有一点点的认识。知道敏捷开发的敏捷性，小步代跑的过程能够根据不断变化的需求快速响应。 在当天培训中，">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/scrum.jpg">
     
 
     
@@ -155,14 +155,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-evan-you-live" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-agile-development-training" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        尤雨溪知乎Live总结 上篇
+        记一次敏捷开发Scrum培训及实践的感受
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/06/05/evan-you-live/" class="article-date">
-            <time datetime="2017-06-05T11:55:59.000Z" itemprop="datePublished">2017-06-05</time>
+        <a href="/2017/03/11/agile-development-training/" class="article-date">
+            <time datetime="2017-03-11T14:24:13.000Z" itemprop="datePublished">2017-03-11</time>
         </a>
     </div>
 
@@ -182,39 +182,25 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/javascript/">javascript</a>, <a class="tag-link" href="/tags/vue/">vue</a>
+        <a class="tag-link" href="/tags/思考/">思考</a>, <a class="tag-link" href="/tags/成长/">成长</a>, <a class="tag-link" href="/tags/敏捷开发/">敏捷开发</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。</p>
-<p>针对不同的场景、框架背后需要解决的问题、结合经验选择框架。</p>
-<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>现在所有的框架都已经支持组件化的开发方式。<br>最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。<br>后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件树的，这是偏展示的一个理解，react的出现揭示了一个事实，就是组件可以是函数。</p>
-<p>想象一下，整个应用是一个大的函数，函数里面可以调用别的函数，每个组件是一个函数，一个组件可以调用别的函数，返回viture dom,这突破了我们原来对静态页面的理解方式。但是这种简单的函数式的组件在实际应用过程中是不够的，所以react默认的组件形式里有了state，然后外面用class来包装等等。</p>
-<h4 id="组件可以分为四类："><a href="#组件可以分为四类：" class="headerlink" title="组件可以分为四类："></a>组件可以分为四类：</h4><ul>
-<li>纯展示组件</li>
-<li>接入性组件container（会和数据层的serverce打交道）</li>
-<li>交互型组件（比如各类加强版的表单组件，通常强调复用<br>）</li>
-<li>功能型组件（组件本身不渲染任何内容，作为功能扩展而存在比如 <code>&lt;router-view&gt;</code>，<code>&lt;transition&gt;</code>，作为一种扩展、抽象机制存在。）</li>
-</ul>
-<h4 id="template和jsx的对比："><a href="#template和jsx的对比：" class="headerlink" title="template和jsx的对比："></a>template和jsx的对比：</h4><p>jsx在写功能性组件的时候，是非常方便的，因为其继承了javascript语言的灵活性，是远超模版的。template在写纯展示型组件的时候是非常方便的。</p>
-<p><strong>colocation含义</strong>: 把应该放一起的东西放一起，比如vue的单文件把 style 、script 、 template 放一起。（以前是以语言为单位进行切分）</p>
-<h2 id="变化侦测和渲染机制"><a href="#变化侦测和渲染机制" class="headerlink" title="变化侦测和渲染机制"></a>变化侦测和渲染机制</h2><h3 id="Declarative-Programming-声明式编程"><a href="#Declarative-Programming-声明式编程" class="headerlink" title="Declarative Programming 声明式编程"></a>Declarative Programming 声明式编程</h3><p>告诉“机器”你想要的是什么(what)，让机器想出如何去做(how)。<br>（react、vue等框架的方式，直接描述dom和数据的关系就可以了，这就是数据驱动。）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--声明式风格--&gt;</span><br><span class="line">&lt;!--只需声明你要啥--&gt;</span><br><span class="line">var numbers = [1,2,3,4,5]</span><br><span class="line">var doubled = numbers.map (function (n) &#123;</span><br><span class="line">  return n * 2</span><br><span class="line">&#125;)</span><br><span class="line">console.log (doubled) //=&gt; [2,4,6,8,10]</span><br></pre></td></tr></table></figure></p>
-<h3 id="Imperative-Programming-命令式编程"><a href="#Imperative-Programming-命令式编程" class="headerlink" title="Imperative Programming 命令式编程"></a>Imperative Programming 命令式编程</h3><p>命令“机器”如何去做事情(how)，这样不管你想要的是什么(what)，它都会按照你的命令实现。 （jquery直接干的方式）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--命令式风格--&gt;</span><br><span class="line">&lt;!--需要干事情--&gt;</span><br><span class="line">var numbers = [1,2,3,4,5]</span><br><span class="line">var doubled = []</span><br><span class="line">for(var i = 0; i &lt; numbers.length; i++) &#123;</span><br><span class="line">  var newNumber = numbers[i] * 2</span><br><span class="line">  doubled.push (newNumber)</span><br><span class="line">&#125;</span><br><span class="line">console.log (doubled) //=&gt; [2,4,6,8,10]</span><br></pre></td></tr></table></figure>
-<h3 id="view-render-state"><a href="#view-render-state" class="headerlink" title="view = render(state)"></a>view = render(state)</h3><p>render就是react里jsx中的render函数，其实vue的template最终也是编译成一个个render函数的。模版本身和jsx和本质上相似的，他们的输入都是state，输出都是dom。</p>
-<h3 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h3><p>底层实现可以是Virtual DOM，也可以是细粒度的绑定等等。</p>
-<h4 id="一直有一个疑问，以前-被人诟病，为啥-vue-的声明式写法就是推崇的？"><a href="#一直有一个疑问，以前-被人诟病，为啥-vue-的声明式写法就是推崇的？" class="headerlink" title="一直有一个疑问，以前 被人诟病，为啥 vue  的声明式写法就是推崇的？"></a>一直有一个疑问，以前<div onclick="clickHandler"></div> 被人诟病，为啥 vue  的声明式写法就是推崇的？</h4><p>onclick绑定的作用域是全局的，造成了环境污染，裸写的函数完全不知道是被哪个dom引用。<br>vue中的绑定是局部作用域，而且javascript的逻辑是放在组件里的，符合colocation的理念，这样就很好维护了。</p>
-<h3 id="变化侦测"><a href="#变化侦测" class="headerlink" title="　变化侦测"></a>　变化侦测</h3><p><a href="https://docs.google.com/presentation/d/1_BlJxudppfKmAtfbNIcqNwzrC5vLrR_h1e09apcpdNY/edit?usp=sharing" target="_blank" rel="noopener">Reactivity in Frontend JavaScript Frameworks
-</a></p>
-<p>变化侦测有两种方式：pull 和  push</p>
-<p>react 的 setState 和 angular 的脏检查属于 pull 的方式。</p>
-<p>pull的方式，系统不知道数据什么时候变化，那么它需要一个信号告诉他说知道数据有可能变了，这个时候系统来进行一个暴力的比对，react 通过 Virtual DOM 中的diff方式，angular 是脏检查。能过这么做是因为 javascript 已经足够快，有浪费但是可以接受。</p>
-<p>push的方式，Vue （响应式）和 Rx.js（Observable） 的方式，更加细粒度的更新，意味着更多的watcher，同样也会带来内存和性能的开销。</p>
-<p>vue2选择了相对折中的方案，在组件层面，vue2使用的是 push 的方式，每一个组件都是响应式的watcher，这样vue能够知道哪些组件内部的状态发生了变化，然后在组件内部使用 pull 的方式通过virtual Dom进行比对更新。</p>
-<p>pull和push的对比，不能说哪个方案一定好，本质区别是用侦测成本换取自动优化的成本。</p>
+            <blockquote>
+<p>在2016年10月26日，部门请到了亚信的内训师王林皓讲师来给我们BDX的大数据云平台部和数据产品线专门培训敏捷开发Scrum。王老师很早以前就是Scrum Master，带过很多敏捷的团队，在Scrum方面有丰富的经验。</p>
+</blockquote>
+<p>作为自己在这个培训之前，通过工作中的体会和一些资料的阅读，我对敏捷开发也有一点点的认识。知道敏捷开发的敏捷性，小步代跑的过程能够根据不断变化的需求快速响应。</p>
+<p>在当天培训中，讲师通过八个章节的内容介绍，中间穿插着一系列的活动作示例，并结合理论的讲解，让我听得受益匪浅，对敏捷开发有了新的认知。</p>
+<p>首先，讲师介绍敏捷的五大要素（<strong>勇气、开放、承诺、专注、尊重</strong>）过程中，自己其实是挺感慨的，自己参与了一年左右的敏捷开发流程，却不知道自己需要以一种怎样的态度来参与敏捷。以上的五大要素中，在自己目前的实践中，自己在勇气和开放方面做的最不好，对于今后，会通过各个击破的方式一项一项整体提高这五大要素的要求。</p>
+<p>现在是处于互联网的时代，在这个时代下要求产品的研发要快、准、狠才能跟的上跟得上市场的步伐。敏捷原则和思维刚刚好解释了在这个时代下选择敏捷开发是因为开发需要敏捷这个特性。敏捷不是一个方法论、过程或者框架，敏捷是一种思维。这个思维特性要求自己以一种开放的心态不断的学习和改变来适应周围的变化。</p>
+<p>讲师通过一系列的活动实践告诉我们实践敏捷的价值就是优先做最有价值的事，虽然这并不容易做到，这要求参与敏捷的每个人都要拥有共同的价值观，大家齐心协力在一个方向上努力。除非需求的市场前景特别明晰，不然需求价值的大小有时候并不容易统一，这在实践过程中是有挑战的。通过敏捷实践价值这节的学习，要求自己在今后了解自己工作内容的价值，这样应该会让自己更好的开展工作。</p>
+<p>通过对scrum的特征、框架、团队方面内容的学习，让我对敏捷开发的认识比较全面。在透明性、跨职能、自组织三个特征中， 目前团队的敏捷实践对这些特征没有明显的体现，可见，我们需要改进的地方还有很多。个人角度来看，需要先从自己的心态上、行为上逐渐的去改变。</p>
+<p>讲师在讲解的过程中，也通过提出一个问题引发我们的思考最后解决问题来引起我们的共鸣。有个问题令我印象深刻，“每周计划制定之后，计划外的任务打乱原计划时，计划如何调整？”,因为这个问题目前正在发生，我们的方式是尽量赶计划，实在完成不了计划就会延迟。老师给出”进多少，出多少“的方案是比较客观合理的。</p>
+<p>在敏捷开发过程中，有一块内容是我感觉非常困难的，就是敏捷估算。虽然讲师告诉我们不要绝对估算，要使用相对估算的方法，即使这样估算起来还是摸不着头脑。比如在从用户故事进行任务量估算，完全是凭感觉来的，估算的值很不准确，这方面可能随着业务经验的增长会逐渐变好吧。</p>
+<p>本次培训是能够引发自己思考的一次培训，因为这和每天的工作息息相关，讲的内容也容易接受。但是理论和实践总是存在着一定的距离。王阳明有句话说：“知之真切笃实处即是行，行之明觉精察处即是知。”，我们下一个目标就是将所学所用付诸于实践，在未来，我们通过点滴的不断的改变不足之处、实践、调整、反思、再实践，团队最终肯定会实现规范的、适合团队的、有效的敏捷开发。</p>
 
         </div>
         <footer class="article-footer">
@@ -267,18 +253,20 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             "@type": "Person",
             "name": "程康健"
         },
-        "headline": "尤雨溪知乎Live总结 上篇",
-        "image": "http://www.chengkangjian.comhttps://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/vuepic.png",
-        "keywords": "javascript vue",
+        "headline": "记一次敏捷开发Scrum培训及实践的感受",
+        "image": "http://www.chengkangjian.comhttp://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/scrum.jpg",
+        "keywords": "思考 敏捷开发 成长",
         "genre": "",
-        "datePublished": "2017-06-05",
-        "dateCreated": "2017-06-05",
+        "datePublished": "2017-03-11",
+        "dateCreated": "2017-03-11",
         "dateModified": "2019-06-13",
-        "url": "http://www.chengkangjian.com/2017/06/05/evan-you-live/",
-        "description": "开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。
-针对不同的场景、框架背后需要解决的问题、结合经验选择框架。
-组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件"
-        "wordCount": 194
+        "url": "http://www.chengkangjian.com/2017/03/11/agile-development-training/",
+        "description": "
+在2016年10月26日，部门请到了亚信的内训师王林皓讲师来给我们BDX的大数据云平台部和数据产品线专门培训敏捷开发Scrum。王老师很早以前就是Scrum Master，带过很多敏捷的团队，在Scrum方面有丰富的经验。
+
+作为自己在这个培训之前，通过工作中的体会和一些资料的阅读，我对敏捷开发也有一点点的认识。知道敏捷开发的敏捷性，小步代跑的过程能够根据不断变化的需求快速响应。
+在当天培训中，"
+        "wordCount": 3
     }
 </script>
 
@@ -353,20 +341,20 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
-        <a href="/2017/06/05/evan-you-live-pro/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/04/12/my-girlfriend/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            尤雨溪知乎Live总结 下篇
+            My Girlfriend
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/05/06/webpack-note-02/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/09/23/dream/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">从零开始学习webpack搭建vue工程-02</p>
+        <p class="article-nav-title">回顾老男孩</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     

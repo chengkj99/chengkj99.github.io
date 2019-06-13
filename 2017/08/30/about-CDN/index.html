@@ -6,26 +6,26 @@
     
 
     
-    <title>尤雨溪知乎Live总结 上篇 | 程是非sky</title>
+    <title>学习了下「CDN」 | 程是非sky</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="javascript,vue">
+        <meta name="keywords" content="CDN">
     
-    <meta name="description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。 针对不同的场景、框架背后需要解决的问题、结合经验选择框架。 组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
-<meta name="keywords" content="javascript,vue">
+    <meta name="description" content="前段时间，因工作内容中中设计到很多 CDN 业务的知识，于是读了一遍《CDN 技术详解》，这本书内容很丰富，讲了很多 CDN 实现的原理和细节，想吃透这本书，读一遍肯定是不够的，需要理解、思考、和长期实践才能真正的理解 CDN 这块内容。 在阅读此书之前，我仅仅是知道 CDN 可以提高内容的加载速度，通过将网站的资源图片等文件放到七牛的存储服务器中，会提高资源的加载效率，但是我没有测试过，也不知道">
+<meta name="keywords" content="CDN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="尤雨溪知乎Live总结 上篇">
-<meta property="og:url" content="http://www.chengkangjian.com/2017/06/05/evan-you-live/index.html">
+<meta property="og:title" content="学习了下「CDN」">
+<meta property="og:url" content="http://www.chengkangjian.com/2017/08/30/about-CDN/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。 针对不同的场景、框架背后需要解决的问题、结合经验选择框架。 组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
+<meta property="og:description" content="前段时间，因工作内容中中设计到很多 CDN 业务的知识，于是读了一遍《CDN 技术详解》，这本书内容很丰富，讲了很多 CDN 实现的原理和细节，想吃透这本书，读一遍肯定是不够的，需要理解、思考、和长期实践才能真正的理解 CDN 这块内容。 在阅读此书之前，我仅仅是知道 CDN 可以提高内容的加载速度，通过将网站的资源图片等文件放到七牛的存储服务器中，会提高资源的加载效率，但是我没有测试过，也不知道">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/vuepic.png">
-<meta property="og:updated_time" content="2019-06-13T10:28:28.828Z">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
+<meta property="og:updated_time" content="2019-06-13T08:29:46.542Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="尤雨溪知乎Live总结 上篇">
-<meta name="twitter:description" content="开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。 针对不同的场景、框架背后需要解决的问题、结合经验选择框架。 组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件">
-<meta name="twitter:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/vuepic.png">
+<meta name="twitter:title" content="学习了下「CDN」">
+<meta name="twitter:description" content="前段时间，因工作内容中中设计到很多 CDN 业务的知识，于是读了一遍《CDN 技术详解》，这本书内容很丰富，讲了很多 CDN 实现的原理和细节，想吃透这本书，读一遍肯定是不够的，需要理解、思考、和长期实践才能真正的理解 CDN 这块内容。 在阅读此书之前，我仅仅是知道 CDN 可以提高内容的加载速度，通过将网站的资源图片等文件放到七牛的存储服务器中，会提高资源的加载效率，但是我没有测试过，也不知道">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
     
 
     
@@ -155,14 +155,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-evan-you-live" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-about-CDN" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        尤雨溪知乎Live总结 上篇
+        学习了下「CDN」
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/06/05/evan-you-live/" class="article-date">
-            <time datetime="2017-06-05T11:55:59.000Z" itemprop="datePublished">2017-06-05</time>
+        <a href="/2017/08/30/about-CDN/" class="article-date">
+            <time datetime="2017-08-30T15:43:27.000Z" itemprop="datePublished">2017-08-30</time>
         </a>
     </div>
 
@@ -182,39 +182,20 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/javascript/">javascript</a>, <a class="tag-link" href="/tags/vue/">vue</a>
+        <a class="tag-link" href="/tags/CDN/">CDN</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。</p>
-<p>针对不同的场景、框架背后需要解决的问题、结合经验选择框架。</p>
-<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>现在所有的框架都已经支持组件化的开发方式。<br>最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。<br>后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件树的，这是偏展示的一个理解，react的出现揭示了一个事实，就是组件可以是函数。</p>
-<p>想象一下，整个应用是一个大的函数，函数里面可以调用别的函数，每个组件是一个函数，一个组件可以调用别的函数，返回viture dom,这突破了我们原来对静态页面的理解方式。但是这种简单的函数式的组件在实际应用过程中是不够的，所以react默认的组件形式里有了state，然后外面用class来包装等等。</p>
-<h4 id="组件可以分为四类："><a href="#组件可以分为四类：" class="headerlink" title="组件可以分为四类："></a>组件可以分为四类：</h4><ul>
-<li>纯展示组件</li>
-<li>接入性组件container（会和数据层的serverce打交道）</li>
-<li>交互型组件（比如各类加强版的表单组件，通常强调复用<br>）</li>
-<li>功能型组件（组件本身不渲染任何内容，作为功能扩展而存在比如 <code>&lt;router-view&gt;</code>，<code>&lt;transition&gt;</code>，作为一种扩展、抽象机制存在。）</li>
-</ul>
-<h4 id="template和jsx的对比："><a href="#template和jsx的对比：" class="headerlink" title="template和jsx的对比："></a>template和jsx的对比：</h4><p>jsx在写功能性组件的时候，是非常方便的，因为其继承了javascript语言的灵活性，是远超模版的。template在写纯展示型组件的时候是非常方便的。</p>
-<p><strong>colocation含义</strong>: 把应该放一起的东西放一起，比如vue的单文件把 style 、script 、 template 放一起。（以前是以语言为单位进行切分）</p>
-<h2 id="变化侦测和渲染机制"><a href="#变化侦测和渲染机制" class="headerlink" title="变化侦测和渲染机制"></a>变化侦测和渲染机制</h2><h3 id="Declarative-Programming-声明式编程"><a href="#Declarative-Programming-声明式编程" class="headerlink" title="Declarative Programming 声明式编程"></a>Declarative Programming 声明式编程</h3><p>告诉“机器”你想要的是什么(what)，让机器想出如何去做(how)。<br>（react、vue等框架的方式，直接描述dom和数据的关系就可以了，这就是数据驱动。）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--声明式风格--&gt;</span><br><span class="line">&lt;!--只需声明你要啥--&gt;</span><br><span class="line">var numbers = [1,2,3,4,5]</span><br><span class="line">var doubled = numbers.map (function (n) &#123;</span><br><span class="line">  return n * 2</span><br><span class="line">&#125;)</span><br><span class="line">console.log (doubled) //=&gt; [2,4,6,8,10]</span><br></pre></td></tr></table></figure></p>
-<h3 id="Imperative-Programming-命令式编程"><a href="#Imperative-Programming-命令式编程" class="headerlink" title="Imperative Programming 命令式编程"></a>Imperative Programming 命令式编程</h3><p>命令“机器”如何去做事情(how)，这样不管你想要的是什么(what)，它都会按照你的命令实现。 （jquery直接干的方式）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--命令式风格--&gt;</span><br><span class="line">&lt;!--需要干事情--&gt;</span><br><span class="line">var numbers = [1,2,3,4,5]</span><br><span class="line">var doubled = []</span><br><span class="line">for(var i = 0; i &lt; numbers.length; i++) &#123;</span><br><span class="line">  var newNumber = numbers[i] * 2</span><br><span class="line">  doubled.push (newNumber)</span><br><span class="line">&#125;</span><br><span class="line">console.log (doubled) //=&gt; [2,4,6,8,10]</span><br></pre></td></tr></table></figure>
-<h3 id="view-render-state"><a href="#view-render-state" class="headerlink" title="view = render(state)"></a>view = render(state)</h3><p>render就是react里jsx中的render函数，其实vue的template最终也是编译成一个个render函数的。模版本身和jsx和本质上相似的，他们的输入都是state，输出都是dom。</p>
-<h3 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h3><p>底层实现可以是Virtual DOM，也可以是细粒度的绑定等等。</p>
-<h4 id="一直有一个疑问，以前-被人诟病，为啥-vue-的声明式写法就是推崇的？"><a href="#一直有一个疑问，以前-被人诟病，为啥-vue-的声明式写法就是推崇的？" class="headerlink" title="一直有一个疑问，以前 被人诟病，为啥 vue  的声明式写法就是推崇的？"></a>一直有一个疑问，以前<div onclick="clickHandler"></div> 被人诟病，为啥 vue  的声明式写法就是推崇的？</h4><p>onclick绑定的作用域是全局的，造成了环境污染，裸写的函数完全不知道是被哪个dom引用。<br>vue中的绑定是局部作用域，而且javascript的逻辑是放在组件里的，符合colocation的理念，这样就很好维护了。</p>
-<h3 id="变化侦测"><a href="#变化侦测" class="headerlink" title="　变化侦测"></a>　变化侦测</h3><p><a href="https://docs.google.com/presentation/d/1_BlJxudppfKmAtfbNIcqNwzrC5vLrR_h1e09apcpdNY/edit?usp=sharing" target="_blank" rel="noopener">Reactivity in Frontend JavaScript Frameworks
-</a></p>
-<p>变化侦测有两种方式：pull 和  push</p>
-<p>react 的 setState 和 angular 的脏检查属于 pull 的方式。</p>
-<p>pull的方式，系统不知道数据什么时候变化，那么它需要一个信号告诉他说知道数据有可能变了，这个时候系统来进行一个暴力的比对，react 通过 Virtual DOM 中的diff方式，angular 是脏检查。能过这么做是因为 javascript 已经足够快，有浪费但是可以接受。</p>
-<p>push的方式，Vue （响应式）和 Rx.js（Observable） 的方式，更加细粒度的更新，意味着更多的watcher，同样也会带来内存和性能的开销。</p>
-<p>vue2选择了相对折中的方案，在组件层面，vue2使用的是 push 的方式，每一个组件都是响应式的watcher，这样vue能够知道哪些组件内部的状态发生了变化，然后在组件内部使用 pull 的方式通过virtual Dom进行比对更新。</p>
-<p>pull和push的对比，不能说哪个方案一定好，本质区别是用侦测成本换取自动优化的成本。</p>
+            <p>前段时间，因工作内容中中设计到很多 CDN 业务的知识，于是读了一遍《CDN 技术详解》，这本书内容很丰富，<br>讲了很多 CDN 实现的原理和细节，想吃透这本书，读一遍肯定是不够的，需要理解、思考、和长期实践才能真<br>正的理解 CDN 这块内容。</p>
+<p>在阅读此书之前，我仅仅是知道 CDN 可以提高内容的加载速度，通过将网站的资源图片等文件放到七牛的存储<br>服务器中，会提高资源的加载效率，但是我没有测试过，也不知道其是如何做到的。<br>经过几个月的工作实践和阅读，我对 CDN 的理解更进一步。尤其是让我进一步了解了 CDN 和互联网这个概念。</p>
+<p>CDN 是全称是(Content-Distribute-Network)，中文直译名称：内容分发忘网络。简单说，CDN 要做的是<br>将网络一端内容快速、准确的传输到用户面前。类似于现实世界的物流，将企业的商品，快速、安全的送达到<br>用户手中。</p>
+<p>现如今，互联网世界里的人都在大谈特谈互联网、互联网+，感觉自己作为一名互联网从业人员，并没有理解互<br>联网，它是人类几十年智慧的结晶，我知道真正理解它并不容易。《CDN 技术详解》这书让刷新了我对互联网的认识。</p>
+<p>互联网概念可以从两层层面看:一层是狭义的互联网，一层是广义的互联网。</p>
+<p>狭义的互联网是以 TCP／IP 代表的网络层，也就是通过 TCP／IP 网络形成的互联网基础，将计算机链接起来，<br>实现了计算机之间的互联互通。广义的互联网也就是我们常说的互联网，它由以 TCP／IP 代表的网络层和<br>以 WWW 万维网为代表的应用层两层组成。</p>
+<p>互联网的设计理念是(相对的)中立和无控制的，(相对的)说任何人都有决定权，它的任务就是如何更好的将数据进行端对端的传输。</p>
 
         </div>
         <footer class="article-footer">
@@ -267,18 +248,17 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             "@type": "Person",
             "name": "程康健"
         },
-        "headline": "尤雨溪知乎Live总结 上篇",
-        "image": "http://www.chengkangjian.comhttps://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/vuepic.png",
-        "keywords": "javascript vue",
+        "headline": "学习了下「CDN」",
+        "image": "http://www.chengkangjian.comhttp://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg",
+        "keywords": "CDN",
         "genre": "",
-        "datePublished": "2017-06-05",
-        "dateCreated": "2017-06-05",
+        "datePublished": "2017-08-30",
+        "dateCreated": "2017-08-30",
         "dateModified": "2019-06-13",
-        "url": "http://www.chengkangjian.com/2017/06/05/evan-you-live/",
-        "description": "开篇框架的比较，不谈场景都是刷流氓：不同的场景，不同的开发者爱好会产生不同的需求，多种方案的并存是必然和优异的。
-针对不同的场景、框架背后需要解决的问题、结合经验选择框架。
-组件现在所有的框架都已经支持组件化的开发方式。最初是已页面作为开发单位，html、css、js，当时我们的思维方式就是那样。后来我们的前端开发从页面转变为了应用。应用就会有模块封装和切分的需求，很快我们发现应用是可以拆分为组件"
-        "wordCount": 194
+        "url": "http://www.chengkangjian.com/2017/08/30/about-CDN/",
+        "description": "前段时间，因工作内容中中设计到很多 CDN 业务的知识，于是读了一遍《CDN 技术详解》，这本书内容很丰富，讲了很多 CDN 实现的原理和细节，想吃透这本书，读一遍肯定是不够的，需要理解、思考、和长期实践才能真正的理解 CDN 这块内容。
+在阅读此书之前，我仅仅是知道 CDN 可以提高内容的加载速度，通过将网站的资源图片等文件放到七牛的存储服务器中，会提高资源的加载效率，但是我没有测试过，也不知道"
+        "wordCount": 25
     }
 </script>
 
@@ -353,20 +333,20 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
-        <a href="/2017/06/05/evan-you-live-pro/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/12/14/unknow/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            尤雨溪知乎Live总结 下篇
+            我的无知
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/05/06/webpack-note-02/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/08/18/unknow-flower-unknoe-road/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">从零开始学习webpack搭建vue工程-02</p>
+        <p class="article-nav-title">未知的花，魅知的旅</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
