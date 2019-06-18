@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>CDN 集群服务和负载均衡技术 | 程是非sky</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="CDN">
+    
+    <meta name="description" content="当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。 服务器集群技术 服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性 集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。 CDN的节点系统是一种典型的负载均衡系统。 集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。  Cache 集群协同交互">
+<meta name="keywords" content="CDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CDN 集群服务和负载均衡技术">
+<meta property="og:url" content="http://www.chengkangjian.com/2017/09/12/CDN-four-chapter/index.html">
+<meta property="og:site_name" content="程是非sky">
+<meta property="og:description" content="当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。 服务器集群技术 服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性 集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。 CDN的节点系统是一种典型的负载均衡系统。 集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。  Cache 集群协同交互">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
+<meta property="og:updated_time" content="2019-06-18T12:54:57.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CDN 集群服务和负载均衡技术">
+<meta name="twitter:description" content="当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。 服务器集群技术 服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性 集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。 CDN的节点系统是一种典型的负载均衡系统。 集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。  Cache 集群协同交互">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/cheng.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93092041-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">但行好事 莫问前程</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/工作/">工作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/想法/">想法</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技术/">技术</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/">生活</a></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/技术/">技术</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-CDN-four-chapter" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        CDN 集群服务和负载均衡技术
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/09/12/CDN-four-chapter/" class="article-date">
+            <time datetime="2017-09-12T12:11:20.000Z" itemprop="datePublished">2017-09-12</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/CDN/">CDN</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。</p>
+<h2 id="服务器集群技术"><a href="#服务器集群技术" class="headerlink" title="服务器集群技术"></a>服务器集群技术</h2><ul>
+<li>服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性</li>
+<li>集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。</li>
+<li>CDN的节点系统是一种典型的负载均衡系统。</li>
+<li>集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。</li>
+</ul>
+<h2 id="Cache-集群协同交互法"><a href="#Cache-集群协同交互法" class="headerlink" title="Cache 集群协同交互法"></a>Cache 集群协同交互法</h2><ul>
+<li>协同的目标：在各个服务器节点间建立良好的通信通道，及时沟通服务器的缓存情况，为用户提供良好的用户体验。</li>
+<li>通信协议：松散耦合（ICP、HTCP、Digest、Cache Pre-filling）、紧密耦合（CARP）两类。</li>
+<li>ICP：基于UDP协议实现，应答不包含HTTP头信息，通过向邻居发出请求并获得应答来反应Web对象在集群中的缓存情况。</li>
+<li>HTCP：它能够管理一组HTTP Cache服务器并监控相关的缓存活动，应答包含HTTP头信息，数据和认证。</li>
+<li>Cache Diest： 它的出现主要为了解决ICP 和 HTCP 协议在使用时的网络延迟和拥塞问题，不采用请求响应模式，而是在服务器之间建立对等关系，是一种用空间交换时间的思路。</li>
+<li>Cache Pre-filling： 是一种推送Cache内容的机制，优点是可以向多个接收器传输大容量的数据，缺乏统一的标准。</li>
+<li>CARP：一个分布式的缓存协议。<!-- 目前使用CARP -->
+</li>
+</ul>
+<h2 id="负载均衡技术实现"><a href="#负载均衡技术实现" class="headerlink" title="负载均衡技术实现"></a>负载均衡技术实现</h2><ul>
+<li>按照负载均衡策略分发；</li>
+<li>两种角色：任务负担、协同计算；</li>
+<li>以前负载均衡主要在OSI七层模型的第四层展开；</li>
+<li>现在，基于第七层的负载均衡技术逐渐称为主流；</li>
+</ul>
+<h3 id="关键技术"><a href="#关键技术" class="headerlink" title="关键技术"></a>关键技术</h3><ol>
+<li>负载均衡调度算法<br>轮询、加权轮询、随机、加权随机、基于源IP的Hash、基于源IP端口的Hash、基于目的IP的Hash、基于UDP报文净荷的Hash、最小链接、加权最小链接、最小响应时间</li>
+<li>会话持续性保证技术</li>
+</ol>
+<ul>
+<li>基于源IP地址的持续性保持</li>
+<li>基于Cookie数据的持续性保持</li>
+<li>基于SIP报文Call-ID的持续性保持</li>
+<li>基于HTTP报文头的持续性保持</li>
+</ul>
+<ol start="3">
+<li>服务器健康监测技术（服务器健康监测）：  ICMP、 TCP、 HTTP、 FTP、 DNS、 RAUIUS、 SSL</li>
+</ol>
+<h3 id="负载均衡部署方式"><a href="#负载均衡部署方式" class="headerlink" title="负载均衡部署方式"></a>负载均衡部署方式</h3><p>常用方式：</p>
+<ol>
+<li>直连部署</li>
+<li>旁挂部署</li>
+</ol>
+<p>双机热备部署方式：</p>
+<ol>
+<li>主备模式</li>
+<li>负载分担模式</li>
+</ol>
+<h3 id="服务器负载均衡"><a href="#服务器负载均衡" class="headerlink" title="服务器负载均衡"></a>服务器负载均衡</h3><ol>
+<li>四层负载均衡<br>NAT方式、DR方式</li>
+<li>七层负载均衡</li>
+</ol>
+<h3 id="链路负载均衡"><a href="#链路负载均衡" class="headerlink" title="链路负载均衡"></a>链路负载均衡</h3><ol>
+<li>OutBound链路负载均衡</li>
+<li>Inbound链路负载均衡</li>
+</ol>
+<h3 id="开源负载均衡软件"><a href="#开源负载均衡软件" class="headerlink" title="开源负载均衡软件"></a>开源负载均衡软件</h3><p>我们的架构：LVS（负载均衡）| Nginx | OpenResty | ATS</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "程康健"
+        },
+        "headline": "CDN 集群服务和负载均衡技术",
+        "image": "http://www.chengkangjian.comhttp://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/dream-book.jpg",
+        "keywords": "CDN",
+        "genre": "技术",
+        "datePublished": "2017-09-12",
+        "dateCreated": "2017-09-12",
+        "dateModified": "2019-06-18",
+        "url": "http://www.chengkangjian.com/2017/09/12/CDN-four-chapter/",
+        "description": "当一台Cache设备无法满足服务的响应要求时，就需要考虑通过一组服务器形成Cache集群进行服务。
+服务器集群技术
+服务器集群优势：提高性能、降低成本、提高可扩展性、增强可用性
+集群分类：计算集群、负载均衡集群（任务处理负载，I/O流量负载）、高可用集群。
+CDN的节点系统是一种典型的负载均衡系统。
+集群的系统结构：网络层、节点服务器操作系统层、应用层、集群管理系统层。
+
+Cache 集群协同交互"
+        "wordCount": 60
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="valine-thread"></div>
+
+
+    
+    
+    <div id="valine-thread"></div>
+
+
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="hexo" href="https://www.zhihu.com/people/chengkj" target="_blank" rel="noopener">
+                        <i class="icon fa fa-hexo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/chengkj99" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/chengkangjian" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/chengkangjian" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weixin" href="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/WechatIMG211.jpeg" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weixin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/12/14/unknow/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            我的无知
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/09/10/CDN-three-capter/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">CDN 内容缓存工作原理及实现</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/05/16/oolong-ball/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/bua-rsp/team.jpeg)" alt="人生中第一个乌龙球" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/生活/">生活</a></p>
+                            <p class="item-title"><a href="/2019/05/16/oolong-ball/" class="title">人生中第一个乌龙球</a></p>
+                            <p class="item-date"><time datetime="2019-05-16T07:19:07.000Z" itemprop="datePublished">2019-05-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/04/28/code-and-startup/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/code-and-startup.jpg)" alt="关于写代码的那点思考" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/生活/">生活</a></p>
+                            <p class="item-title"><a href="/2019/04/28/code-and-startup/" class="title">关于写代码的那点思考</a></p>
+                            <p class="item-date"><time datetime="2019-04-28T07:40:16.000Z" itemprop="datePublished">2019-04-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/04/15/with-code/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/with-code.jpg)" alt="关于代码的那点思考" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/想法/">想法</a></p>
+                            <p class="item-title"><a href="/2019/04/15/with-code/" class="title">关于代码的那点思考</a></p>
+                            <p class="item-date"><time datetime="2019-04-15T10:42:51.000Z" itemprop="datePublished">2019-04-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/04/13/singer/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/singer.jpg)" alt="观 2019 歌手有感" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/生活/">生活</a></p>
+                            <p class="item-title"><a href="/2019/04/13/singer/" class="title">观 2019 歌手有感</a></p>
+                            <p class="item-date"><time datetime="2019-04-13T14:31:20.000Z" itemprop="datePublished">2019-04-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/04/04/prettier/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/prettier.png)" alt="使用 prettier 格式化统一代码风格" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/技术/">技术</a></p>
+                            <p class="item-title"><a href="/2019/04/04/prettier/" class="title">使用 prettier 格式化统一代码风格</a></p>
+                            <p class="item-date"><time datetime="2019-04-04T08:55:39.000Z" itemprop="datePublished">2019-04-04</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工作/">工作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/想法/">想法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">15</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FE/">FE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思考/">思考</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我/">我</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷开发/">敏捷开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/选择/">选择</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CDN/" style="font-size: 16px;">CDN</a> <a href="/tags/FE/" style="font-size: 10px;">FE</a> <a href="/tags/javascript/" style="font-size: 14px;">javascript</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/心情/" style="font-size: 14px;">心情</a> <a href="/tags/思考/" style="font-size: 20px;">思考</a> <a href="/tags/感悟/" style="font-size: 14px;">感悟</a> <a href="/tags/成长/" style="font-size: 14px;">成长</a> <a href="/tags/我/" style="font-size: 12px;">我</a> <a href="/tags/敏捷开发/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/生活/" style="font-size: 18px;">生活</a> <a href="/tags/选择/" style="font-size: 10px;">选择</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://chengkangjian.lofter.com/">Lofter Blog</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 程康健</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+        <div style="position: absolute; bottom: 0; right: 0;">
+            <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+              </span>
+        </div>
+    </div>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        console.log('UUUUUUUUUUUUUUUUUUUUUU', Valine)
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'F6jFQaG21HE6wUeYaXTSccnG-gzGzoHsz',
+            app_key: 'xvsqUs1Nt3LtHilVGzspzqvk',
+            placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！~',
+            pageSize: '10',
+            avatar: 'identicon',
+            avatar_cdn:  'https://gravatar.loli.net/avatar/'
+        });
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
