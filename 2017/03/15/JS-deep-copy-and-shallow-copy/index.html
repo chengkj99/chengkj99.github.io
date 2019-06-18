@@ -6,26 +6,26 @@
     
 
     
-    <title>聊聊也好 | 程是非sky</title>
+    <title>JS对象的深拷贝和浅拷贝 | 程是非sky</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="生活">
+        <meta name="keywords" content="javascript,学习,成长,对象">
     
-    <meta name="description" content="前些日子，听闻北京炒房团连夜赶车到雄安炒房的消息时，我的心里表现的是一脸的不屑和不解，那里有什么值得你们做出这么疯狂的决定，一个新区这么让人疯狂吗？时间过了大概一年了，现在我不再这么认为了，对于投资和赚钱而言，没有很疯狂只有更疯狂，如果对于赚钱都不着急，还有什么值得去着急。 今天和老同事旭哥和新元，时隔我从前东家离职一年多以来再次相聚，讨论了这个话题，老刘不愧是清华毕业生，思考问题的角度就是有深度">
-<meta name="keywords" content="生活">
+    <meta name="description" content="我们在对数据进行备份的时候，如果这个数据是基本的数据类型，那么很好办，通过赋值实现复制即可。  如果在使用JavaScript对数组或对象进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。  这个问题就是深拷贝和浅拷贝的问题。 浅拷贝但是当遇到引用数据类型时，就需要三思而复制，操">
+<meta name="keywords" content="javascript,学习,成长,对象">
 <meta property="og:type" content="article">
-<meta property="og:title" content="聊聊也好">
-<meta property="og:url" content="http://www.chengkangjian.com/2018/01/07/a-change-in-the-attitude-of-the-XiongAn/index.html">
+<meta property="og:title" content="JS对象的深拷贝和浅拷贝">
+<meta property="og:url" content="http://www.chengkangjian.com/2017/03/15/JS-deep-copy-and-shallow-copy/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="前些日子，听闻北京炒房团连夜赶车到雄安炒房的消息时，我的心里表现的是一脸的不屑和不解，那里有什么值得你们做出这么疯狂的决定，一个新区这么让人疯狂吗？时间过了大概一年了，现在我不再这么认为了，对于投资和赚钱而言，没有很疯狂只有更疯狂，如果对于赚钱都不着急，还有什么值得去着急。 今天和老同事旭哥和新元，时隔我从前东家离职一年多以来再次相聚，讨论了这个话题，老刘不愧是清华毕业生，思考问题的角度就是有深度">
+<meta property="og:description" content="我们在对数据进行备份的时候，如果这个数据是基本的数据类型，那么很好办，通过赋值实现复制即可。  如果在使用JavaScript对数组或对象进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。  这个问题就是深拷贝和浅拷贝的问题。 浅拷贝但是当遇到引用数据类型时，就需要三思而复制，操">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg">
-<meta property="og:updated_time" content="2019-06-18T12:17:30.939Z">
+<meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/deep-copy.png">
+<meta property="og:updated_time" content="2019-06-18T13:14:29.895Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="聊聊也好">
-<meta name="twitter:description" content="前些日子，听闻北京炒房团连夜赶车到雄安炒房的消息时，我的心里表现的是一脸的不屑和不解，那里有什么值得你们做出这么疯狂的决定，一个新区这么让人疯狂吗？时间过了大概一年了，现在我不再这么认为了，对于投资和赚钱而言，没有很疯狂只有更疯狂，如果对于赚钱都不着急，还有什么值得去着急。 今天和老同事旭哥和新元，时隔我从前东家离职一年多以来再次相聚，讨论了这个话题，老刘不愧是清华毕业生，思考问题的角度就是有深度">
-<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg">
+<meta name="twitter:title" content="JS对象的深拷贝和浅拷贝">
+<meta name="twitter:description" content="我们在对数据进行备份的时候，如果这个数据是基本的数据类型，那么很好办，通过赋值实现复制即可。  如果在使用JavaScript对数组或对象进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。  这个问题就是深拷贝和浅拷贝的问题。 浅拷贝但是当遇到引用数据类型时，就需要三思而复制，操">
+<meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/deep-copy.png">
     
 
     
@@ -150,19 +150,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/生活/">生活</a>
+    <a class="page-title-link" href="/categories/技术/">技术</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-a-change-in-the-attitude-of-the-XiongAn" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-JS-deep-copy-and-shallow-copy" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        聊聊也好
+        JS对象的深拷贝和浅拷贝
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2018/01/07/a-change-in-the-attitude-of-the-XiongAn/" class="article-date">
-            <time datetime="2018-01-06T16:34:18.000Z" itemprop="datePublished">2018-01-07</time>
+        <a href="/2017/03/15/JS-deep-copy-and-shallow-copy/" class="article-date">
+            <time datetime="2017-03-15T10:35:42.000Z" itemprop="datePublished">2017-03-15</time>
         </a>
     </div>
 
@@ -182,21 +182,38 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/生活/">生活</a>
+        <a class="tag-link" href="/tags/javascript/">javascript</a>, <a class="tag-link" href="/tags/学习/">学习</a>, <a class="tag-link" href="/tags/对象/">对象</a>, <a class="tag-link" href="/tags/成长/">成长</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>前些日子，听闻北京炒房团连夜赶车到雄安炒房的消息时，我的心里表现的是一脸的不屑和不解，那里有什么值得你们做出这么疯狂的决定，一个新区这么让人疯狂吗？时间过了大概一年了，现在我不再这么认为了，对于投资和赚钱而言，没有很疯狂只有更疯狂，如果对于赚钱都不着急，还有什么值得去着急。</p>
-<p>今天和老同事旭哥和新元，时隔我从前东家离职一年多以来再次相聚，讨论了这个话题，老刘不愧是清华毕业生，思考问题的角度就是有深度。颠覆了我之前的一些认知。</p>
-<p>对于雄安我没有归属感的认知。每次和周围的朋友或者亲戚谈论到买房，都会有意或无意的谈及和建议我到雄安买房，我之前认为我不会去那里，因为那里没有归属感，作为一个山东人，要去河北一个城市定居，这是我这辈子也没有想过的，倒是想过去杭州、苏州、南京等城市都有想过，由于没想过，所以对于身边人的这个雄安落地的建议，我甚至都不思考，直接用“不可能”回绝。其实现在想一想，无论我人在哪里，只要生活品质优越，有钱花，出门便捷，生活幸福不就是自己追求的吗? 我之所以选择杭州、苏州等城市不正是看上这些二线城市的生活环境相对来说既有大城市完善的基础设施带来的便捷，又没有那么多大城市病不是吗。如果雄安可以带来和苏州、杭州等城市一样的甚至更好的生活环境，选择雄安作为自己的归属地又何乐而不为呢。</p>
-<p>对于企业发展的背后原因的认知。2017年发生的事情，美团进入网约车领域，如果用常人的思维思考，美团要跨界发展；如果再深入一点，美团以团购起家陆续有了团购、外卖、酒店、旅游、电影等领域、涵盖了吃喝玩乐的方方面面，从衣食住行的角度来看，美团已经进入了食住的领域，衣和行的领域是待进入的，所以现在进入出行领域并没有什么奇怪的。如果换个角度，从企业背后的资本方考虑，进入出行领域，无疑是想在网约车市场分一杯羹，这其实体现的是新势力对旧势力的挑战，这背后代表的是两股力量。</p>
-<p>最近在思考投资的事情，再次买了一些基金，其实我对基金的背后的样子是一无所知的，老刘提出的观点再一次颠覆我的认知，“基金存在的原因是对国家队资金动向的一个遮罩层” ，国家队的资金难道是在诸多的基金公司里吗？我不清楚，但不重要，这个观点已足以让我惊讶。</p>
-<p>我更深入的理解了洗钱的含义，把钱洗一遍就是洗钱，这个“洗”字，就是把黑钱变成了白钱，把不合法变为了合法。有很多没想到的套路，比如：自己开个游戏公司，通过将黑钱用来买游戏装备，游戏公司赚来的收益就是合法的收益，这个过程就将黑钱洗白，完成一个洗钱的过程。洗钱的手段有很多，网购、比特币等，所以网络实名制的政策不排除有反洗钱的原因吧。</p>
-<p>本次交流，让我更加坚信的认为线下的交流很有意义，应用通信的发展，一方面确实给我们带来了极大的便捷，但是也带来了新的问题。微信等应用软件看似让人与人的沟通不受时间和空间的限制，方便人们的交流，这在本来是好事，应该会拉近人的距离才是，但是结果是相反的，不仅没有拉近人的距离，反而让人与人之间变得更疏远。</p>
-<p>没有微信的时代，人与人相隔五年没联系再次联系可能会两眼泪汪汪，感情如初不说，甚至情谊更加深厚，这个时候感情不会随着时间而改变，是恒定的。而有微信的时代，如果好朋友五年不联系，再次联系，导致的结果是两个熟悉的陌生人，这个时候感情会随着时间逐渐变淡，是下降的。究其原因，没有微信的不联系是无法联系是被动的不联系，朋友之间时而还会挂念对方也会想对方在挂念着自己，再次联系的时候是自然的，没有隔阂的。而有微信的不联系是能联系而不联系是主动的不联系，朋友之间可能也会时而想念对方但是如果不联系会让对方误认为对方或许已经将自己遗忘，再次联系的时候的感觉，是不自然的，是有心理隔阂的。</p>
+            <p> 我们在对数据进行备份的时候，如果这个数据是基本的数据类型，那么很好办，通过赋值实现复制即可。</p>
+<p> 如果在使用JavaScript对数组或对象进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。</p>
+<p> 这个问题就是深拷贝和浅拷贝的问题。</p>
+<h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><p>但是当遇到引用数据类型时，就需要三思而复制，操作而三思。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = obj1</span><br><span class="line"></span><br><span class="line">obj2.b = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1)  <span class="comment">// &#123; a: 1, b: 3 &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 === obj2) <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>在这里我只是想obj2复制obj1,当我对obj2进行操作时，obj1的值也发生了变化。<br>换句话说就是因为如果只是简单的赋值，它只是进行了地址的引用，所以改变一个对象另一个对象也会跟着变。上面这种直接赋值方式的复制称之为<strong>浅拷贝</strong>。</p>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p>我在想如何让obj2复制obj1的对象内容，在我对obj2进行修改时，不影响obj1，下面总结两个方法，可以在不同情况下使用。</p>
+<h4 id="1-JSON-parse-JSON-stringify-obj"><a href="#1-JSON-parse-JSON-stringify-obj" class="headerlink" title="1. JSON.parse(JSON.stringify(obj))"></a>1. JSON.parse(JSON.stringify(obj))</h4><p>利用JSON的方式进行浅层次序列化对象进行深拷贝是一个很好的方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj3 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</span><br><span class="line">obj3.b = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1)  <span class="comment">//&#123; a: 1, b: 2 &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 === obj3)  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>但是JSON的方式有局限性，就是对象必须遵从JSON的格式，当遇到层级较深，且序列化对象不完全符合JSON格式时，使用JSON的方式进行深拷贝就会出现问题。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  a: <span class="string">'1'</span>,</span><br><span class="line">  b: <span class="string">'2'</span>,</span><br><span class="line">  c: <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj4 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj4) <span class="comment">//&#123; a: '1', b: '2' &#125; 好像漏了些什么😄</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-Object-assign-target-…sources"><a href="#2-Object-assign-target-…sources" class="headerlink" title="2. Object.assign(target, …sources)"></a>2. Object.assign(target, …sources)</h4><blockquote>
+<p>Object.assign() 方法用于将所有可枚举的属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
+</blockquote>
+<p>它接收一个目标对象（target）和 一个或多个源对象（sources）。</p>
+<p>我们可以使用它进行对象的复制、合并：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 复制</span></span><br><span class="line"><span class="keyword">let</span> c = <span class="built_in">Object</span>.assign(&#123;&#125;, &#123; <span class="attr">a</span>: <span class="string">'apple'</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// &#123; a: 'apple' &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//合并</span></span><br><span class="line"><span class="keyword">let</span> o = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> c = <span class="built_in">Object</span>.assign(o, &#123; <span class="attr">a</span>: <span class="string">'apple'</span> &#125;, &#123; <span class="attr">b</span>: <span class="string">'banana'</span> &#125;, &#123; <span class="attr">c</span>: <span class="string">'cake'</span> &#125; )</span><br><span class="line"><span class="built_in">console</span>.log(c) <span class="comment">// &#123; a: 'apple', b: 'banana', c: 'cake' &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>虽然它可以复制对象，但是 Object.assign() 拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123; <span class="attr">b</span>: &#123;<span class="attr">c</span>:<span class="number">4</span>&#125; , <span class="attr">d</span>: &#123; <span class="attr">e</span>: &#123;<span class="attr">f</span>:<span class="number">1</span>&#125;&#125; &#125;</span><br><span class="line"><span class="keyword">let</span> g = <span class="built_in">Object</span>.assign(&#123;&#125;,a)</span><br><span class="line"><span class="keyword">let</span> h = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(a));</span><br><span class="line"><span class="built_in">console</span>.log(g.d) <span class="comment">// &#123; e: &#123; f: 1 &#125; &#125;</span></span><br><span class="line">g.d.e = <span class="number">32</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'g.d.e set to 32.'</span>) <span class="comment">// g.d.e set to 32.</span></span><br><span class="line"><span class="built_in">console</span>.log(g) <span class="comment">// &#123; b: &#123; c: 4 &#125;, d: &#123; e: 32 &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// &#123; b: &#123; c: 4 &#125;, d: &#123; e: 32 &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(h) <span class="comment">// &#123; b: &#123; c: 4 &#125;, d: &#123; e: &#123; f: 1 &#125; &#125; &#125;</span></span><br><span class="line">h.d.e = <span class="number">54</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'h.d.e set to 54.'</span>) <span class="comment">// h.d.e set to 54.</span></span><br><span class="line"><span class="built_in">console</span>.log(g) <span class="comment">// &#123; b: &#123; c: 4 &#125;, d: &#123; e: 32 &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// &#123; b: &#123; c: 4 &#125;, d: &#123; e: 32 &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(h) <span class="comment">// &#123; b: &#123; c: 4 &#125;, d: &#123; e: 54 &#125; &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>而且，原始类型会被包装，null 和 undefined 会被忽略。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = Object.assign(&#123;&#125;,  &quot;abc&quot;, null, true, undefined, 10, Symbol(&quot;foo&quot;));</span><br><span class="line">// 注意，只有字符串的包装对象才可能有自身可枚举属性。</span><br><span class="line">console.log(obj); // &#123; &quot;0&quot;: &quot;a&quot;, &quot;1&quot;: &quot;b&quot;, &quot;2&quot;: &quot;c&quot; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以，Object.assign并没有解决我们深度拷贝的需求。</p>
+<h4 id="3-一段深拷贝的代码"><a href="#3-一段深拷贝的代码" class="headerlink" title="3. 一段深拷贝的代码"></a>3. 一段深拷贝的代码</h4><p>其实实现对象的深拷贝，只需要把父对象的属性，全部拷贝给子对象，就可以实现复拷贝。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extendCopy</span>(<span class="params">p</span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">var</span> c = &#123;&#125;;</span><br><span class="line">　　<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> p) &#123;</span><br><span class="line">　　　　c[i] = p[i];</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是，这样的拷贝有一个问题。那就是，如果父对象的属性等于数组或另一个对象，那么实际上，子对象获得的只是一个内存地址，而不是真正拷贝，因此存在父对象被篡改的可能。</p>
+<p>当对象层级较深，且序列化对象不完全符合JSON格式时，这个时候就需要通过递归调用”浅拷贝”来解决。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  a: <span class="string">'1'</span>,</span><br><span class="line">  b: <span class="string">'2'</span>,</span><br><span class="line">  c: &#123;</span><br><span class="line">    d: <span class="string">'3'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  d: <span class="function"><span class="keyword">function</span> <span class="title">aa</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(<span class="keyword">typeof</span> obj === <span class="string">"object"</span>) &#123;</span><br><span class="line">       <span class="keyword">if</span>(obj.constructor === <span class="built_in">Array</span>) &#123;</span><br><span class="line">           <span class="keyword">var</span> newArr = []</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; obj.length; i++) newArr.push(obj[i])</span><br><span class="line">           <span class="keyword">return</span> newArr</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="keyword">var</span> newObj = &#123;&#125;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">               newObj[key] = <span class="keyword">this</span>.deepCopy(obj[key])</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> newObj</span><br><span class="line">       &#125;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> obj</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(deepCopy(obj1)) <span class="comment">//&#123; a: '1', b: '2', c: &#123; d: '3' &#125;, d: [Function: aa] &#125;</span></span><br></pre></td></tr></table></figure>
+<p>继续简化一下…</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  a: <span class="string">'1'</span>,</span><br><span class="line">  b: <span class="string">'2'</span>,</span><br><span class="line">  c: &#123;</span><br><span class="line">    d: <span class="string">'3'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  d: <span class="function"><span class="keyword">function</span> <span class="title">aa</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> temp = obj.constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> val <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    temp[val] = <span class="keyword">typeof</span> obj[val] == <span class="string">'object'</span> ? deepCopy(obj[val]) : obj[val]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> temp</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(deepCopy(obj1)) <span class="comment">//&#123; a: '1', b: '2', c: &#123; d: '3' &#125;, d: [Function: aa] &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在实际开发中，关于对象复制的问题是经常遇到的。最常见的是对对象的复制，重新定义，扩展等。掌握浅拷贝和深拷贝的区别以及如何进行深拷贝，以及选择哪个方式进行深拷贝，会节省许多debug时间，避免很多不必要的麻烦。</p>
 
         </div>
         <footer class="article-footer">
@@ -249,17 +266,19 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             "@type": "Person",
             "name": "程康健"
         },
-        "headline": "聊聊也好",
-        "image": "http://www.chengkangjian.comhttp://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/city.jpg",
-        "keywords": "生活",
-        "genre": "生活",
-        "datePublished": "2018-01-07",
-        "dateCreated": "2018-01-07",
+        "headline": "JS对象的深拷贝和浅拷贝",
+        "image": "http://www.chengkangjian.comhttp://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/deep-copy.png",
+        "keywords": "javascript 学习 成长 对象",
+        "genre": "技术",
+        "datePublished": "2017-03-15",
+        "dateCreated": "2017-03-15",
         "dateModified": "2019-06-18",
-        "url": "http://www.chengkangjian.com/2018/01/07/a-change-in-the-attitude-of-the-XiongAn/",
-        "description": "前些日子，听闻北京炒房团连夜赶车到雄安炒房的消息时，我的心里表现的是一脸的不屑和不解，那里有什么值得你们做出这么疯狂的决定，一个新区这么让人疯狂吗？时间过了大概一年了，现在我不再这么认为了，对于投资和赚钱而言，没有很疯狂只有更疯狂，如果对于赚钱都不着急，还有什么值得去着急。
-今天和老同事旭哥和新元，时隔我从前东家离职一年多以来再次相聚，讨论了这个话题，老刘不愧是清华毕业生，思考问题的角度就是有深度"
-        "wordCount": 3
+        "url": "http://www.chengkangjian.com/2017/03/15/JS-deep-copy-and-shallow-copy/",
+        "description": " 我们在对数据进行备份的时候，如果这个数据是基本的数据类型，那么很好办，通过赋值实现复制即可。
+ 如果在使用JavaScript对数组或对象进行操作的时候，我们经常需要将数组或对象进行备份，事实证明如果只是简单的将它赋予其他变量，那么我们只要更改其中的任何一个，然后其他的也会跟着改变，这就导致了问题的发生。
+ 这个问题就是深拷贝和浅拷贝的问题。
+浅拷贝但是当遇到引用数据类型时，就需要三思而复制，操"
+        "wordCount": 1001
     }
 </script>
 
@@ -334,20 +353,20 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
-        <a href="/2018/03/07/How-to-live-in-a-cruel-world/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/04/12/my-girlfriend/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            如何在残酷的世界中好好生活
+            My Girlfriend
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/12/14/unknow/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/03/11/agile-development-training/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">我的无知</p>
+        <p class="article-nav-title">记一次敏捷开发Scrum培训及实践的感受</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
