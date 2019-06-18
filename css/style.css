@@ -344,7 +344,7 @@ code {
   clear: both;
 }
 #header {
-  background: url("https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/mountain-sky.jpg");
+  background-image: url("https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/mountain-sky.jpg");
   -webkit-background-size: contain;
   -moz-background-size: contain;
   background-size: contain;
