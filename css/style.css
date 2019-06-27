@@ -345,9 +345,9 @@ code {
 }
 #header {
   background-image: url("https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/mountain-sky.jpg");
-  -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  background-size: 100% 100%;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-size: contain;
   padding-bottom: 60px;
   position: relative;
 }
