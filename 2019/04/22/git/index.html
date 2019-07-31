@@ -12,19 +12,19 @@
     
         <meta name="keywords" content="git">
     
-    <meta name="description" content="基于历史 commit 切分支git checkout -b branchName commitId 删除本地 remotegit remote remove origin 重命名 remotegit remote rename origin upstream 删除远程分支git push --delete origin branch_name 添加/关联远程仓库git remote add or">
+    <meta name="description" content="分支操作123456789101112131415git checkout -b new_branch # 基于当前分支创建分支git checkout -b new_branch commitId # 基于历史 commit 切分支git branch -a # 查看所有分支git branch -r # 查看远程分支git branch -vv # 查看本地分支所关联的远程分支git bran">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 常用命令">
 <meta property="og:url" content="http://www.chengkangjian.com/2019/04/22/git/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="基于历史 commit 切分支git checkout -b branchName commitId 删除本地 remotegit remote remove origin 重命名 remotegit remote rename origin upstream 删除远程分支git push --delete origin branch_name 添加/关联远程仓库git remote add or">
+<meta property="og:description" content="分支操作123456789101112131415git checkout -b new_branch # 基于当前分支创建分支git checkout -b new_branch commitId # 基于历史 commit 切分支git branch -a # 查看所有分支git branch -r # 查看远程分支git branch -vv # 查看本地分支所关联的远程分支git bran">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/git.png">
-<meta property="og:updated_time" content="2019-07-10T07:12:09.965Z">
+<meta property="og:updated_time" content="2019-07-31T07:35:20.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 常用命令">
-<meta name="twitter:description" content="基于历史 commit 切分支git checkout -b branchName commitId 删除本地 remotegit remote remove origin 重命名 remotegit remote rename origin upstream 删除远程分支git push --delete origin branch_name 添加/关联远程仓库git remote add or">
+<meta name="twitter:description" content="分支操作123456789101112131415git checkout -b new_branch # 基于当前分支创建分支git checkout -b new_branch commitId # 基于历史 commit 切分支git branch -a # 查看所有分支git branch -r # 查看远程分支git branch -vv # 查看本地分支所关联的远程分支git bran">
 <meta name="twitter:image" content="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/git.png">
     
 
@@ -189,15 +189,12 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h3 id="基于历史-commit-切分支"><a href="#基于历史-commit-切分支" class="headerlink" title="基于历史 commit 切分支"></a>基于历史 commit 切分支</h3><p><code>git checkout -b branchName commitId</code></p>
-<h3 id="删除本地-remote"><a href="#删除本地-remote" class="headerlink" title="删除本地 remote"></a>删除本地 remote</h3><p><code>git remote remove origin</code></p>
-<h3 id="重命名-remote"><a href="#重命名-remote" class="headerlink" title="重命名 remote"></a>重命名 remote</h3><p><code>git remote rename origin upstream</code></p>
-<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p><code>git push --delete origin branch_name</code></p>
+            <h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git checkout -b new_branch # 基于当前分支创建分支</span><br><span class="line">git checkout -b new_branch commitId # 基于历史 commit 切分支</span><br><span class="line"></span><br><span class="line">git branch -a # 查看所有分支</span><br><span class="line">git branch -r # 查看远程分支</span><br><span class="line">git branch -vv # 查看本地分支所关联的远程分支</span><br><span class="line"></span><br><span class="line">git branch -m old_branch new_branch #修改分支名称</span><br><span class="line"></span><br><span class="line">git push origin :old_branch # 删除远程分支</span><br><span class="line">git push --delete origin branch_name # 删除远程分支</span><br><span class="line"></span><br><span class="line">git push --set-upstream origin new_branch # push 新分支到远程分支</span><br><span class="line">git push -u origin new_branch # push 新分支到远程分支</span><br></pre></td></tr></table></figure>
+<h3 id="remote-操作"><a href="#remote-操作" class="headerlink" title="remote 操作"></a>remote 操作</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git remote remove origin # 删除本地 remote</span><br><span class="line">git remote rename origin upstream # 重命名 remote</span><br><span class="line"></span><br><span class="line">git remote rename upstream origin # 修改 remote name</span><br></pre></td></tr></table></figure>
 <h3 id="添加-关联远程仓库"><a href="#添加-关联远程仓库" class="headerlink" title="添加/关联远程仓库"></a>添加/关联远程仓库</h3><p><code>git remote add origin git@github.com:chengkj99/chengkj-blog.git</code></p>
-<h3 id="修改-remote-name"><a href="#修改-remote-name" class="headerlink" title="修改 remote name"></a>修改 remote name</h3><p><code>git remote rename upstream origin</code></p>
 <h3 id="删除-git-缓存"><a href="#删除-git-缓存" class="headerlink" title="删除 git 缓存"></a>删除 git 缓存</h3><p><code>git rm -r --cached &quot;file name&quot;</code></p>
 <h3 id="打-tag"><a href="#打-tag" class="headerlink" title="打 tag"></a>打 tag</h3><p>tag 是特定 commit 一个指针，也就是每个 tag 对应一个特定的 commit，通过 tag 可以返回到项目的特定状态下，所以可以将 tag 看作是在大量 commit 中设定的书签。<br><br>releases 是基于 tag 编译好的二进制文件。可以记录项目的发布历史。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 打 tag --&gt;</span><br><span class="line">git tag tagName</span><br><span class="line"></span><br><span class="line">&lt;!-- 打 tag 用 -a 指定标签名，-m 指定说明文字： --&gt;</span><br><span class="line">git tag -a tagName -m "Release version tagName"</span><br><span class="line"></span><br><span class="line">&lt;!-- push tag 到远程 --&gt;</span><br><span class="line">git push origin --tags</span><br><span class="line"></span><br><span class="line">&lt;!-- 查看 tag 信息 --&gt;</span><br><span class="line">git show tagName</span><br><span class="line"></span><br><span class="line">&lt;!-- 删除 tag --&gt;</span><br><span class="line">git tag -d tagName</span><br><span class="line"></span><br><span class="line">&lt;!-- 删除远程 tag --&gt;</span><br><span class="line">git push origin --delete tag tagName</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git tag tagName # 打 tag</span><br><span class="line"></span><br><span class="line">git tag -a tagName -m "Release version tagName" # 打 tag 用 -a 指定标签名，-m 指定说明文字：</span><br><span class="line"></span><br><span class="line">git push origin --tags # push tag 到远程</span><br><span class="line"></span><br><span class="line">git show tagName # 查看 tag 信息</span><br><span class="line"></span><br><span class="line">git tag -d tagName # 删除 tag</span><br><span class="line"></span><br><span class="line">git push origin --delete tag tagName # 删除远程 tag</span><br></pre></td></tr></table></figure>
 <p>…待补充</p>
 
         </div>
@@ -275,14 +272,10 @@ ga('send', 'pageview');
         "genre": "技术",
         "datePublished": "2019-04-22",
         "dateCreated": "2019-04-22",
-        "dateModified": "2019-07-10",
+        "dateModified": "2019-07-31",
         "url": "http://www.chengkangjian.com/2019/04/22/git/",
-        "description": "基于历史 commit 切分支git checkout -b branchName commitId
-删除本地 remotegit remote remove origin
-重命名 remotegit remote rename origin upstream
-删除远程分支git push --delete origin branch_name
-添加/关联远程仓库git remote add or"
-        "wordCount": 178
+        "description": "分支操作123456789101112131415git checkout -b new_branch # 基于当前分支创建分支git checkout -b new_branch commitId # 基于历史 commit 切分支git branch -a # 查看所有分支git branch -r # 查看远程分支git branch -vv # 查看本地分支所关联的远程分支git bran"
+        "wordCount": 247
     }
 </script>
 
