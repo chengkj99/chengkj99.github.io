@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>vim 基础教程 | 程是非sky</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="技术">
+    
+    <meta name="description" content="vim 的四种模式1 普通模式 普通模式的作用 在普通模式一般浏览文件使用，也包括一些复制、粘贴、删除等操作。普通模式是进入文档后的默认模式。切换到普通模式可以使用：  切换到普通模式  [ECS] CTRL + [ 命令模式和可视模式执行完操作后会默认切换到普通模式    2 编辑模式 作用 进入编辑状态，通过键盘输入内容。  切换到编辑模式  i 在光标前插入 a 在光标后插入 A 在当前行">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim 基础教程">
+<meta property="og:url" content="http://www.chengkangjian.com/2019/12/28/use-vim/index.html">
+<meta property="og:site_name" content="程是非sky">
+<meta property="og:description" content="vim 的四种模式1 普通模式 普通模式的作用 在普通模式一般浏览文件使用，也包括一些复制、粘贴、删除等操作。普通模式是进入文档后的默认模式。切换到普通模式可以使用：  切换到普通模式  [ECS] CTRL + [ 命令模式和可视模式执行完操作后会默认切换到普通模式    2 编辑模式 作用 进入编辑状态，通过键盘输入内容。  切换到编辑模式  i 在光标前插入 a 在光标后插入 A 在当前行">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/nature-vim.jpg">
+<meta property="og:updated_time" content="2019-12-28T07:56:59.607Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim 基础教程">
+<meta name="twitter:description" content="vim 的四种模式1 普通模式 普通模式的作用 在普通模式一般浏览文件使用，也包括一些复制、粘贴、删除等操作。普通模式是进入文档后的默认模式。切换到普通模式可以使用：  切换到普通模式  [ECS] CTRL + [ 命令模式和可视模式执行完操作后会默认切换到普通模式    2 编辑模式 作用 进入编辑状态，通过键盘输入内容。  切换到编辑模式  i 在光标前插入 a 在光标后插入 A 在当前行">
+<meta name="twitter:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/nature-vim.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/cheng.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93092041-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">但行好事 莫问前程</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/工作/">工作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/想法/">想法</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技术/">技术</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/">生活</a></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/技术/">技术</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-use-vim" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        vim 基础教程
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/12/28/use-vim/" class="article-date">
+            <time datetime="2019-12-28T07:51:24.000Z" itemprop="datePublished">2019-12-28</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/技术/">技术</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <!-- categories:
+ home(主页)：想在主页进行展示的
+ idea(想法): 记录自己的想法，一句两句都可以
+ technology(技术)：记录技术的思考，总结
+ life(生活)：记录生活方面的思考
+-->
+<h2 id="vim-的四种模式"><a href="#vim-的四种模式" class="headerlink" title="vim 的四种模式"></a>vim 的四种模式</h2><h3 id="1-普通模式"><a href="#1-普通模式" class="headerlink" title="1 普通模式"></a>1 普通模式</h3><ul>
+<li><p>普通模式的作用</p>
+<p>在普通模式一般浏览文件使用，也包括一些复制、粘贴、删除等操作。<br>普通模式是进入文档后的默认模式。切换到普通模式可以使用：</p>
+</li>
+<li><p>切换到普通模式</p>
+<ul>
+<li><code>[ECS]</code></li>
+<li><code>CTRL + [</code></li>
+<li>命令模式和可视模式执行完操作后会默认切换到普通模式</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-编辑模式"><a href="#2-编辑模式" class="headerlink" title="2 编辑模式"></a>2 编辑模式</h3><ul>
+<li><p>作用</p>
+<p>进入编辑状态，通过键盘输入内容。</p>
+</li>
+<li><p>切换到编辑模式</p>
+<ul>
+<li>i 在光标前插入</li>
+<li>a 在光标后插入</li>
+<li>A 在当前行最后插入内容</li>
+<li>o 在光标下插入一行</li>
+<li>O 在光标上插入一行</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-命令模式"><a href="#3-命令模式" class="headerlink" title="3 命令模式"></a>3 命令模式</h3><ul>
+<li><p>作用</p>
+<p>就像是进入了 shell 环境，可以进行保存、退出、查询、替换等操作。</p>
+</li>
+<li><p>进入命令模式</p>
+<ul>
+<li>/</li>
+<li>:</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-可视模式"><a href="#4-可视模式" class="headerlink" title="4 可视模式"></a>4 可视模式</h3><ul>
+<li><p>作用</p>
+<p>选中文本进行操作增、删、改等操作。</p>
+</li>
+<li><p>进入可视模式</p>
+<ul>
+<li>v 逐个字符选择文本</li>
+<li>V 逐行选择文本</li>
+<li><code>CTRL + v</code> 按照块的方式选择文本</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-替换模式"><a href="#5-替换模式" class="headerlink" title="5 替换模式"></a>5 替换模式</h3><ul>
+<li><p>作用</p>
+<p>内容更改替换</p>
+</li>
+<li><p>R</p>
+<p>在光标位置使用 R，将进入 <code>replace</code> 模式，输入的内容将原内容进行一一替换</p>
+</li>
+</ul>
+<h2 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h2><ul>
+<li>j 下（坠落的感觉）</li>
+<li>k 上（飞的感觉）</li>
+<li>l 右</li>
+<li><p>h 左</p>
+</li>
+<li><p>e 向右逐词移动到下一个单词的结尾</p>
+</li>
+<li>w 向右逐词移动下一个单词的开头</li>
+<li><p>b 向左逐词移动到下一个单词的开头</p>
+</li>
+<li><p>gg 移动到文档顶部</p>
+</li>
+<li>G 移动至文档底部</li>
+<li>nG 移动至文档第 n 行</li>
+<li><code>CTRL + G</code> 查看当前文档的位置信息</li>
+</ul>
+<h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><ul>
+<li>y 复制</li>
+<li>yy 复制一行</li>
+<li>yw/ye 复制一个光标到结尾的单词</li>
+<li>yb 复制一个光标到开头的结尾</li>
+<li>v + y 使用 v 进入 visual 模式，选中内容，再通过 y 复制选中的内容</li>
+</ul>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令公式:</span><br><span class="line">  operator [number] motion # 命令： 操作 + 数字 + 动作</span><br><span class="line">如：</span><br><span class="line">  d  [number] motion # 删除命令</span><br></pre></td></tr></table></figure>
+<ul>
+<li>x 删除光标所在处字符</li>
+<li>X 删除光标前一个字符</li>
+<li>dw 删除到下一个单词开头</li>
+<li>de 删除到本单词末尾</li>
+<li>dE 删除到本单词末尾包括标点在内</li>
+<li>db 删除到前一个单词</li>
+<li>dB 删除到前一个单词包括标点在内</li>
+<li>d0 删除光标位置到本行开头</li>
+<li>d\$ 删除光标位置到本行行尾</li>
+<li>dd 删除一行</li>
+<li>ndd 删除 N 行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例子:</span><br><span class="line">  3dw 删除到第三个单词的开头</span><br></pre></td></tr></table></figure>
+<h2 id="恢复-撤销"><a href="#恢复-撤销" class="headerlink" title="恢复/撤销"></a>恢复/撤销</h2><ul>
+<li><code>[ECS]</code> 如果第一个命令按错了，可以使用 <code>[ECS]</code> 重新开始。</li>
+<li>u 撤销上一个操作</li>
+<li>U 撤销一行的所有操作</li>
+<li><code>CTRL + R</code> 撤销「撤销操作」</li>
+</ul>
+<h2 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h2><ul>
+<li>. 重复上一个步骤</li>
+</ul>
+<h2 id="删除更改"><a href="#删除更改" class="headerlink" title="删除更改"></a>删除更改</h2><ul>
+<li>p 使用<code>d</code>操作的内容，可以使用<code>p</code>进行粘贴</li>
+<li>rx 将光标位置的字母替换为 x</li>
+<li>ce 删除光标位置到单词结尾，并切换到 <code>insert</code> 模式，<code>c</code> 的更改命令和 <code>d</code> 类似</li>
+<li>R 在光标位置使用 R，将进入 <code>replace</code> 模式，输入的内容将原内容进行一一替换</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令公式：</span><br><span class="line">  operator [number] motion # 命令： 操作 + 数字 + 动作</span><br><span class="line">如：</span><br><span class="line">  c  [number] motion</span><br></pre></td></tr></table></figure>
+<p>c 是一个更改命令，和<code>d</code>不同的是，删除对应的内容后，并切换到 <code>insert</code> 模式</p>
+<ul>
+<li>cw 删除到下一个单词开头</li>
+<li>ce 删除到本单词末尾</li>
+<li>cE 删除到本单词末尾包括标点在内</li>
+<li>cb 删除到前一个单词</li>
+<li>cB 删除到前一个单词包括标点在内</li>
+<li>c0 删除光标位置到本行开头</li>
+<li>c\$ 删除光标位置到本行行尾</li>
+<li>cc 删除一行</li>
+<li>ncc 删除 N 行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">  3cc 删除三行并切换到编辑模式</span><br></pre></td></tr></table></figure>
+<h2 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a>选择文本</h2><ul>
+<li>v 按<code>v</code>进入<code>visual</code> 模式， 然后按<code>:</code>，出现<code>:&#39;&lt;,&#39;&gt;</code>，在后面输入 <code>w TEST</code>，执行后，将选中的文本保存在<code>TEST</code>文件中</li>
+<li>:’&lt;,’&gt;w TEST 选择文本并保存在 TEST 文件中</li>
+</ul>
+<h2 id="插入编辑"><a href="#插入编辑" class="headerlink" title="插入编辑"></a>插入编辑</h2><ul>
+<li>o 在光标位置下一行新开一行，并切换到<code>insert</code>模式</li>
+<li>O 在光标位置上一行新开一行，并切换到<code>insert</code>模式</li>
+<li>a 在光标后插入内容</li>
+<li>A 在当前行最后插入内容</li>
+<li>i 在当前光标插入内容</li>
+</ul>
+<h2 id="查询替换"><a href="#查询替换" class="headerlink" title="查询替换"></a>查询替换</h2><ul>
+<li><code>/</code> 查询使用 <code>/</code> 匹配符</li>
+<li>n 匹配下一个查询</li>
+<li>N 匹配上一个查询</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">/error # 查询 "error" 字符串</span><br></pre></td></tr></table></figure>
+<ul>
+<li>:s/old/new/g 全局匹配「old」并用「new」替换</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">To substitute new for the first old in a line type    :s/old/new</span><br><span class="line">To substitute new for all 'old's on a line type       :s/old/new/g</span><br><span class="line">To substitute phrases between two line #'s type       :#,#s/old/new/g</span><br><span class="line">To substitute all occurrences in the file type        :%s/old/new/g</span><br><span class="line">To ask for confirmation each time add 'c'             :%s/old/new/gc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>:set options 设置查询配置（忽略大小写，部分匹配，高亮）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">'ic'  'ignorecase'   ':set ic'    ignore upper/lower case when searching</span><br><span class="line">'is'  'incsearch'    ':set is'    show partial matches for a search phrase</span><br><span class="line">'hls' 'hlsearch'     ':set hls'   highlight all matching phrases</span><br><span class="line"></span><br><span class="line">Prepend "no" to switch an option off:   `:set noic`</span><br></pre></td></tr></table></figure>
+<h2 id="执行外部命令"><a href="#执行外部命令" class="headerlink" title="执行外部命令"></a>执行外部命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:!command # 执行外部命令</span><br></pre></td></tr></table></figure>
+<ul>
+<li>:!ls 执行<code>ls</code>命令</li>
+<li>:! w filename 先用 <code>v</code> 选中了内容，将保存选中的部分到 filename 中</li>
+<li>:w filename 保存当前打开的文档到文件 filename</li>
+<li>:r filename 读取 filename 文件内容到当前文件的光标位置</li>
+<li>:!rm filename 删除 filename 文件</li>
+</ul>
+<h2 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h2><ul>
+<li><code>[F1]</code></li>
+<li>:help</li>
+<li>:command 先输入<code>:e</code> 再按<code>CTRL + D</code> 查看以 <code>e</code> 为开头的命令</li>
+<li>:help user-manual 查看用户手册</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">  :help w 查看 w 相关的使用</span><br></pre></td></tr></table></figure>
+<h2 id="相关教程"><a href="#相关教程" class="headerlink" title="相关教程"></a>相关教程</h2><ul>
+<li>在终端执行 <code>vimtutor</code>命令，打开交互式教程，按照教程可以学习到最基础的内容。</li>
+<li><a href="http://vimdoc.sourceforge.net/htmldoc/usr_toc.html" target="_blank" rel="noopener">vim user manual</a></li>
+<li><a href="https://github.com/wsdjeg/vim-galore-zh_cn#%E4%BB%80%E4%B9%88%E6%98%AF-vim" target="_blank" rel="noopener">Vim 从入门到精通</a></li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "程康健"
+        },
+        "headline": "vim 基础教程",
+        "image": "http://www.chengkangjian.comhttps://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/nature-vim.jpg",
+        "keywords": "技术",
+        "genre": "技术",
+        "datePublished": "2019-12-28",
+        "dateCreated": "2019-12-28",
+        "dateModified": "2019-12-28",
+        "url": "http://www.chengkangjian.com/2019/12/28/use-vim/",
+        "description": "
+vim 的四种模式1 普通模式
+普通模式的作用
+在普通模式一般浏览文件使用，也包括一些复制、粘贴、删除等操作。普通模式是进入文档后的默认模式。切换到普通模式可以使用：
+
+切换到普通模式
+
+[ECS]
+CTRL + [
+命令模式和可视模式执行完操作后会默认切换到普通模式
+
+
+
+2 编辑模式
+作用
+进入编辑状态，通过键盘输入内容。
+
+切换到编辑模式
+
+i 在光标前插入
+a 在光标后插入
+A 在当前行"
+        "wordCount": 520
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="valine-thread"></div>
+
+
+    
+    
+    <div id="valine-thread"></div>
+
+
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="hexo" href="https://www.zhihu.com/people/chengkj" target="_blank" rel="noopener">
+                        <i class="icon fa fa-hexo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/chengkj99" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/chengkangjian" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/chengkangjian" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weixin" href="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/WechatIMG211.jpeg" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weixin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/11/17/what-is-taobaoke/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">9102年的淘宝客怎么样了</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/12/28/use-vim/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/nature-vim.jpg)" alt="vim 基础教程" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/技术/">技术</a></p>
+                            <p class="item-title"><a href="/2019/12/28/use-vim/" class="title">vim 基础教程</a></p>
+                            <p class="item-date"><time datetime="2019-12-28T07:51:24.000Z" itemprop="datePublished">2019-12-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/11/17/what-is-taobaoke/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/money.jpg)" alt="9102年的淘宝客怎么样了" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/想法/">想法</a></p>
+                            <p class="item-title"><a href="/2019/11/17/what-is-taobaoke/" class="title">9102年的淘宝客怎么样了</a></p>
+                            <p class="item-date"><time datetime="2019-11-17T12:49:00.000Z" itemprop="datePublished">2019-11-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/11/06/how-to-manage-password/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/lock.jpg)" alt="如何管理自己的账户密码" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/生活/">生活</a></p>
+                            <p class="item-title"><a href="/2019/11/06/how-to-manage-password/" class="title">如何管理自己的账户密码</a></p>
+                            <p class="item-date"><time datetime="2019-11-06T07:16:31.000Z" itemprop="datePublished">2019-11-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/09/04/how-to-resist-delay/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/golden.jpg)" alt="用习惯的力量对抗拖延" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/生活/">生活</a></p>
+                            <p class="item-title"><a href="/2019/09/04/how-to-resist-delay/" class="title">用习惯的力量对抗拖延</a></p>
+                            <p class="item-date"><time datetime="2019-09-04T02:30:07.000Z" itemprop="datePublished">2019-09-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/09/01/learn-how-to-learn/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/sunset.png)" alt="学习让我感觉我的人生才刚刚开始" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/生活/">生活</a></p>
+                            <p class="item-title"><a href="/2019/09/01/learn-how-to-learn/" class="title">学习让我感觉我的人生才刚刚开始</a></p>
+                            <p class="item-date"><time datetime="2019-09-01T08:01:08.000Z" itemprop="datePublished">2019-09-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工作/">工作</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/想法/">想法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">19</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FE/">FE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码管理/">密码管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思考/">思考</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/想法-生活-技术/">想法 生活 技术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我/">我</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷开发/">敏捷开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调研/">调研</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/选择/">选择</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CDN/" style="font-size: 14.29px;">CDN</a> <a href="/tags/FE/" style="font-size: 10px;">FE</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/vue/" style="font-size: 14.29px;">vue</a> <a href="/tags/webpack/" style="font-size: 11.43px;">webpack</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/学习/" style="font-size: 14.29px;">学习</a> <a href="/tags/密码管理/" style="font-size: 10px;">密码管理</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/心情/" style="font-size: 12.86px;">心情</a> <a href="/tags/思考/" style="font-size: 20px;">思考</a> <a href="/tags/想法-生活-技术/" style="font-size: 10px;">想法 生活 技术</a> <a href="/tags/感悟/" style="font-size: 14.29px;">感悟</a> <a href="/tags/成长/" style="font-size: 18.57px;">成长</a> <a href="/tags/我/" style="font-size: 11.43px;">我</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/敏捷开发/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/生活/" style="font-size: 15.71px;">生活</a> <a href="/tags/算法/" style="font-size: 18.57px;">算法</a> <a href="/tags/调研/" style="font-size: 10px;">调研</a> <a href="/tags/选择/" style="font-size: 10px;">选择</a> <a href="/tags/阅读/" style="font-size: 11.43px;">阅读</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://chengkangjian.lofter.com/">Lofter Blog</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 程康健</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+        <div style="position: absolute; bottom: 0; right: 0;">
+            <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+              </span>
+        </div>
+    </div>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        console.log('UUUUUUUUUUUUUUUUUUUUUU', Valine)
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'F6jFQaG21HE6wUeYaXTSccnG-gzGzoHsz',
+            app_key: 'xvsqUs1Nt3LtHilVGzspzqvk',
+            placeholder: '发表评论~',
+            pageSize: '10',
+            avatar: 'identicon',
+            avatar_cdn:  'https://gravatar.loli.net/avatar/'
+        });
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
