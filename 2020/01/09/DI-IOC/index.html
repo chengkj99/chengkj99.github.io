@@ -21,7 +21,7 @@
 <meta property="og:description" content="在开发一个功能或项目，我们往往会需要多个对象共同完成。一般情况下，我们如果在 A 对象中要使用另一个 B 对象，需要在 A 对象中主动的创建 B 对象； 123class A &amp;#123;  const b = new B();&amp;#125; 如代码所示，在 A 对象和 B 对象之间，就产生了耦合，因为在 A 对象中，要控制 B 对象的创建和销毁；此时如果是管理一个对象还好，如果在 A 对象中管理">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/fountain.jpg">
-<meta property="og:updated_time" content="2020-01-09T09:47:29.798Z">
+<meta property="og:updated_time" content="2020-01-09T09:50:17.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="依赖注入（DI）和控制反转（IOC）">
 <meta name="twitter:description" content="在开发一个功能或项目，我们往往会需要多个对象共同完成。一般情况下，我们如果在 A 对象中要使用另一个 B 对象，需要在 A 对象中主动的创建 B 对象； 123class A &amp;#123;  const b = new B();&amp;#125; 如代码所示，在 A 对象和 B 对象之间，就产生了耦合，因为在 A 对象中，要控制 B 对象的创建和销毁；此时如果是管理一个对象还好，如果在 A 对象中管理">
@@ -200,7 +200,7 @@ ga('send', 'pageview');
 <p>如代码所示，在 A 对象和 B 对象之间，就产生了耦合，因为在 A 对象中，要控制 B 对象的创建和销毁；此时如果是管理一个对象还好，如果在 A 对象中管理多个甚至十几个对象的时候，A 对象的负担就很重了；<code>依赖注入</code>就是为了解决这个问题。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(private b: B) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如代码所示，在对象 A 中并没有创建对象 B，对象 A 仅仅是依赖了 B 对象，B 对象能够被「神奇的」注入到依赖它的 A 对象中，这个过程完成的就是<code>依赖注入</code>。</p>
-<p><code>依赖注入</code>让对象 A 放心地依赖 B 对象和使用 B 对象，不需要关心 B 对象的创建和销毁，只关心如何使用即可，这样一来，开发者仅仅关心使用哪些对象资源，用以完成业务开发，不需要关心这些对象资源由谁创建和被谁管理，这样可以有效的提高代码的可维护性和对象重用效率。</p>
+<p><code>依赖注入</code>让对象 A 放心地依赖 B 对象和使用 B 对象，不需要关心 B 对象的创建和销毁，只关心如何使用即可。</p>
 <p>那么谁来关心 B 对象的创建呢，答案是交给「第三方管理」，这个第三方就是<code>IoC(Inversion of Control) 容器</code>。</p>
 <p>在这里 IOC 容器的作用：</p>
 <ol>
@@ -209,7 +209,7 @@ ga('send', 'pageview');
 <li>检查到 A 对象依赖了 B 对象，将 B 对象实例注入到 A 对象</li>
 <li>由容器来管理 A 对象和 B 对象的生命周期</li>
 </ol>
-<p>IOC 容器来负责对象的创建和销毁，如果 A 对象依赖了 B 对象，<code>IOC 容器</code>负责将对象实例注入进去，让 A 对象使用。这样对象和对象之间就耦合度就降低了，每一个对象只负责依赖和使用其他对象即可。</p>
+<p>IOC 容器来负责对象的创建和销毁，如果 A 对象依赖了 B 对象，<code>IOC 容器</code>负责将 B 对象实例注入进去，让 A 对象使用。此时的 A 对象和 B 对象之间就耦合度就降低了，这意味着使用<code>DI</code>和<code>IOC</code>每一个对象只负责依赖和使用其他对象即可，这样一来，开发者仅仅关心使用哪些对象资源，用以完成业务开发，不需要关心这些对象资源由谁创建和被谁管理，这样可以有效的提高代码的可维护性和对象重用效率。</p>
 
         </div>
         <footer class="article-footer">
@@ -292,7 +292,7 @@ ga('send', 'pageview');
 在开发一个功能或项目，我们往往会需要多个对象共同完成。一般情况下，我们如果在 A 对象中要使用另一个 B 对象，需要在 A 对象中主动的创建 B 对象；
 123class A &#123;  const b = new B();&#125;
 如代码所示，在 A 对象和 B 对象之间，就产生了耦合，因为在 A 对象中，要控制 B 对象的创建和销毁；此时如果是管理一个对象还好，如果在 A 对象中管理"
-        "wordCount": 135
+        "wordCount": 141
     }
 </script>
 
