@@ -21,7 +21,7 @@
 <meta property="og:description" content="在开发一个功能或项目，我们往往会需要多个对象共同完成。一般情况下，我们如果在 A 对象中要使用另一个 B 对象，需要在 A 对象中主动的创建 B 对象； 123class A &amp;#123;  const b = new B();&amp;#125; 如代码所示，在 A 对象和 B 对象之间，就产生了耦合，因为在 A 对象中，要控制 B 对象的创建和销毁；此时如果是管理一个对象还好，如果在 A 对象中管理">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/fountain.jpg">
-<meta property="og:updated_time" content="2020-01-09T08:53:03.434Z">
+<meta property="og:updated_time" content="2020-01-09T09:47:29.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="依赖注入（DI）和控制反转（IOC）">
 <meta name="twitter:description" content="在开发一个功能或项目，我们往往会需要多个对象共同完成。一般情况下，我们如果在 A 对象中要使用另一个 B 对象，需要在 A 对象中主动的创建 B 对象； 123class A &amp;#123;  const b = new B();&amp;#125; 如代码所示，在 A 对象和 B 对象之间，就产生了耦合，因为在 A 对象中，要控制 B 对象的创建和销毁；此时如果是管理一个对象还好，如果在 A 对象中管理">
@@ -205,7 +205,7 @@ ga('send', 'pageview');
 <p>在这里 IOC 容器的作用：</p>
 <ol>
 <li>创建 A 对象和 B 对象的实例</li>
-<li>检查 A 对象和 B 对象有依赖对象需要注入</li>
+<li>检查 A 对象和 B 对象是否有依赖对象需要注入</li>
 <li>检查到 A 对象依赖了 B 对象，将 B 对象实例注入到 A 对象</li>
 <li>由容器来管理 A 对象和 B 对象的生命周期</li>
 </ol>
