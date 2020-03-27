@@ -6,21 +6,26 @@
     
 
     
-    <title>归档 | 程是非sky</title>
+    <title>Ionic 项目 APK 打包容器化部署实践 | 程是非sky</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="一边奔跑 一边思考">
-<meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://www.chengkangjian.com/archive/index.html">
+        <meta name="keywords" content="技术">
+    
+    <meta name="description" content="有了问题基于 Ionic 技术开发的 App，经常有需要构建打包 apk 文件提供给相关人员（产品或测试人员）使用的需求，打包 apk 的过程并不麻烦，只要安装了必要的开发环境，仅需一个打包命令ionic cordova build android --prod --release即可，但是目前这个过程是在开发环境完成的，在这个环境进行操作会造成两个问题：  每次测试人员需要最新的 apk 文件">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic 项目 APK 打包容器化部署实践">
+<meta property="og:url" content="http://www.chengkangjian.com/2020/03/27/docker-use/index.html">
 <meta property="og:site_name" content="程是非sky">
-<meta property="og:description" content="一边奔跑 一边思考">
+<meta property="og:description" content="有了问题基于 Ionic 技术开发的 App，经常有需要构建打包 apk 文件提供给相关人员（产品或测试人员）使用的需求，打包 apk 的过程并不麻烦，只要安装了必要的开发环境，仅需一个打包命令ionic cordova build android --prod --release即可，但是目前这个过程是在开发环境完成的，在这个环境进行操作会造成两个问题：  每次测试人员需要最新的 apk 文件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-02-14T10:12:09.000Z">
+<meta property="og:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/bank.jpg">
+<meta property="og:updated_time" content="2020-03-27T03:33:02.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="归档">
-<meta name="twitter:description" content="一边奔跑 一边思考">
+<meta name="twitter:title" content="Ionic 项目 APK 打包容器化部署实践">
+<meta name="twitter:description" content="有了问题基于 Ionic 技术开发的 App，经常有需要构建打包 apk 文件提供给相关人员（产品或测试人员）使用的需求，打包 apk 的过程并不麻烦，只要安装了必要的开发环境，仅需一个打包命令ionic cordova build android --prod --release即可，但是目前这个过程是在开发环境完成的，在这个环境进行操作会造成两个问题：  每次测试人员需要最新的 apk 文件">
+<meta name="twitter:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/bank.jpg">
     
 
     
@@ -145,19 +150,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/archive/index.html">归档</em>
+    <a class="page-title-link" href="/categories/工作/">工作</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-archive-undefined" class="article article-single article-type-page-archive" itemscope itemprop="blogPost">
+                            <article id="post-docker-use" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        归档
+        Ionic 项目 APK 打包容器化部署实践
         </h1>
     
 
@@ -167,19 +172,70 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/archive/index.html" class="article-date">
-            <time datetime="2019-01-24T16:29:06.444Z" itemprop="datePublished">2019-01-25</time>
+        <a href="/2020/03/27/docker-use/" class="article-date">
+            <time datetime="2020-03-27T03:11:09.000Z" itemprop="datePublished">2020-03-27</time>
         </a>
     </div>
 
 		
 
                 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/技术/">技术</a>
+    </div>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            
+            <!-- categories:
+ home(主页)：想在主页进行展示的
+ idea(想法): 记录自己的想法，一句两句都可以
+ technology(技术)：记录技术的思考，总结
+ life(生活)：记录生活方面的思考
+-->
+<h2 id="有了问题"><a href="#有了问题" class="headerlink" title="有了问题"></a>有了问题</h2><p>基于 Ionic 技术开发的 App，经常有需要构建打包 apk 文件提供给相关人员（产品或测试人员）使用的需求，打包 apk 的过程并不麻烦，只要安装了必要的开发环境，仅需一个打包命令<code>ionic cordova build android --prod --release</code>即可，但是目前这个过程是在开发环境完成的，在这个环境进行操作会造成两个问题：</p>
+<ul>
+<li>每次测试人员需要最新的 apk 文件时，需要找前端人员进行打包，增加沟通成本</li>
+<li>开发人员每次在本地进行打包和上传时，这个执行 <code>build</code> 命令的动作重复并且耗费时间和精力</li>
+</ul>
+<p>作为一个有追求的开发者肯定不能容忍这样的情况，于是有了进一步改进的工作。</p>
+<h2 id="关于-Docker"><a href="#关于-Docker" class="headerlink" title="关于 Docker"></a>关于 Docker</h2><p>2020 年，Docker 发布至今已经 7 个年头，它也早已不再是一门新的技术，在 2015 年时，开始接触 Docker，中间学习和练习了一段时间，作为前端开发，使用 Docker 的机会并不多，一直没机会在项目实践中使用，正好以此为锲机实践一下。</p>
+<p>市面上有很多介绍 Docker 的教程都讲的很好，相关的基础概念就不在这里进行赘述了。</p>
+<ul>
+<li><a href="https://www.docker.com/" target="_blank" rel="noopener">Docker 官网</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html" target="_blank" rel="noopener">Docker 入门教程</a></li>
+</ul>
+<p>不过，还是要说明一下，因为 Docker 提供了一个虚拟的运行环境，将这个环境迁移到任何一个安装了 Docker 的操作系统中，能够保证环境的一致性，也解决了重新配置环境的问题，这在本项目中是尤其适用的。因为将 Ionic 项目换个环境进行打包时，需要在新环境中安装一系列环境配置和依赖安装，如 <code>ionic</code>、<code>cordova</code>、 <code>android</code>、<code>java</code>、<code>node</code> 等等，这个过程是繁琐的，如果新增一个环境进行项目构建打包，不同的系统环境、环境安装的模块不同版本都有可能带来很多意外的问题。如果通过 Docker 来保证环境的一致性，那么可以实现环境的一次配置，处处使用，便不存在上述问题，多么美好的事情就这样被 Docker 实现了，这也是 Docker 为软件开发行业带来的巨大价值。</p>
+<p>本项目的实践背景是在 GitLab 仓库中已经安装集成了 <code>GitLab Runner</code> 基础上进行的，而且很多项目都已经基于 Docker 进行了构建和部署，这些为本次的实践避免了很多基础工作，也提供了很多可以借鉴经验。基于这个情况进行项目的容器化，只需要编写好 <code>Dockerfile</code> 然后配置好 <code>gitlab-ci.yml</code> 文件即可。</p>
+<h2 id="如何编写-Docker-file"><a href="#如何编写-Docker-file" class="headerlink" title="如何编写 Docker file"></a>如何编写 Docker file</h2><p>Docker 有三个核心概念: 容器、镜像、仓库。我们知道，程序是运行在系统环境中的，在 Docker 中，它的运行环境就是容器，而且容器环境和容器的宿主机环境基本不会相互影响，而容器是通过 image(镜像) 产生的，也就是说，image 文件可以看作是容器的模板，Docker 把应用程序及其依赖，打包在 image 文件里面，并根据 image 文件生成容器的实例，Docker 中，应用程序就是在拥有程序运行环境的 Docker 容器实例中启动和运行。</p>
+<p>Docker 基于镜像文件产生容器，程序在容器中运行，接下来的问题是镜像文件怎么产生呢，这就需要用到 <code>Dockerfile</code> 文件，它是一个文本文件，内容中包含了构建镜像所需的指令和说明，用来配置 <code>image</code> （镜像）。Docker 根据 <code>Dockerfile</code> 文件生成二进制的 <code>image</code> 文件，这个过程中会执行 <code>Dockerfile</code> 中的项目构建命令，同时基于 <code>image</code> 文件启动容器，完成 <code>apk</code> 文件的 <code>build</code> 输出。</p>
+<p>手持设备项目中已经存在了一个 <code>Dockerfile</code>，这个 <code>Dockerfile</code> 是针对 web 环境的构建指令，不满足 <code>build apk</code> 的需求，所以需要针对 <code>build apk</code> 的目的重新写一个 <code>Dockerfile。</code></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Dockerfile for web build --&gt;</span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">10.11</span>-alpine as builder</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /home/node/gtp-pda</span></span><br><span class="line"><span class="bash">COPY . /home/node/gtp-pda</span></span><br><span class="line"><span class="bash">RUN npm config <span class="built_in">set</span> sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g</span></span><br><span class="line"><span class="bash">RUN npm <span class="built_in">set</span> fse_binary_host_mirror https://npm.taobao.org/mirrors/fsevents -g</span></span><br><span class="line"><span class="bash">RUN npm i  --verbose --registry=http://xx.xxx.x.xx:4873/</span></span><br><span class="line"><span class="bash">RUN npm run build:web</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">FROM nginx:latest</span></span><br><span class="line"><span class="bash">COPY --from=builder /home/node/gtp-pda/www/ /usr/share/nginx/html</span></span><br></pre></td></tr></table></figure>
+<p>以上是当前项目中存在的 <code>Dockerfile</code>，可以看出来，此文件中主要包含了两个部分：</p>
+<ul>
+<li>基础镜像部分：<code>FROM ...</code></li>
+<li>操作命令部分：<code>WORKDIR ... RUN ...</code></li>
+</ul>
+<p>根据这个思路，对于将要实现的 <code>Dockerfile</code> 文件，我能想到的是，要有一个合适的基础镜像，然后在这个基础镜像中执行 <code>apk build</code> 构建命令。但是我不确定能不能找到合适的适用于 Ionic 项目的基础镜像，如果找不到的话，只能自己去实现这个镜像。</p>
+<p>在寻找合适的镜像的过程中，需要用到前面提到了的 Docker 三个核心概念之一 <strong>Docker 仓库</strong>，Docker 仓库是开发者用来共享自己制作好的 image 文件的地方，<a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a> 是官方的最常用的 Docker 仓库。在这个仓库中搜索 “Ionic” 关键字，可以找到相关的镜像，在尝试了几个镜像中执行构建命令 <code>ionic cordova build android --prod --release</code>，成功的找到了一个合适的镜像文件 <a href="https://hub.docker.com/r/angelvlc/ionic-build" target="_blank" rel="noopener">angelvlc/ionic-build</a>。</p>
+<p>后续的工作便基于 <code>angelvlc/ionic-build</code> 这个镜像环境执行操作命令即可，完整的 Dockerfile 内容如下：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Dockerfile for apk build --&gt;</span><br><span class="line"><span class="keyword">FROM</span> angelvlc/ionic-build as builder</span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> APP=/usr/src/app/gtp-pda</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> <span class="variable">$APP</span></span></span><br><span class="line"><span class="bash">COPY . <span class="variable">$APP</span></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">RUN npm install --no-optional --registry=http://xx.xxx.x.xx:4873</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">RUN ionic cordova build android --prod --release</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">RUN cp platforms/android/app/build/outputs/apk/release/app-release.apk ./gtp-pda.apk</span></span><br></pre></td></tr></table></figure>
+<h2 id="如何配置-gitlab-ci-yml"><a href="#如何配置-gitlab-ci-yml" class="headerlink" title="如何配置 .gitlab-ci.yml"></a>如何配置 .gitlab-ci.yml</h2><p><a href="https://docs.gitlab.com/ee/ci/introduction/" target="_blank" rel="noopener"><code>Gitlab CI/CD</code></a> 是 GitLab 的持续集成工具，为了使用它，需要在项目的根目录中创建 <code>.gitlab-ci.yml</code> 文件，并在文件中定义项目的构建任务脚本，运行的脚本可以包含任务运行的顺序、定义任务触发方式（手动、自动）等操作， 每当开发者提交一个 <code>commit</code> 或者 <code>MR</code>到代码仓库，可以自动或手动触发 <code>GitLab CI/CD</code> 读取该文件开始运行构建任务完成一次持续集成。</p>
+<p><code>.gitlab-ci.yml</code> 配置文件中可以通过 <code>stages</code> 定义构建配置的多个阶段（测试、编译、构建、部署等），因为本次是新增了一个”将项目打包部署至前端服务器”的操作，所以，在 <code>.gitlab-ci.yml</code> 文件中定义了一个新的构建阶段 <code>deploy-upload</code>，这个阶段的构建任务是执行上个步骤编写完成的 Dockerfile 进行项目构建命令 <code>build apk</code>，并将这个 <code>apk</code> 文件部署至前端服务器，下面是这个构建阶段的配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stages:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">test</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">deploy</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">deploy-upload</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;!--</span> <span class="string">省略其他的构建阶段</span> <span class="bullet">--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">deploy-upload:</span></span><br><span class="line"><span class="attr">  stage:</span> <span class="string">deploy-upload</span></span><br><span class="line"><span class="attr">  script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">docker</span> <span class="string">image</span> <span class="string">build</span> <span class="bullet">-t</span> <span class="attr">gtp:$CI_COMMIT_SHORT_SHA</span> <span class="bullet">-f</span> <span class="string">Dockerfile.build</span> <span class="bullet">-m</span> <span class="number">4</span><span class="string">g</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">docker</span> <span class="string">container</span> <span class="string">run</span> <span class="bullet">--detach</span> <span class="bullet">--name</span> <span class="string">gtp$CI_COMMIT_SHORT_SHA</span> <span class="attr">gtp:$CI_COMMIT_SHORT_SHA</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">docker</span> <span class="string">cp</span> <span class="string">gtp$CI_COMMIT_SHORT_SHA:/usr/src/app/gtp-pda/gtp-pda.apk</span> <span class="string">./</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">mv</span> <span class="string">gtp-pda.apk</span> <span class="string">gtp-pda-$CI_COMMIT_SHORT_SHA.apk</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">curl</span> <span class="bullet">-F</span> <span class="string">gtp-pda=@./gtp-pda-$CI_COMMIT_SHORT_SHA.apk</span>  <span class="attr">http://xx.xxx.x.xx:9000/upload</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">echo</span> <span class="string">"访问 http://xx.xxx.x.xx:9000 下载 gtp-pda-$CI_COMMIT_SHORT_SHA.apk"</span></span><br><span class="line"><span class="attr">  when:</span> <span class="string">manual</span></span><br><span class="line"><span class="attr">  only:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">web</span></span><br><span class="line"><span class="attr">  tags:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">node</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>GiaLab-CI</code> 环境执行 <code>Dockerfile</code> 的过程中相对顺利，很快完成了项目构建产出 <code>apk</code> 的过程，但是在将 <code>apk</code> 文件上传至前端服务器的过程中，遇到了令人头疼的问题，由于 <code>GitLab-CI</code> 环境中禁止使用高级 <code>shell</code> 命令，所以最初通过使用 <code>scp</code>、<code>sshpass</code>、<code>ssh</code> 等方式进行文件上传均没有成功，最后不得不开发一个文件上传服务（如命令所示: <code>curl -F gtp-pda=@./gtp-pda-$CI_COMMIT_SHORT_SHA.apk http://xx.xxx.x.xx:9000/upload</code> ），完成文件上传的操作。</p>
+<h2 id="文件上传服务"><a href="#文件上传服务" class="headerlink" title="文件上传服务"></a>文件上传服务</h2><p>由于公司的 <code>GitLab CI/CD</code> 环境为了安全对一些高级脚本指令进行了限制，文件上传服务就是为了解决 <code>GitLab CI/CD</code> 环境无法通过高级的 <code>shell</code> 命令进行跨服务器文件上传的问题而开发的项目，原本希望借助开源的力量找到现有的文件上传项目进行使用，但是发现开源的项目中大多数的文件上传项目是基于图片格式的文件上传，还有一些项目要么功能太多或者不符合项目需求，于是决定自研实现这项功能。</p>
+<p>项目的实现比较简单，主要分为三部分(两个后端接口一个前端页面)：</p>
+<ul>
+<li>文件上传的服务接口</li>
+<li>文件的目录文件信息扫描接口</li>
+<li>上传的文件信息列表（查看和下载）</li>
+</ul>
+<p>具体代码和使用详情可查看代码仓库：<a href="https://github.com/chengkj99/file-upload" target="_blank" rel="noopener">file-upload</a></p>
+<p>文件上传服务一方面提供了文件上传功能，另一方面将上传的 <code>apk</code> 文件信息进行了遍历和在前端展示和下载，产品测试人员可以通过访问部署的文件服务地址非常方便的按需按<code>CI_COMMIT_SHA</code>下载使用。</p>
+
         </div>
         <footer class="article-footer">
             
@@ -249,16 +305,19 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "程康健"
         },
-        "headline": "归档",
-        "image": "http://www.chengkangjian.com",
-        
-        
-        "datePublished": "2019-01-25",
-        "dateCreated": "2019-01-25",
-        "dateModified": "2017-02-14",
-        "url": "http://www.chengkangjian.com/archive/index.html",
-        "description": ""
-        "wordCount": 1
+        "headline": "Ionic 项目 APK 打包容器化部署实践",
+        "image": "http://www.chengkangjian.comhttps://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/bank.jpg",
+        "keywords": "技术",
+        "genre": "工作",
+        "datePublished": "2020-03-27",
+        "dateCreated": "2020-03-27",
+        "dateModified": "2020-03-27",
+        "url": "http://www.chengkangjian.com/2020/03/27/docker-use/",
+        "description": "
+有了问题基于 Ionic 技术开发的 App，经常有需要构建打包 apk 文件提供给相关人员（产品或测试人员）使用的需求，打包 apk 的过程并不麻烦，只要安装了必要的开发环境，仅需一个打包命令ionic cordova build android --prod --release即可，但是目前这个过程是在开发环境完成的，在这个环境进行操作会造成两个问题：
+
+每次测试人员需要最新的 apk 文件"
+        "wordCount": 599
     }
 </script>
 
@@ -329,6 +388,19 @@ ga('send', 'pageview');
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/01/09/DI-IOC/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">依赖注入（DI）和控制反转（IOC）</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
