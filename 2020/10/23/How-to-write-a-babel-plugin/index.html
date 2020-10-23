@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>如何写一个 babel plugin【翻译】 | 程是非sky</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="技术">
+    
+    <meta name="description" content="什么是 babelbabel 是 javascript 编译器，它可以将 ECMAScript 2015+ 代码转换成浏览器可解析的兼容性代码。 babel 是基于 plugin system  进行代码转换的，通过 babel 每个人都可以写自己的 babel plugin。  什么是抽象语法树 Abstract Syntax Tree (AST)AST (Abstract syntax t">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何写一个 babel plugin【翻译】">
+<meta property="og:url" content="http://www.chengkangjian.com/2020/10/23/How-to-write-a-babel-plugin/index.html">
+<meta property="og:site_name" content="程是非sky">
+<meta property="og:description" content="什么是 babelbabel 是 javascript 编译器，它可以将 ECMAScript 2015+ 代码转换成浏览器可解析的兼容性代码。 babel 是基于 plugin system  进行代码转换的，通过 babel 每个人都可以写自己的 babel plugin。  什么是抽象语法树 Abstract Syntax Tree (AST)AST (Abstract syntax t">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/tree.jpg">
+<meta property="og:updated_time" content="2020-10-23T09:40:23.478Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何写一个 babel plugin【翻译】">
+<meta name="twitter:description" content="什么是 babelbabel 是 javascript 编译器，它可以将 ECMAScript 2015+ 代码转换成浏览器可解析的兼容性代码。 babel 是基于 plugin system  进行代码转换的，通过 babel 每个人都可以写自己的 babel plugin。  什么是抽象语法树 Abstract Syntax Tree (AST)AST (Abstract syntax t">
+<meta name="twitter:image" content="https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/tree.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/cheng.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93092041-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">但行好事 莫问前程</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/工作/">工作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/想法/">想法</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技术/">技术</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/">生活</a></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/技术/">技术</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-How-to-write-a-babel-plugin" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        如何写一个 babel plugin【翻译】
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2020/10/23/How-to-write-a-babel-plugin/" class="article-date">
+            <time datetime="2020-10-23T09:28:42.000Z" itemprop="datePublished">2020-10-23</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/技术/">技术</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <!-- categories:
+ home(主页)：想在主页进行展示的
+ idea(想法): 记录自己的想法，一句两句都可以
+ technology(技术)：记录技术的思考，总结
+ life(生活)：记录生活方面的思考
+-->
+<p><a name="lr9ck"></a></p>
+<h2 id="什么是-babel"><a href="#什么是-babel" class="headerlink" title="什么是 babel"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#what-is-babel" target="_blank" rel="noopener">什么是 babel</a></h2><p>babel 是 javascript 编译器，它可以将 ECMAScript 2015+ 代码转换成浏览器可解析的兼容性代码。</p>
+<p>babel 是基于 <a href="https://babeljs.io/docs/en/plugins" target="_blank" rel="noopener">plugin system</a>  进行代码转换的，通过 babel 每个人都可以写自己的 babel plugin。<br></p>
+<p><a name="j2yw7"></a></p>
+<h3 id="什么是抽象语法树-Abstract-Syntax-Tree-AST"><a href="#什么是抽象语法树-Abstract-Syntax-Tree-AST" class="headerlink" title="什么是抽象语法树 Abstract Syntax Tree (AST)"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#what-is-abstract-syntax-tree-ast" target="_blank" rel="noopener">什么是抽象语法树 Abstract Syntax Tree (AST)</a></h3><p><br>AST (Abstract syntax tree, 抽象语法树) 的学习资料：</p>
+<ul>
+<li><a href="https://medium.com/basecs/leveling-up-ones-parsing-game-with-asts-d7a6fc2400ff" target="_blank" rel="noopener">Leveling Up One’s Parsing Game With ASTs</a> by <a href="https://twitter.com/vaidehijoshi" target="_blank" rel="noopener">Vaidehi Joshi</a> * <em>(Highly recommend this one! 👍)</em></li>
+<li>Wikipedia’s <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank" rel="noopener">Abstract syntax tree</a></li>
+<li><a href="https://blog.bitsrc.io/what-is-an-abstract-syntax-tree-7502b71bde27" target="_blank" rel="noopener">What is an Abstract Syntax Tree</a> by <a href="https://twitter.com/ngArchangel" target="_blank" rel="noopener">Chidume Nnamdi</a></li>
+</ul>
+<p><br>简单说来：AST 是代码的树形表示，该树形表示遵循 <a href="https://github.com/estree/estree" target="_blank" rel="noopener">estree specification</a> 规范。<br><br><br>AST 能表示代码的结构和含义，所以他允许像 <a href="https://babeljs.io/" target="_blank" rel="noopener">babel</a> 这样的编译器去理解和转换它。<br><a name="85g36"></a></p>
+<h2 id="如何使用-babel-转换代码"><a href="#如何使用-babel-转换代码" class="headerlink" title="如何使用 babel 转换代码"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#how-to-use-babel-to-transform-code" target="_blank" rel="noopener">如何使用 babel 转换代码</a></h2><p><br>以下是使用 babel 进行代码转换的常规模板：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; parse &#125; <span class="keyword">from</span> <span class="string">'@babel/parser'</span>;</span><br><span class="line"><span class="keyword">import</span> traverse <span class="keyword">from</span> <span class="string">'@babel/traverse'</span>;</span><br><span class="line"><span class="keyword">import</span> generate <span class="keyword">from</span> <span class="string">'@babel/generator'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = <span class="string">'const n = 1'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// parse the code -&gt; ast</span></span><br><span class="line"><span class="keyword">const</span> ast = parse(code);</span><br><span class="line"></span><br><span class="line"><span class="comment">// transform the ast</span></span><br><span class="line">traverse(ast, &#123;</span><br><span class="line">  enter(path) &#123;</span><br><span class="line">    <span class="comment">// in this example change all the variable `n` to `x`</span></span><br><span class="line">    <span class="keyword">if</span> (path.isIdentifier(&#123; <span class="attr">name</span>: <span class="string">'n'</span> &#125;)) &#123;</span><br><span class="line">      path.node.name = <span class="string">'x'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// generate code &lt;- ast</span></span><br><span class="line"><span class="keyword">const</span> output = generate(ast, code);</span><br><span class="line"><span class="built_in">console</span>.log(output.code); <span class="comment">// 'const x = 1;'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>你需要安装 <a href="https://www.npmjs.com/package/@babel/core" target="_blank" rel="noopener">@babel/core</a> 运行此程序， <code>@babel/parser</code>, <code>@babel/traverse</code>, <code>@babel/generator</code> 都依赖 <code>@babel/core</code>, 所以安装 <code>@babel/core</code> 就可以了.</p>
+</blockquote>
+<p><br>一般流程是，将代码解析为 AST，转换 AST，然后从转换后的 AST 生成代码。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code -&gt; AST -&gt; transformed AST -&gt; transformed code</span><br></pre></td></tr></table></figure>
+<p>我们可以使用 babel 的 API 完成上述操作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> babel <span class="keyword">from</span> <span class="string">'@babel/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = <span class="string">'const n = 1'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> output = babel.transformSync(code, &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="comment">// your first babel plugin 😎😎</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">myCustomPlugin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        visitor: &#123;</span><br><span class="line">          Identifier(path) &#123;</span><br><span class="line">            <span class="comment">// in this example change all the variable `n` to `x`</span></span><br><span class="line">            <span class="keyword">if</span> (path.isIdentifier(&#123; <span class="attr">name</span>: <span class="string">'n'</span> &#125;)) &#123;</span><br><span class="line">              path.node.name = <span class="string">'x'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(output.code); <span class="comment">// 'const x = 1;'</span></span><br></pre></td></tr></table></figure>
+<p>现在，你已经编写了第一个 babel transform plugin，将所有的变量 n 转换成了 x，是不是很 cool.<br></p>
+<blockquote>
+<p>将函数 myCustomPlugin 提取到另一个文件并导出。打包并以 <a href="https://medium.com/@bretcameron/how-to-publish-your-first-npm-package-b224296fc57b" target="_blank" rel="noopener">npm 打包形式发布文件</a>，您可以自豪地说您已经发布了 babel 插件！ 🎉🎉</p>
+</blockquote>
+<p><br>有一点你需要知道：“是的，我刚刚编写了 babel 插件，但是我不知道它是如何工作的……”，所以不用担心，让我们深入了解如何自己编写 babel 转换插件。 <br><br><br>下面是执行此操作的分步指南：<br></p>
+<p><a name="tpJBI"></a></p>
+<h3 id="搞清楚你要将现在的代码转换成什么样子"><a href="#搞清楚你要将现在的代码转换成什么样子" class="headerlink" title="搞清楚你要将现在的代码转换成什么样子"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#have-in-mind-what-you-want-to-transform-from-and-transform-into" target="_blank" rel="noopener">搞清楚你要将现在的代码转换成什么样子</a></h3><p>在这个例子中，我想恶搞一下我的同事：</p>
+<ul>
+<li>反转所有的变量和函数名</li>
+<li>将字符串分隔成单个字符</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello '</span> + name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(greet(<span class="string">'tanhauhau'</span>)); <span class="comment">// Hello tanhauhau</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// transform into</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">teerg</span>(<span class="params">eman</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'H'</span> + <span class="string">'e'</span> + <span class="string">'l'</span> + <span class="string">'l'</span> + <span class="string">'o'</span> + <span class="string">' '</span> + eman;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(teerg(<span class="string">'t'</span> + <span class="string">'a'</span> + <span class="string">'n'</span> + <span class="string">'h'</span> + <span class="string">'a'</span> + <span class="string">'u'</span> + <span class="string">'h'</span> + <span class="string">'a'</span> + <span class="string">'u'</span>)); <span class="comment">// Hello tanhauhau</span></span><br></pre></td></tr></table></figure>
+<p>当然，我们必须保留 console.log 以保证代码的正常工作。<br></p>
+<p><a name="a75d438a"></a></p>
+<h3 id="搞清楚代码转换前的-AST"><a href="#搞清楚代码转换前的-AST" class="headerlink" title="搞清楚代码转换前的 AST"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#know-what-to-target-on-the-ast" target="_blank" rel="noopener">搞清楚代码转换前的 AST</a></h3><p>进入 <a href="https://lihautan.com/babel-ast-explorer/#?eyJiYWJlbFNldHRpbmdzIjp7InZlcnNpb24iOiI3LjQuNSJ9LCJ0cmVlU2V0dGluZ3MiOnsiaGlkZUVtcHR5Ijp0cnVlLCJoaWRlTG9jYXRpb24iOnRydWUsImhpZGVUeXBlIjp0cnVlfSwiY29kZSI6ImZ1bmN0aW9uIGdyZWV0KG5hbWUpIHtcbiAgcmV0dXJuICdIZWxsbyAnICsgbmFtZTtcbn1cblxuY29uc29sZS5sb2coZ3JlZXQoJ3RhbmhhdWhhdScpKTsgLy8gSGVsbG8gdGFuaGF1aGF1In0=" target="_blank" rel="noopener">babel AST explorer</a>，单击代码的不同部分，然后查看 AST 中的位置/表示方式。<br><img src="https://cdn.nlark.com/yuque/0/2020/png/201757/1603358880254-acd5aa06-ded5-4622-82f0-7e7903180bf1.png#align=left&amp;display=inline&amp;height=548&amp;margin=%5Bobject%20Object%5D&amp;name=%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202020-10-22%20%E4%B8%8B%E5%8D%885.27.40.png&amp;originHeight=548&amp;originWidth=1915&amp;size=77640&amp;status=done&amp;style=none&amp;width=1915" alt="屏幕快照 2020-10-22 下午5.27.40.png"><br><br><br>如果这是您第一次看到 AST，先了解一下如何使用，并根据代码了解 AST 上的节点名称。<br><br><br>所以，我们现在根据选择不同的代码可以知道：</p>
+<ul>
+<li><strong>Identifier：标识码，表示变量和函数名 </strong></li>
+<li><strong>StringLiteral：字符串字面量，表示字符串</strong><br><a name="O0Q1n"></a></li>
+</ul>
+<h3 id="搞清楚代码转换后的-AST-的样子"><a href="#搞清楚代码转换后的-AST-的样子" class="headerlink" title="搞清楚代码转换后的 AST 的样子"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#know-how-the-transformed-ast-looks-like" target="_blank" rel="noopener">搞清楚代码转换后的 AST 的样子</a></h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/201757/1603440596604-32baa3f5-802c-442b-9351-8af83a81a0fa.png#align=left&amp;display=inline&amp;height=543&amp;margin=%5Bobject%20Object%5D&amp;name=%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202020-10-23%20%E4%B8%8B%E5%8D%884.09.43.png&amp;originHeight=543&amp;originWidth=1919&amp;size=84972&amp;status=done&amp;style=none&amp;width=1919" alt="屏幕快照 2020-10-23 下午4.09.43.png"><br><br><br>再次进入 <a href="https://lihautan.com/babel-ast-explorer/#?eyJiYWJlbFNldHRpbmdzIjp7InZlcnNpb24iOiI3LjQuNSJ9LCJ0cmVlU2V0dGluZ3MiOnsiaGlkZUVtcHR5Ijp0cnVlLCJoaWRlTG9jYXRpb24iOnRydWUsImhpZGVUeXBlIjp0cnVlLCJoaWRlQ29tbWVudHMiOnRydWV9LCJjb2RlIjoiZnVuY3Rpb24gdGVlcmcoZW1hbikge1xuICByZXR1cm4gXCJIXCIgKyBcImVcIiArIFwibFwiICsgXCJsXCIgKyBcIm9cIiArIFwiIFwiICsgZW1hbjtcbn1cblxuY29uc29sZS5sb2codGVlcmcoXCJ0XCIgKyBcImFcIiArIFwiblwiICsgXCJoXCIgKyBcImFcIiArIFwidVwiICsgXCJoXCIgKyBcImFcIiArIFwidVwiKSk7IC8vIEhlbGxvIHRhbmhhdWhhdVxuIn0=" target="_blank" rel="noopener">babel AST explorer</a>，但是这次浏览你想要生成的代码，思考和理解转换前的 AST 和转换后的 AST 的代码之间的区别。<br>例如，您可以看到’H’+’e’+’l’+’l’+’o’+’’+ eman 由嵌套的 BinaryExpression 与 StringLiteral 组成。<br></p>
+<p><a name="KIi4B"></a></p>
+<h3 id="写代码"><a href="#写代码" class="headerlink" title="写代码"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#write-code" target="_blank" rel="noopener">写代码</a></h3><p>现在看看我们的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myCustomPlugin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    visitor: &#123;</span><br><span class="line">      Identifier(path) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个 transformation 使用的是 <a href="https://en.wikipedia.org/wiki/Visitor_pattern" target="_blank" rel="noopener">the visitor pattern (访问者模式)</a>.<br><br><br>在遍历阶段，babel 将使用 <a href="https://en.wikipedia.org/wiki/Depth-first_search" target="_blank" rel="noopener">depth-first search traversal （深度优先遍历）</a>访问每一个 AST 的节点，你可以在 visitor 中指定回调方法，这样当访问这个节点时，babel 将使用当前正在访问的节点调用该方法。<br><br><br>在 visitor 对象中，可以指定节点名称作为回调方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myCustomPlugin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    visitor: &#123;</span><br><span class="line">      Identifier(path) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'identifier'</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">      StringLiteral(path) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'string literal'</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行以上代码，每当 babel 遇到对应的节点时，都会看到“ stringliteral”和“ identifier”被调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">identifier</span><br><span class="line">identifier</span><br><span class="line">string literal</span><br><span class="line">identifier</span><br><span class="line">identifier</span><br><span class="line">identifier</span><br><span class="line">identifier</span><br><span class="line">string literal</span><br></pre></td></tr></table></figure>
+<p>在继续之前，让我们看一下 <code>Identifer（path）{}</code>  的参数。它的参数是路径而不是节点，路径和节点之间有什么区别？<br>在 babel 中，path 是 node 上的抽象，它能表示节点之间的链接，比如：通过父节点可以找到子节点等等，它还能代表 <strong>scope</strong> <strong>域、context 上下文</strong>等信息，此外 path 提供了 <code>replaceWith</code>, <code>insertBefore</code>, <code>remove</code> 等方法，这些方法的操作将更新 AST 中对应的节点。<br></p>
+<blockquote>
+<p>_You can read more detail about <em><code>path</code></em> in <em><a href="https://jamie.build/" target="_blank" rel="noopener">Jamie Kyle</a></em>‘s _<a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md#paths" target="_blank" rel="noopener">babel handbook</a></p>
+</blockquote>
+<p><br>现在，我们继续写 babel plugin.<br></p>
+<p><a name="YWw4E"></a></p>
+<h4 id="转换变量名"><a href="#转换变量名" class="headerlink" title="转换变量名"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#transforming-variable-name" target="_blank" rel="noopener">转换变量名</a></h4><p><br>从 <a href="https://lihautan.com/babel-ast-explorer/#?eyJiYWJlbFNldHRpbmdzIjp7InZlcnNpb24iOiI3LjQuNSJ9LCJ0cmVlU2V0dGluZ3MiOnsiaGlkZUVtcHR5Ijp0cnVlLCJoaWRlTG9jYXRpb24iOnRydWUsImhpZGVUeXBlIjp0cnVlLCJoaWRlQ29tbWVudHMiOnRydWV9LCJjb2RlIjoiZnVuY3Rpb24gZ3JlZXQobmFtZSkge1xuICByZXR1cm4gJ0hlbGxvICcgKyBuYW1lO1xufVxuXG5jb25zb2xlLmxvZyhncmVldCgndGFuaGF1aGF1JykpOyAvLyBIZWxsbyB0YW5oYXVoYXUifQ==" target="_blank" rel="noopener">AST 浏览器</a> 中可以看到，<strong>Identifier</strong> 的名称存储在名为 name 的属性中，因此我们要做的就是反转名称。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Identifier(path) &#123;</span><br><span class="line">  path.node.name = path.node.name</span><br><span class="line">    .split(<span class="string">''</span>)</span><br><span class="line">    .reverse()</span><br><span class="line">    .join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行它，我们将看到：<br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">teerg</span>(<span class="params">eman</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello '</span> + eman;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">elosnoc.gol(teerg(<span class="string">'tanhauhau'</span>)); <span class="comment">// Hello tanhauhau</span></span><br></pre></td></tr></table></figure>
+<p>快要达到目标了, 我们现在不小心把 <code>console.log</code> 也给翻转了，我们该怎么避免呢?<br><br><br>我们再看下 <a href="https://lihautan.com/babel-ast-explorer/#?eyJiYWJlbFNldHRpbmdzIjp7InZlcnNpb24iOiI3LjQuNSJ9LCJ0cmVlU2V0dGluZ3MiOnsiaGlkZUVtcHR5Ijp0cnVlLCJoaWRlTG9jYXRpb24iOnRydWUsImhpZGVUeXBlIjp0cnVlLCJoaWRlQ29tbWVudHMiOnRydWV9LCJjb2RlIjoiZnVuY3Rpb24gZ3JlZXQobmFtZSkge1xuICByZXR1cm4gJ0hlbGxvICcgKyBuYW1lO1xufVxuXG5jb25zb2xlLmxvZyhncmVldCgndGFuaGF1aGF1JykpOyAvLyBIZWxsbyB0YW5oYXVoYXUifQ==" target="_blank" rel="noopener">AST 浏览器</a>，console.log 是 MemberExpression 的一部分，对象为 “console”，属性为 “log”，因此，让我们检查一下我们当前的 <strong>Identifier</strong> 是否在此 MemberExpression 内，如果在的话我们不去反转它：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Identifier(path) &#123;</span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    !(</span><br><span class="line">      path.parentPath.isMemberExpression() &amp;&amp;</span><br><span class="line">      path.parentPath</span><br><span class="line">        .get(<span class="string">'object'</span>)</span><br><span class="line">        .isIdentifier(&#123; <span class="attr">name</span>: <span class="string">'console'</span> &#125;) &amp;&amp;</span><br><span class="line">      path.parentPath.get(<span class="string">'property'</span>).isIdentifier(&#123; <span class="attr">name</span>: <span class="string">'log'</span> &#125;)</span><br><span class="line">    )</span><br><span class="line">  ) &#123;</span><br><span class="line">   path.node.name = path.node.name</span><br><span class="line">     .split(<span class="string">''</span>)</span><br><span class="line">     .reverse()</span><br><span class="line">     .join(<span class="string">''</span>);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在正确了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">teerg</span>(<span class="params">eman</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello '</span> + eman;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(teerg(<span class="string">'tanhauhau'</span>)); <span class="comment">// Hello tanhauhau</span></span><br></pre></td></tr></table></figure>
+<p>此外，为什么我们要对 <code>Identifier</code> 的父节点 <code>MemberExpression</code>  进行对比，而不是直接对比 <code>Identifier.name === &#39;console&#39; || Identifier.name === &#39;log&#39;</code>  即可？<br><br><br>如果直接对比 <code>Identifier.name</code>  的话，将漏掉我们写代码时的变量名为 log 的语句：<br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> log = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们是怎么知道 <code>isMemberExpression</code>_ and <em><code>isIdentifier</code>这些验证方法的呢，所有的节点类型在\</em> <em><a href="https://babeljs.io/docs/en/babel-types" target="_blank" rel="noopener">@babel/types</a></em> ，在这里也定义了 对应节点的验证函数 isXxxx 。这里是验证函数的源码：_<a href="https://github.com/babel/babel/blob/master/packages/babel-types/src/validators/generated/index.js" target="_blank" rel="noopener">_source code_</a>_。_</p>
+</blockquote>
+<p>_<br><a name="V0S6X"></a></p>
+<h4 id="转换字符串"><a href="#转换字符串" class="headerlink" title="转换字符串"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#transforming-strings" target="_blank" rel="noopener">转换字符串</a></h4><p>下一步是在 StringLiteral 中生成嵌套的 BinaryExpression。<br>若要创建 AST 节点，可以使用 @babel/types 中的实用程序功能。也可以通过 @babel/core 的 babel.types 获得 @babel/types。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">StringLiteral(path) &#123;</span><br><span class="line">  <span class="keyword">const</span> newNode = path.node.value</span><br><span class="line">    .split(<span class="string">''</span>)</span><br><span class="line">    .map(<span class="function"><span class="params">c</span> =&gt;</span> babel.types.stringLiteral(c))</span><br><span class="line">    .reduce(<span class="function">(<span class="params">prev, curr</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> babel.types.binaryExpression(<span class="string">'+'</span>, prev, curr);</span><br><span class="line">    &#125;);</span><br><span class="line">  path.replaceWith(newNode);</span><br><span class="line">  path.skip(); 、<span class="comment">// 跳过遍历当前路径的子节点，不然会发生栈溢出</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们分割了 StringLiteral 的内容（位于 path.node.value 中），使每个字符成为 StringLiteral，然后将它们与 BinaryExpression 结合在一起。最后，我们用新创建的节点替换 StringLiteral。<br></p>
+<p><a name="Z24HP"></a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#summary" target="_blank" rel="noopener">总结</a></h2><p><br>下面是我们的第一个基于 babel 的代码转换：<br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">'@babel/core'</span>);</span><br><span class="line"><span class="keyword">const</span> code = <span class="string">`</span></span><br><span class="line"><span class="string">function greet(name) &#123;</span></span><br><span class="line"><span class="string">  return 'Hello ' + name;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">console.log(greet('tanhauhau')); // Hello tanhauhau</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"><span class="keyword">const</span> output = babel.transformSync(code, &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">myCustomPlugin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        visitor: &#123;</span><br><span class="line">          StringLiteral(path) &#123;</span><br><span class="line">            <span class="keyword">const</span> concat = path.node.value</span><br><span class="line">              .split(<span class="string">''</span>)</span><br><span class="line">              .map(<span class="function">(<span class="params">c</span>) =&gt;</span> babel.types.stringLiteral(c))</span><br><span class="line">              .reduce(<span class="function">(<span class="params">prev, curr</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> babel.types.binaryExpression(<span class="string">'+'</span>, prev, curr);</span><br><span class="line">              &#125;);</span><br><span class="line">            path.replaceWith(concat);</span><br><span class="line">            path.skip();</span><br><span class="line">          &#125;,</span><br><span class="line">          Identifier(path) &#123;</span><br><span class="line">            <span class="keyword">if</span> (</span><br><span class="line">              !(</span><br><span class="line">                path.parentPath.isMemberExpression() &amp;&amp;</span><br><span class="line">                path.parentPath</span><br><span class="line">                  .get(<span class="string">'object'</span>)</span><br><span class="line">                  .isIdentifier(&#123; <span class="attr">name</span>: <span class="string">'console'</span> &#125;) &amp;&amp;</span><br><span class="line">                path.parentPath.get(<span class="string">'property'</span>).isIdentifier(&#123; <span class="attr">name</span>: <span class="string">'log'</span> &#125;)</span><br><span class="line">              )</span><br><span class="line">            ) &#123;</span><br><span class="line">              path.node.name = path.node.name.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(output.code);</span><br></pre></td></tr></table></figure>
+<p>再次惠顾下我们的完成的步骤是：</p>
+<ol>
+<li>从哪里来到哪里去：记住要转换的内容和目标</li>
+<li>AST：明白 AST 代码</li>
+<li>AST：明白转换后的 AST 的代码</li>
+<li>写代码：通过 babel 实现转换代码</li>
+</ol>
+<p><a name="lBGGL"></a></p>
+<h2 id="更多资源"><a href="#更多资源" class="headerlink" title="更多资源"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#further-resources" target="_blank" rel="noopener">更多资源</a></h2><p><a href="https://github.com/babel/babel/tree/master/packages" target="_blank" rel="noopener">babel github repo</a> ：这里有很多代码案例，<code>babel-plugin-transform-*</code> or <code>babel-plugin-proposal-\* `</code>文件夹下面有很多 transformation plugin 可供学习参考。<br></p>
+<p><a name="YahZt"></a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/#reference" target="_blank" rel="noopener">引用</a></h2><ul>
+<li><a href="https://babeljs.io/docs/en/" target="_blank" rel="noopener">Babel docs</a> &amp; <a href="https://github.com/babel/babel" target="_blank" rel="noopener">Github repo</a></li>
+<li><a href="https://github.com/jamiebuilds/babel-handbook" target="_blank" rel="noopener">Babel Handbook</a> by <a href="https://jamie.build/" target="_blank" rel="noopener">Jamie Kyle</a></li>
+<li><a href="https://medium.com/basecs/leveling-up-ones-parsing-game-with-asts-d7a6fc2400ff" target="_blank" rel="noopener">Leveling Up One’s Parsing Game With ASTs</a> by <a href="https://twitter.com/vaidehijoshi" target="_blank" rel="noopener">Vaidehi Joshi</a></li>
+<li><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/" target="_blank" rel="noopener">step-by-step-guide-for-writing-a-babel-transformation</a><br></li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "程康健"
+        },
+        "headline": "如何写一个 babel plugin【翻译】",
+        "image": "http://www.chengkangjian.comhttps://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/tree.jpg",
+        "keywords": "技术",
+        "genre": "技术",
+        "datePublished": "2020-10-23",
+        "dateCreated": "2020-10-23",
+        "dateModified": "2020-10-23",
+        "url": "http://www.chengkangjian.com/2020/10/23/How-to-write-a-babel-plugin/",
+        "description": "
+
+什么是 babelbabel 是 javascript 编译器，它可以将 ECMAScript 2015+ 代码转换成浏览器可解析的兼容性代码。
+babel 是基于 plugin system  进行代码转换的，通过 babel 每个人都可以写自己的 babel plugin。
+
+什么是抽象语法树 Abstract Syntax Tree (AST)AST (Abstract syntax t"
+        "wordCount": 2011
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="valine-thread"></div>
+
+
+    
+    
+    <div id="valine-thread"></div>
+
+
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="hexo" href="https://www.zhihu.com/people/chengkj" target="_blank" rel="noopener">
+                        <i class="icon fa fa-hexo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/chengkj99" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/chengkangjian" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/chengkangjian" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weixin" href="http://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/WechatIMG211.jpeg" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weixin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/03/27/docker-use/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Ionic 项目 APK 打包容器化部署实践</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/23/How-to-write-a-babel-plugin/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/tree.jpg)" alt="如何写一个 babel plugin【翻译】" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/技术/">技术</a></p>
+                            <p class="item-title"><a href="/2020/10/23/How-to-write-a-babel-plugin/" class="title">如何写一个 babel plugin【翻译】</a></p>
+                            <p class="item-date"><time datetime="2020-10-23T09:28:42.000Z" itemprop="datePublished">2020-10-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/27/docker-use/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/bank.jpg)" alt="Ionic 项目 APK 打包容器化部署实践" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/工作/">工作</a></p>
+                            <p class="item-title"><a href="/2020/03/27/docker-use/" class="title">Ionic 项目 APK 打包容器化部署实践</a></p>
+                            <p class="item-date"><time datetime="2020-03-27T03:11:09.000Z" itemprop="datePublished">2020-03-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/01/09/DI-IOC/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/fountain.jpg)" alt="依赖注入（DI）和控制反转（IOC）" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/技术/">技术</a></p>
+                            <p class="item-title"><a href="/2020/01/09/DI-IOC/" class="title">依赖注入（DI）和控制反转（IOC）</a></p>
+                            <p class="item-date"><time datetime="2020-01-09T08:42:34.000Z" itemprop="datePublished">2020-01-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/01/02/2020-new-year-speech/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/fireworks.jpg)" alt="记《时间的朋友》跨年演讲主要回答的几个问题" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/想法/">想法</a></p>
+                            <p class="item-title"><a href="/2020/01/02/2020-new-year-speech/" class="title">记《时间的朋友》跨年演讲主要回答的几个问题</a></p>
+                            <p class="item-date"><time datetime="2020-01-02T08:25:58.000Z" itemprop="datePublished">2020-01-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/12/28/use-vim/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ckj-bucket.oss-cn-beijing.aliyuncs.com/chengkj-blog/nature-vim.jpg)" alt="vim 基础教程" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/技术/">技术</a></p>
+                            <p class="item-title"><a href="/2019/12/28/use-vim/" class="title">vim 基础教程</a></p>
+                            <p class="item-date"><time datetime="2019-12-28T07:51:24.000Z" itemprop="datePublished">2019-12-28</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工作/">工作</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/想法/">想法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">19</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FE/">FE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码管理/">密码管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思考/">思考</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/想法-生活-技术/">想法 生活 技术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我/">我</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/敏捷开发/">敏捷开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调研/">调研</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/选择/">选择</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CDN/" style="font-size: 14.29px;">CDN</a> <a href="/tags/FE/" style="font-size: 10px;">FE</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/javascript/" style="font-size: 17.14px;">javascript</a> <a href="/tags/vue/" style="font-size: 14.29px;">vue</a> <a href="/tags/webpack/" style="font-size: 11.43px;">webpack</a> <a href="/tags/互联网/" style="font-size: 10px;">互联网</a> <a href="/tags/学习/" style="font-size: 14.29px;">学习</a> <a href="/tags/密码管理/" style="font-size: 10px;">密码管理</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/心情/" style="font-size: 12.86px;">心情</a> <a href="/tags/思考/" style="font-size: 20px;">思考</a> <a href="/tags/想法-生活-技术/" style="font-size: 10px;">想法 生活 技术</a> <a href="/tags/感悟/" style="font-size: 14.29px;">感悟</a> <a href="/tags/成长/" style="font-size: 18.57px;">成长</a> <a href="/tags/我/" style="font-size: 11.43px;">我</a> <a href="/tags/技术/" style="font-size: 14.29px;">技术</a> <a href="/tags/敏捷开发/" style="font-size: 10px;">敏捷开发</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/生活/" style="font-size: 15.71px;">生活</a> <a href="/tags/算法/" style="font-size: 18.57px;">算法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/调研/" style="font-size: 10px;">调研</a> <a href="/tags/选择/" style="font-size: 10px;">选择</a> <a href="/tags/阅读/" style="font-size: 11.43px;">阅读</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://chengkangjian.lofter.com/">Lofter Blog</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 程康健</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+        <div style="position: absolute; bottom: 0; right: 0;">
+            <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+            <span id="busuanzi_container_site_uv">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+              </span>
+        </div>
+    </div>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        console.log('UUUUUUUUUUUUUUUUUUUUUU', Valine)
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'F6jFQaG21HE6wUeYaXTSccnG-gzGzoHsz',
+            app_key: 'xvsqUs1Nt3LtHilVGzspzqvk',
+            placeholder: '发表评论~',
+            pageSize: '10',
+            avatar: 'identicon',
+            avatar_cdn:  'https://gravatar.loli.net/avatar/'
+        });
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
